@@ -8,10 +8,9 @@
 # Ignore generated CSS files:
 style.css
 style-editor.css
-style-editor-extra.css
 
 # Ignore the generated zip file:
-_tw.zip
+boptail.zip
 
 # Ignore .DS_Store files from macOS:
 .DS_Store

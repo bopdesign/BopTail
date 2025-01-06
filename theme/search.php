@@ -2,16 +2,15 @@
 /**
  * The template for displaying search results pages
  *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#search-result
+ * @link    https://developer.wordpress.org/themes/basics/template-hierarchy/#search-result
  *
- * @package _tw
+ * @package BopTail
  */
 
 get_header();
 ?>
 
-	<section id="primary">
-		<main id="main">
+	<main id="main" role="main">
 
 		<?php if ( have_posts() ) : ?>
 
@@ -20,7 +19,7 @@ get_header();
 				printf(
 					/* translators: 1: search result title. 2: search term. */
 					'<h1 class="page-title">%1$s <span>%2$s</span></h1>',
-					esc_html__( 'Search results for:', '_tw' ),
+					esc_html__( 'Search results for:', 'boptail' ),
 					get_search_query()
 				);
 				?>
@@ -36,7 +35,7 @@ get_header();
 			endwhile;
 
 			// Previous/next page navigation.
-			_tw_the_posts_navigation();
+			boptail_the_posts_navigation();
 
 		else :
 
@@ -45,8 +44,7 @@ get_header();
 
 		endif;
 		?>
-		</main><!-- #main -->
-	</section><!-- #primary -->
+	</main><!-- #main -->
 
 <?php
 get_footer();

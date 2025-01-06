@@ -1,39 +1,39 @@
 {
-	"$schema": "https://schemas.wp.org/trunk/theme.json",
-	"version": 2,
-	"settings": {
-		"color": {
-			"palette": [
-				{
-					"slug": "background",
-					"color": "#ffffff",
-					"name": "Background"
-				},
-				{
-					"slug": "foreground",
-					"color": "#404040",
-					"name": "Foreground"
-				},
-				{
-					"slug": "primary",
-					"color": "#b91c1c",
-					"name": "Primary"
-				},
-				{
-					"slug": "secondary",
-					"color": "#15803d",
-					"name": "Secondary"
-				},
-				{
-					"slug": "tertiary",
-					"color": "#0369a1",
-					"name": "Tertiary"
-				}
-			]
-		},
-		"layout": {
-			"contentSize": "40rem",
-			"wideSize": "60rem"
-		}
-	}
+  "$schema": "https://schemas.wp.org/trunk/theme.json",
+  "version": 3,
+  "settings": {
+    "color": {
+      "palette": [
+        {
+          "slug": "background",
+          "color": "#fff",
+          "name": "Background"
+        },
+        {
+          "slug": "foreground",
+          "color": "#1d252d",
+          "name": "Foreground"
+        },
+        {
+          "slug": "primary",
+          "color": "#004ea8",
+          "name": "Primary"
+        },
+        {
+          "slug": "secondary",
+          "color": "#f9e547",
+          "name": "Secondary"
+        },
+        {
+          "slug": "tertiary",
+          "color": "#418fde",
+          "name": "Tertiary"
+        }
+      ]
+    },
+    "layout": {
+      "contentSize": "80rem",
+      "wideSize": "96rem"
+    }
+  }
 }

@@ -1,3 +1,5 @@
+@import "./tailwind.css";
+
 /**
  * Additional styles applied only to the WordPress editor
  *
@@ -12,6 +14,7 @@
  */
 
 .entry-header,
-.entry-content {
+.entry-content,
+.entry-footer {
 	@apply px-8;
 }

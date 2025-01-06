@@ -39,7 +39,7 @@ module.exports = {
 							 * Tailwind Typography uses the font weights 400
 							 * through 900. If you’re not using a variable font,
 							 * you may need to limit the number of supported
-							 * weights. Below are all of the default weights,
+							 * weights. Below are all the default weights,
 							 * ready to be overridden.
 							 */
 							// a: {
@@ -58,7 +58,7 @@ module.exports = {
 							// 	fontWeight: '500',
 							// },
 							// h1: {
-							// 	fontWeight: '800',
+							// 	fontWeight: '700',
 							// },
 							// 'h1 strong': {
 							// 	fontWeight: '900',
@@ -99,12 +99,12 @@ module.exports = {
 
 				/**
 				 * By default, _tw uses Tailwind Typography’s Neutral gray
-				 * scale. If you are adapting an existing design and you need
+				 * scale. If you are adapting an existing design, and you need
 				 * to set specific colors throughout, you can do so here. In
 				 * your `./theme/functions.php file, you will need to replace
-				 * `prose-neutral` with `prose-_tw`.
+				 * `prose-neutral` with `prose-boptail`.
 				 */
-				_tw: {
+				boptail: {
 					css: {
 						'--tw-prose-body': theme('colors.foreground'),
 						'--tw-prose-headings': theme('colors.foreground'),

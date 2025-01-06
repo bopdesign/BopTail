@@ -2,18 +2,18 @@
 /**
  * Functions which enhance the theme by hooking into WordPress
  *
- * @package _tw
+ * @package BopTail
  */
 
 /**
  * Add a pingback url auto-discovery header for single posts, pages, or attachments.
  */
-function _tw_pingback_header() {
+function boptail_pingback_header() {
 	if ( is_singular() && pings_open() ) {
 		printf( '<link rel="pingback" href="%s">', esc_url( get_bloginfo( 'pingback_url' ) ) );
 	}
 }
-add_action( 'wp_head', '_tw_pingback_header' );
+add_action( 'wp_head', 'boptail_pingback_header' );
 
 /**
  * Changes comment form default fields.
@@ -22,7 +22,7 @@ add_action( 'wp_head', '_tw_pingback_header' );
  *
  * @return array Returns the modified fields.
  */
-function _tw_comment_form_defaults( $defaults ) {
+function boptail_comment_form_defaults( $defaults ) {
 	$comment_field = $defaults['comment_field'];
 
 	// Adjust height of comment form.
@@ -30,56 +30,56 @@ function _tw_comment_form_defaults( $defaults ) {
 
 	return $defaults;
 }
-add_filter( 'comment_form_defaults', '_tw_comment_form_defaults' );
+add_filter( 'comment_form_defaults', 'boptail_comment_form_defaults' );
 
 /**
  * Filters the default archive titles.
  */
-function _tw_get_the_archive_title() {
+function boptail_get_the_archive_title() {
 	if ( is_category() ) {
-		$title = __( 'Category Archives: ', '_tw' ) . '<span>' . single_term_title( '', false ) . '</span>';
+		$title = __( 'Category Archives: ', 'boptail' ) . '<span>' . single_term_title( '', false ) . '</span>';
 	} elseif ( is_tag() ) {
-		$title = __( 'Tag Archives: ', '_tw' ) . '<span>' . single_term_title( '', false ) . '</span>';
+		$title = __( 'Tag Archives: ', 'boptail' ) . '<span>' . single_term_title( '', false ) . '</span>';
 	} elseif ( is_author() ) {
-		$title = __( 'Author Archives: ', '_tw' ) . '<span>' . get_the_author_meta( 'display_name' ) . '</span>';
+		$title = __( 'Author Archives: ', 'boptail' ) . '<span>' . get_the_author_meta( 'display_name' ) . '</span>';
 	} elseif ( is_year() ) {
-		$title = __( 'Yearly Archives: ', '_tw' ) . '<span>' . get_the_date( _x( 'Y', 'yearly archives date format', '_tw' ) ) . '</span>';
+		$title = __( 'Yearly Archives: ', 'boptail' ) . '<span>' . get_the_date( _x( 'Y', 'yearly archives date format', 'boptail' ) ) . '</span>';
 	} elseif ( is_month() ) {
-		$title = __( 'Monthly Archives: ', '_tw' ) . '<span>' . get_the_date( _x( 'F Y', 'monthly archives date format', '_tw' ) ) . '</span>';
+		$title = __( 'Monthly Archives: ', 'boptail' ) . '<span>' . get_the_date( _x( 'F Y', 'monthly archives date format', 'boptail' ) ) . '</span>';
 	} elseif ( is_day() ) {
-		$title = __( 'Daily Archives: ', '_tw' ) . '<span>' . get_the_date() . '</span>';
+		$title = __( 'Daily Archives: ', 'boptail' ) . '<span>' . get_the_date() . '</span>';
 	} elseif ( is_post_type_archive() ) {
 		$cpt   = get_post_type_object( get_queried_object()->name );
 		$title = sprintf(
 			/* translators: %s: Post type singular name */
-			esc_html__( '%s Archives', '_tw' ),
+			esc_html__( '%s Archives', 'boptail' ),
 			$cpt->labels->singular_name
 		);
 	} elseif ( is_tax() ) {
 		$tax   = get_taxonomy( get_queried_object()->taxonomy );
 		$title = sprintf(
 			/* translators: %s: Taxonomy singular name */
-			esc_html__( '%s Archives', '_tw' ),
+			esc_html__( '%s Archives', 'boptail' ),
 			$tax->labels->singular_name
 		);
 	} else {
-		$title = __( 'Archives:', '_tw' );
+		$title = __( 'Archives:', 'boptail' );
 	}
 	return $title;
 }
-add_filter( 'get_the_archive_title', '_tw_get_the_archive_title' );
+add_filter( 'get_the_archive_title', 'boptail_get_the_archive_title' );
 
 /**
  * Determines whether the post thumbnail can be displayed.
  */
-function _tw_can_show_post_thumbnail() {
-	return apply_filters( '_tw_can_show_post_thumbnail', ! post_password_required() && ! is_attachment() && has_post_thumbnail() );
+function boptail_can_show_post_thumbnail() {
+	return apply_filters( 'boptail_can_show_post_thumbnail', ! post_password_required() && ! is_attachment() && has_post_thumbnail() );
 }
 
 /**
  * Returns the size for avatars used in the theme.
  */
-function _tw_get_avatar_size() {
+function boptail_get_avatar_size() {
 	return 60;
 }
 
@@ -88,12 +88,12 @@ function _tw_get_avatar_size() {
  *
  * @param string $more_string The string shown within the more link.
  */
-function _tw_continue_reading_link( $more_string ) {
+function boptail_continue_reading_link( $more_string ) {
 
 	if ( ! is_admin() ) {
 		$continue_reading = sprintf(
 			/* translators: %s: Name of current post. */
-			wp_kses( __( 'Continue reading %s', '_tw' ), array( 'span' => array( 'class' => array() ) ) ),
+			wp_kses( __( 'Continue reading %s', 'boptail' ), array( 'span' => array( 'class' => array() ) ) ),
 			the_title( '<span class="sr-only">"', '"</span>', false )
 		);
 
@@ -104,10 +104,10 @@ function _tw_continue_reading_link( $more_string ) {
 }
 
 // Filter the excerpt more link.
-add_filter( 'excerpt_more', '_tw_continue_reading_link' );
+add_filter( 'excerpt_more', 'boptail_continue_reading_link' );
 
 // Filter the content more link.
-add_filter( 'the_content_more_link', '_tw_continue_reading_link' );
+add_filter( 'the_content_more_link', 'boptail_continue_reading_link' );
 
 /**
  * Outputs a comment in the HTML5 format.
@@ -120,16 +120,16 @@ add_filter( 'the_content_more_link', '_tw_continue_reading_link' );
  * @param array      $args    An array of arguments.
  * @param int        $depth   Depth of the current comment.
  */
-function _tw_html5_comment( $comment, $args, $depth ) {
+function boptail_html5_comment( $comment, $args, $depth ) {
 	$tag = ( 'div' === $args['style'] ) ? 'div' : 'li';
 
 	$commenter          = wp_get_current_commenter();
 	$show_pending_links = ! empty( $commenter['comment_author'] );
 
 	if ( $commenter['comment_author_email'] ) {
-		$moderation_note = __( 'Your comment is awaiting moderation.', '_tw' );
+		$moderation_note = __( 'Your comment is awaiting moderation.', 'boptail' );
 	} else {
-		$moderation_note = __( 'Your comment is awaiting moderation. This is a preview; your comment will be visible after it has been approved.', '_tw' );
+		$moderation_note = __( 'Your comment is awaiting moderation. This is a preview; your comment will be visible after it has been approved.', 'boptail' );
 	}
 	?>
 	<<?php echo esc_attr( $tag ); ?> id="comment-<?php comment_ID(); ?>" <?php comment_class( $comment->has_children ? 'parent' : '', $comment ); ?>>
@@ -150,7 +150,7 @@ function _tw_html5_comment( $comment, $args, $depth ) {
 
 					printf(
 						/* translators: %s: Comment author link. */
-						wp_kses_post( __( '%s <span class="says">says:</span>', '_tw' ) ),
+						wp_kses_post( __( '%s <span class="says">says:</span>', 'boptail' ) ),
 						sprintf( '<b class="fn">%s</b>', wp_kses_post( $comment_author ) )
 					);
 					?>
@@ -165,14 +165,14 @@ function _tw_html5_comment( $comment, $args, $depth ) {
 						esc_html(
 							sprintf(
 							/* translators: 1: Comment date, 2: Comment time. */
-								__( '%1$s at %2$s', '_tw' ),
+								__( '%1$s at %2$s', 'boptail' ),
 								get_comment_date( '', $comment ),
 								get_comment_time()
 							)
 						)
 					);
 
-					edit_comment_link( __( 'Edit', '_tw' ), ' <span class="edit-link">', '</span>' );
+					edit_comment_link( __( 'Edit', 'boptail' ), ' <span class="edit-link">', '</span>' );
 					?>
 				</div><!-- .comment-metadata -->
 
@@ -181,7 +181,7 @@ function _tw_html5_comment( $comment, $args, $depth ) {
 				<?php endif; ?>
 			</footer><!-- .comment-meta -->
 
-			<div <?php _tw_content_class( 'comment-content' ); ?>>
+			<div <?php boptail_content_class( 'comment-content' ); ?>>
 				<?php comment_text(); ?>
 			</div><!-- .comment-content -->
 

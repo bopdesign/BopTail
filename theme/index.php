@@ -1,22 +1,21 @@
 <?php
 /**
- * The main template file
+ * The main template file.
  *
  * This is the most generic template file in a WordPress theme
  * and one of the two required files for a theme (the other being style.css).
  * It is used to display a page when nothing more specific matches a query.
  * E.g., it puts together the home page when no `home.php` file exists.
  *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
+ * @link    https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @package _tw
+ * @package BopTail
  */
 
 get_header();
 ?>
 
-	<section id="primary">
-		<main id="main">
+	<main id="main" role="main">
 
 		<?php
 		if ( have_posts() ) {
@@ -26,7 +25,7 @@ get_header();
 				<header class="entry-header">
 					<h1 class="entry-title"><?php single_post_title(); ?></h1>
 				</header><!-- .entry-header -->
-				<?php
+			<?php
 			endif;
 
 			// Load posts loop.
@@ -36,7 +35,7 @@ get_header();
 			}
 
 			// Previous/next page navigation.
-			_tw_the_posts_navigation();
+			boptail_the_posts_navigation();
 
 		} else {
 
@@ -46,8 +45,7 @@ get_header();
 		}
 		?>
 
-		</main><!-- #main -->
-	</section><!-- #primary -->
+	</main><!-- #main -->
 
 <?php
 get_footer();

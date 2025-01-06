@@ -2,16 +2,15 @@
 /**
  * The template for displaying archive pages
  *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
+ * @link    https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @package _tw
+ * @package BopTail
  */
 
 get_header();
 ?>
 
-	<section id="primary">
-		<main id="main">
+	<main id="main">
 
 		<?php if ( have_posts() ) : ?>
 
@@ -29,7 +28,7 @@ get_header();
 			endwhile;
 
 			// Previous/next page navigation.
-			_tw_the_posts_navigation();
+			boptail_the_posts_navigation();
 
 		else :
 
@@ -38,8 +37,7 @@ get_header();
 
 		endif;
 		?>
-		</main><!-- #main -->
-	</section><!-- #primary -->
+	</main><!-- #main -->
 
 <?php
 get_footer();

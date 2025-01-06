@@ -1,5 +1,5 @@
 // Set the Preflight flag based on the build target.
-const includePreflight = 'editor' === process.env._TW_TARGET ? false : true;
+const includePreflight = 'editor' !== process.env._TW_TARGET;
 
 module.exports = {
 	presets: [
@@ -11,8 +11,17 @@ module.exports = {
 		'./theme/**/*.php',
 	],
 	theme: {
+		container: {
+			center: true,
+			padding: {
+				DEFAULT: '1.5rem',
+				lg: '2rem',
+			},
+		},
 		// Extend the default Tailwind theme.
-		extend: {},
+		extend: {
+			'2xl': '1440px'
+		},
 	},
 	corePlugins: {
 		// Disable Preflight base styles in builds targeting the editor.

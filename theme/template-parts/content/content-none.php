@@ -4,7 +4,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @package _tw
+ * @package BopTail
  */
 
 ?>
@@ -19,7 +19,7 @@
 				printf(
 					/* translators: 1: search result title. 2: search term. */
 					'<h1 class="page-title">%1$s <span>%2$s</span></h1>',
-					esc_html__( 'Search results for:', '_tw' ),
+					esc_html__( 'Search results for:', 'boptail' ),
 					get_search_query()
 				);
 				?>
@@ -27,25 +27,25 @@
 
 		<?php else : ?>
 
-			<h1 class="page-title"><?php esc_html_e( 'Nothing Found', '_tw' ); ?></h1>
+			<h1 class="page-title"><?php esc_html_e( 'Nothing Found', 'boptail' ); ?></h1>
 
 		<?php endif; ?>
 	</header><!-- .page-header -->
 
-	<div <?php _tw_content_class( 'page-content' ); ?>>
+	<div <?php boptail_content_class( 'page-content' ); ?>>
 		<?php
 		if ( is_home() && current_user_can( 'publish_posts' ) ) :
 			?>
 
 			<p>
-				<?php esc_html_e( 'Your site is set to show the most recent posts on your homepage, but you haven&rsquo;t published any posts.', '_tw' ); ?>
+				<?php esc_html_e( 'Your site is set to show the most recent posts on your homepage, but you haven&rsquo;t published any posts.', 'boptail' ); ?>
 			</p>
 
 			<p>
 				<a href="<?php echo esc_url( admin_url( 'edit.php' ) ); ?>">
 					<?php
 					/* translators: 1: link to WP admin new post page. */
-					esc_html_e( 'Add or publish posts', '_tw' );
+					esc_html_e( 'Add or publish posts', 'boptail' );
 					?>
 				</a>
 			</p>
@@ -55,7 +55,7 @@
 			?>
 
 			<p>
-				<?php esc_html_e( 'Your search generated no results. Please try a different search.', '_tw' ); ?>
+				<?php esc_html_e( 'Your search generated no results. Please try a different search.', 'boptail' ); ?>
 			</p>
 
 			<?php
@@ -64,7 +64,7 @@
 			?>
 
 			<p>
-				<?php esc_html_e( 'No content matched your request.', '_tw' ); ?>
+				<?php esc_html_e( 'No content matched your request.', 'boptail' ); ?>
 			</p>
 
 			<?php

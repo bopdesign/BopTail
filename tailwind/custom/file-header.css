@@ -1,23 +1,30 @@
 /*!
-Theme Name: _tw
-Theme URI: https://underscoretw.com/
-Author: underscoretw.com
-Author URI: https://underscoretw.com/
+Theme Name: BopTail
+Theme URI: https://github.com/bopdesign/BopTail
+Author: Bop Design
+Author URI: https://www.bopdesign.com/
 Description: A custom theme based on _tw
 Version: 0.1.0
 Tested up to: 6.2
 Requires PHP: 7.4
-License: GNU General Public License v2 or later
-License URI: LICENSE
-Text Domain: _tw
-Tags:
+License: GNU General Public License v3 or later
+License URI: https://www.gnu.org/licenses/gpl-3.0.html
+Text Domain: boptail
+Tags: tailwind, starter, starter-theme, hybrid, hybrid-theme, gutenberg, block-styles, editor-style, custom
 
-This theme, like WordPress, is licensed under the GPL.
+BopTail WordPress Theme, (C) 2025 Bop Design, Inc.
+
+This theme, like WordPress, is licensed under the GNU GPL.
 Use it to make something cool, have fun, and share what you've learned.
 
-_tw is based on _tw https://underscoretw.com/, (C) 2021-2023 Greg Sullivan
-_tw is distributed under the terms of the GNU GPL v2 or later.
+BopTail is based on _tw https://underscoretw.com/, (C) 2021-2025 Greg Sullivan
+_tw is distributed under the terms of the GNU GPL v2 or later:
+- https://github.com/gregsullivan/_tw/blob/master/LICENSE
 
 _tw is based on Underscores https://underscores.me/ and Varia https://github.com/Automattic/themes/tree/master/varia, (C) 2012-2023 Automattic, Inc.
-Underscores and Varia are distributed under the terms of the GNU GPL v2 or later.
+Underscores and Varia are distributed under the terms of the GNU GPL v2 or later:
+- Underscores: https://github.com/Automattic/_s/blob/master/LICENSE (GNU GPLv2)
+- Varia: https://github.com/Automattic/themes/blob/trunk/varia/LICENSE (GNU GPLv2)
+
+Actual CSS can be found in /assets/css/ folder.
 */
