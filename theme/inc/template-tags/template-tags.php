@@ -7,6 +7,9 @@
  * @package BopTail
  */
 
+
+use function BopTail\Hooks\Filters\can_show_post_thumbnail;
+
 if ( ! function_exists( 'boptail_posted_on' ) ) :
 	/**
 	 * Prints HTML with meta information for the current post-date/time.
@@ -41,7 +44,7 @@ if ( ! function_exists( 'boptail_posted_by' ) ) :
 		printf(
 		/* translators: 1: posted by label, only visible to screen readers. 2: author link. 3: post author. */
 			'<span class="sr-only">%1$s</span><span class="author vcard"><a class="url fn n" href="%2$s">%3$s</a></span>',
-			esc_html__( 'Posted by', 'boptail' ),
+			esc_html__( 'Posted by', BOPTAIL_TEXT_DOMAIN ),
 			esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
 			esc_html( get_the_author() )
 		);
@@ -55,7 +58,7 @@ if ( ! function_exists( 'boptail_comment_count' ) ) :
 	function boptail_comment_count() {
 		if ( ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
 			/* translators: %s: Name of current post. Only visible to screen readers. */
-			comments_popup_link( sprintf( __( 'Leave a comment<span class="sr-only"> on %s</span>', 'boptail' ), get_the_title() ) );
+			comments_popup_link( sprintf( __( 'Leave a comment<span class="sr-only"> on %s</span>', BOPTAIL_TEXT_DOMAIN ), get_the_title() ) );
 		}
 	}
 endif;
@@ -77,23 +80,23 @@ if ( ! function_exists( 'boptail_entry_meta' ) ) :
 			boptail_posted_on();
 
 			/* translators: used between list items, there is a space after the comma. */
-			$categories_list = get_the_category_list( __( ', ', 'boptail' ) );
+			$categories_list = get_the_category_list( __( ', ', BOPTAIL_TEXT_DOMAIN ) );
 			if ( $categories_list ) {
 				printf(
 				/* translators: 1: posted in label, only visible to screen readers. 2: list of categories. */
 					'<span class="sr-only">%1$s</span>%2$s',
-					esc_html__( 'Posted in', 'boptail' ),
+					esc_html__( 'Posted in', BOPTAIL_TEXT_DOMAIN ),
 					$categories_list // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 				);
 			}
 
 			/* translators: used between list items, there is a space after the comma. */
-			$tags_list = get_the_tag_list( '', __( ', ', 'boptail' ) );
+			$tags_list = get_the_tag_list( '', __( ', ', BOPTAIL_TEXT_DOMAIN ) );
 			if ( $tags_list ) {
 				printf(
 				/* translators: 1: tags label, only visible to screen readers. 2: list of tags. */
 					'<span class="sr-only">%1$s</span>%2$s',
-					esc_html__( 'Tags:', 'boptail' ),
+					esc_html__( 'Tags:', BOPTAIL_TEXT_DOMAIN ),
 					$tags_list // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 				);
 			}
@@ -109,7 +112,7 @@ if ( ! function_exists( 'boptail_entry_meta' ) ) :
 			sprintf(
 				wp_kses(
 				/* translators: %s: Name of current post. Only visible to screen readers. */
-					__( 'Edit <span class="sr-only">%s</span>', 'boptail' ),
+					__( 'Edit <span class="sr-only">%s</span>', BOPTAIL_TEXT_DOMAIN ),
 					array(
 						'span' => array(
 							'class' => array(),
@@ -138,23 +141,23 @@ if ( ! function_exists( 'boptail_entry_footer' ) ) :
 			boptail_posted_on();
 
 			/* translators: used between list items, there is a space after the comma. */
-			$categories_list = get_the_category_list( __( ', ', 'boptail' ) );
+			$categories_list = get_the_category_list( __( ', ', BOPTAIL_TEXT_DOMAIN ) );
 			if ( $categories_list ) {
 				printf(
 				/* translators: 1: posted in label, only visible to screen readers. 2: list of categories. */
 					'<span class="sr-only">%1$s</span>%2$s',
-					esc_html__( 'Posted in', 'boptail' ),
+					esc_html__( 'Posted in', BOPTAIL_TEXT_DOMAIN ),
 					$categories_list // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 				);
 			}
 
 			/* translators: used between list items, there is a space after the comma. */
-			$tags_list = get_the_tag_list( '', __( ', ', 'boptail' ) );
+			$tags_list = get_the_tag_list( '', __( ', ', BOPTAIL_TEXT_DOMAIN ) );
 			if ( $tags_list ) {
 				printf(
 				/* translators: 1: tags label, only visible to screen readers. 2: list of tags. */
 					'<span class="sr-only">%1$s</span>%2$s',
-					esc_html__( 'Tags:', 'boptail' ),
+					esc_html__( 'Tags:', BOPTAIL_TEXT_DOMAIN ),
 					$tags_list // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 				);
 			}
@@ -170,7 +173,7 @@ if ( ! function_exists( 'boptail_entry_footer' ) ) :
 			sprintf(
 				wp_kses(
 				/* translators: %s: Name of current post. Only visible to screen readers. */
-					__( 'Edit <span class="sr-only">%s</span>', 'boptail' ),
+					__( 'Edit <span class="sr-only">%s</span>', BOPTAIL_TEXT_DOMAIN ),
 					array(
 						'span' => array(
 							'class' => array(),
@@ -189,7 +192,7 @@ if ( ! function_exists( 'boptail_post_thumbnail' ) ) :
 	 * anchor element except when viewing a single post.
 	 */
 	function boptail_post_thumbnail() {
-		if ( ! boptail_can_show_post_thumbnail() ) {
+		if ( ! can_show_post_thumbnail() ) {
 			return;
 		}
 
@@ -261,8 +264,8 @@ if ( ! function_exists( 'boptail_the_posts_navigation' ) ) :
 		the_posts_pagination(
 			array(
 				'mid_size'  => 2,
-				'prev_text' => __( 'Newer posts', 'boptail' ),
-				'next_text' => __( 'Older posts', 'boptail' ),
+				'prev_text' => __( 'Newer posts', BOPTAIL_TEXT_DOMAIN ),
+				'next_text' => __( 'Older posts', BOPTAIL_TEXT_DOMAIN ),
 			)
 		);
 	}

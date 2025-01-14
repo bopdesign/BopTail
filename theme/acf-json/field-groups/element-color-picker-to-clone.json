@@ -1,0 +1,54 @@
+{
+    "key": "group_5d16233395958",
+    "title": "Element: Color Picker (to clone)",
+    "fields": [
+        {
+            "key": "field_5d16235b009ea",
+            "label": "Color Picker",
+            "name": "color_picker",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "background": "<div style=\"display: flex; align-items: center;\"><span style=\"background-color:#fff; border: 1px solid #ccc;display:inline-block; height: 15px; margin-right: 10px; width: 15px;\"><\/span>Background<\/div>",
+                "foreground": "<div style=\"display: flex; align-items: center;\"><span style=\"background-color:#1d252d; border: 1px solid #ccc;display:inline-block; height: 15px; margin-right: 10px; width: 15px;\"><\/span>Foreground<\/div>",
+                "primary": "<div style=\"display: flex; align-items: center;\"><span style=\"background-color:#004ea8; border: 1px solid #ccc;display:inline-block; height: 15px; margin-right: 10px; width: 15px;\"><\/span>Primary<\/div>",
+                "secondary": "<div style=\"display: flex; align-items: center;\"><span style=\"background-color:#f9e547; border: 1px solid #ccc;display:inline-block; height: 15px; margin-right: 10px; width: 15px;\"><\/span>Secondary<\/div>",
+                "tertiary": "<div style=\"display: flex; align-items: center;\"><span style=\"background-color:#418fde; border: 1px solid #ccc;display:inline-block; height: 15px; margin-right: 10px; width: 15px;\"><\/span>Tertiary<\/div>"
+            },
+            "default_value": false,
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 1,
+            "ui": 1,
+            "ajax": 0,
+            "placeholder": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "seamless",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": false,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1736837941
+}

@@ -3,6 +3,12 @@
   "version": 3,
   "settings": {
     "color": {
+      "custom": false,
+      "customDuotone": false,
+      "customGradient": false,
+      "defaultDuotone": false,
+      "defaultGradients": false,
+      "defaultPalette": false,
       "palette": [
         {
           "slug": "background",

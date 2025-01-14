@@ -1,0 +1,55 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "boptail/hero-banner-home",
+  "title": "Hero Banner - Home",
+  "description": "A custom home page hero banner block.",
+  "category": "boptail",
+  "icon": "admin-home",
+  "keywords": [
+    "hero",
+    "banner",
+    "home"
+  ],
+  "acf": {
+    "mode": "auto",
+    "renderTemplate": "render.php"
+  },
+  "attributes": {
+    "align": {
+      "type": "string",
+      "default": "full"
+    },
+    "fullHeight": {
+      "type": "boolean",
+      "default": true
+    }
+  },
+  "supports": {
+    "align": [
+      "wide",
+      "full"
+    ],
+    "anchor": false,
+    "alignContent": false,
+    "alignText": false,
+    "color": {
+      "background": false,
+      "link": false,
+      "text": false
+    },
+    "fullHeight": true,
+    "html": false,
+    "jsx": true,
+    "multiple": false,
+    "reusable": false
+  },
+  "example": {
+    "attributes": {
+      "mode": "preview",
+      "data": {
+        "_is_preview": "true"
+      }
+    }
+  }
+}

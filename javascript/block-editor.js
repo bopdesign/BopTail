@@ -7,8 +7,8 @@
  * editor via its APIs.
  *
  * The JavaScript code you place here will be processed by esbuild, and the
- * output file will be created at `../theme/js/block-editor.min.js` and
- * enqueued in `../theme/functions.php`.
+ * output file will be created at `../theme/assets/js/block-editor.min.js` and
+ * enqueued in `../theme/inc/setup/theme-scripts.php`.
  *
  * For esbuild documentation, please see:
  * https://esbuild.github.io/

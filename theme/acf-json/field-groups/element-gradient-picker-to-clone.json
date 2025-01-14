@@ -1,0 +1,51 @@
+{
+    "key": "group_650883ee4c3a5",
+    "title": "Element: Gradient Picker (to clone)",
+    "fields": [
+        {
+            "key": "field_650883ee52d22",
+            "label": "Gradient Picker",
+            "name": "gradient_picker",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "horizontal-blue": "<div style=\"display: flex; align-items: center;\"><span style=\"background:linear-gradient(90deg, var(--wp--preset--color--primary), var(--wp--preset--color--light-blue)); border: 1px solid #ccc;display:inline-block; height: 15px; margin-right: 10px; width: 25px;\"><\/span>Horizontal Blue<\/div>",
+                "vertical-blue": "<div style=\"display: flex; align-items: center;\"><span style=\"background:linear-gradient(0deg, var(--wp--preset--color--primary), var(--wp--preset--color--light-blue)); border: 1px solid #ccc;display:inline-block; height: 15px; margin-right: 10px; width: 25px;\"><\/span>Vertical Blue<\/div>"
+            },
+            "default_value": false,
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 1,
+            "ui": 1,
+            "ajax": 0,
+            "placeholder": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "seamless",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": false,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1736837947
+}
