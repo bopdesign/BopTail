@@ -217,7 +217,7 @@ function print_background_options( $background_options ) {
 					case 90:
 						$overlay_classes[] = 'opacity-90';
 						break;
-					case '50':
+					case 50:
 					default:
 						$overlay_classes[] = 'opacity-50';
 						break;
