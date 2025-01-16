@@ -693,21 +693,6 @@
                 "param": "block",
                 "operator": "==",
                 "value": "all"
-            },
-            {
-                "param": "block",
-                "operator": "!=",
-                "value": "all"
-            },
-            {
-                "param": "block",
-                "operator": "!=",
-                "value": "all"
-            },
-            {
-                "param": "block",
-                "operator": "!=",
-                "value": "all"
             }
         ]
     ],
@@ -720,5 +705,5 @@
     "active": true,
     "description": "Block Settings - background, typography, spacing, etc.",
     "show_in_rest": 0,
-    "modified": 1736837881
+    "modified": 1736839646
 }

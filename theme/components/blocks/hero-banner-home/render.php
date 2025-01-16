@@ -21,16 +21,16 @@ use function BopTail\Helpers\print_module;
 
 $block_args     = isset( $args ) ? $args : '';
 $block_defaults = array(
-	'id'       => ! empty( $block['anchor'] ) ? $block['anchor'] : 'hero-home-' . $block['id'],
-	'class'    => [ 'acf-block', 'hero-banner', 'hero-banner-home', 'relative', 'overflow-x-hidden' ],
-	'settings' => [
-		'container_size'      => 'container relative',
-		'align_text'          => 'text-left',
+	'id'                  => ! empty( $block['anchor'] ) ? $block['anchor'] : 'hero-home-' . $block['id'],
+	'class'               => [ 'acf-block', 'hero-banner', 'hero-banner-home', 'relative', 'overflow-x-hidden' ],
+	'settings'            => [
+		'container_size'      => 'container',
 		'align_content'       => 'align-start justify-start is-position-top-left',
+		'align_text'          => 'text-left',
 		'inner_content_width' => 'w-full',
-		'animation'           => '',
+		'animation'           => 'none',
 	],
-	'fields'   => [], // Fields passed via the print_block() function.
+	'fields'              => [], // Fields passed via the print_block() function.
 );
 
 // Returns updated $block_defaults array with classes from Gutenberg and Background Options, or from the print_block() function.
@@ -57,23 +57,24 @@ $animation_class = $block_settings['settings']['animation'];
 $container_class = join( ' ', array(
 	$block_settings['settings']['container_size'],
 	$block_settings['settings']['align_text'],
-	'd-flex h-100',
 ) );
 $row_class       = join( ' ', array(
-	'row',
-	'h-100',
+	'flex',
+	'flex-wrap',
+	'h-full',
 	$block_settings['settings']['align_content'],
 ) );
 $column_class    = join( ' ', array(
 	'hero-content',
+	'flex-auto',
 	$block_settings['settings']['inner_content_width'],
 	$animation_class,
 ) );
 
-if ( $block_content['heading'] || $block_content['eyebrow'] || $block_content['content'] ) :
+if ( $block_content['eyebrow'] || $block_content['heading'] || $block_content['content'] ) :
 	?>
 	<?php if ( ! $is_preview ) { ?>
-	<section id="<?php echo esc_attr( $block['id'] ); ?>" <?php echo get_block_wrapper_attributes( array( 'class' => join( ' ', $block_defaults['class'] ) ) ); ?>>
+	<div <?php echo get_block_wrapper_attributes( array( 'id' => esc_attr( $block['id'] ), 'class' => join( ' ', $block_defaults['class'] ) ) ); ?>>
 	<?php } ?>
 		<?php print_background_options( $background_options ); ?>
 		<div class="<?php echo esc_attr( $container_class ); ?>">
@@ -106,6 +107,6 @@ if ( $block_content['heading'] || $block_content['eyebrow'] || $block_content['c
 			</div>
 		</div>
 	<?php if ( ! $is_preview ) { ?>
-	</section>
+	</div>
 	<?php } ?>
 <?php endif; ?>

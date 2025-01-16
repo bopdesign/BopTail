@@ -29,7 +29,5 @@ if ( $element_args['text'] ) :
 	// Set up element attributes.
 	$element_atts = get_formatted_atts( [ 'class' ], $element_args );
 	?>
-	<div <?php echo $element_atts; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
-		<?php echo wp_kses( $element_args['text'], $allowed_tags ); ?>
-	</div>
+	<div <?php echo $element_atts; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>><?php echo wp_kses( $element_args['text'], $allowed_tags ); ?></div>
 <?php endif; ?>
