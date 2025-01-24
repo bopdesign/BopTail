@@ -44,7 +44,7 @@
             "name": "background_type",
             "aria-label": "",
             "type": "button_group",
-            "instructions": "Choose a type of background.",
+            "instructions": "Choose background type.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -62,6 +62,7 @@
             "default_value": "none",
             "return_format": "value",
             "allow_null": 0,
+            "allow_in_bindings": 1,
             "layout": "horizontal"
         },
         {
@@ -123,34 +124,6 @@
             "layout": "block",
             "prefix_label": 0,
             "prefix_name": 1
-        },
-        {
-            "key": "field_6502ae94d9e2c",
-            "label": "Use Featured Image",
-            "name": "background_use_featured_image",
-            "aria-label": "",
-            "type": "true_false",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_6508826cb6947",
-                        "operator": "==",
-                        "value": "image"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "50",
-                "class": "",
-                "id": ""
-            },
-            "message": "",
-            "default_value": 0,
-            "ui_on_text": "Featured",
-            "ui_off_text": "Custom",
-            "ui": 1
         },
         {
             "key": "field_650882ddb6948",
@@ -216,6 +189,42 @@
             "layout": "block",
             "prefix_label": 0,
             "prefix_name": 1
+        },
+        {
+            "key": "field_678efd3415851",
+            "label": "Fixed Background",
+            "name": "background_fixed",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6508826cb6947",
+                        "operator": "==",
+                        "value": "image"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_6508826cb6947",
+                        "operator": "==",
+                        "value": "video"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "message": "Adds parallax effect",
+            "default_value": 0,
+            "allow_in_bindings": 0,
+            "ui_on_text": "Yes",
+            "ui_off_text": "No",
+            "ui": 1
         },
         {
             "key": "field_6508a7b633234",
@@ -476,8 +485,8 @@
         },
         {
             "key": "field_64763a7d64cd7",
-            "label": "Inner Content Width",
-            "name": "inner_content_width",
+            "label": "Inner Width",
+            "name": "inner_width",
             "aria-label": "",
             "type": "select",
             "instructions": "",
@@ -505,6 +514,7 @@
             "return_format": "value",
             "multiple": 0,
             "allow_null": 0,
+            "allow_in_bindings": 1,
             "ui": 0,
             "ajax": 0,
             "placeholder": ""
@@ -594,15 +604,16 @@
             },
             "choices": {
                 "none": "None",
-                "xsmall": "XS",
+                "tiny": "XS",
                 "small": "S",
                 "medium": "M",
                 "large": "L",
-                "xlarge": "XL"
+                "x-large": "XL"
             },
             "default_value": "none",
             "return_format": "value",
             "allow_null": 1,
+            "allow_in_bindings": 1,
             "layout": "horizontal"
         },
         {
@@ -621,15 +632,16 @@
             },
             "choices": {
                 "none": "None",
-                "xsmall": "XS",
+                "tiny": "XS",
                 "small": "S",
                 "medium": "M",
                 "large": "L",
-                "xlarge": "XL"
+                "x-large": "XL"
             },
             "default_value": "none",
             "return_format": "value",
             "allow_null": 1,
+            "allow_in_bindings": 1,
             "layout": "horizontal"
         },
         {
@@ -648,15 +660,16 @@
             },
             "choices": {
                 "none": "None",
-                "xsmall": "XS",
+                "tiny": "XS",
                 "small": "S",
                 "medium": "M",
                 "large": "L",
-                "xlarge": "XL"
+                "x-large": "XL"
             },
             "default_value": "medium",
             "return_format": "value",
             "allow_null": 1,
+            "allow_in_bindings": 1,
             "layout": "horizontal"
         },
         {
@@ -675,15 +688,16 @@
             },
             "choices": {
                 "none": "None",
-                "xsmall": "XS",
+                "tiny": "XS",
                 "small": "S",
                 "medium": "M",
                 "large": "L",
-                "xlarge": "XL"
+                "x-large": "XL"
             },
             "default_value": "medium",
             "return_format": "value",
             "allow_null": 1,
+            "allow_in_bindings": 1,
             "layout": "horizontal"
         }
     ],
@@ -705,5 +719,5 @@
     "active": true,
     "description": "Block Settings - background, typography, spacing, etc.",
     "show_in_rest": 0,
-    "modified": 1736839646
+    "modified": 1737703005
 }

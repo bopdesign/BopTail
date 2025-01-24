@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Returns an array of classes from a block's Gutenberg fields.
  *
@@ -10,41 +11,52 @@ namespace BopTail\Blocks;
 /**
  * Returns an updated array of classes.
  *
- * @param array $block_settings Array of block settings.
+ * @param array $block    Array of block attributes.
+ * @param array $settings Array of block settings.
  *
- * return array The updated array of classes.
+ * @return array The updated array of classes.
  */
-function get_block_classes( $block_settings ) {
+function get_block_classes($settings, $block = null)
+{
 	// Setup variables.
-	$settings      = $block_settings['settings'];
 	$block_classes = [];
-	$block_attrs   = [];
 
-	if ( ! empty( $block_settings['class'] ) ) :
-		if ( is_array( $block_settings['class'] ) ) {
-			$block_classes[] = join( ' ', $block_settings['class'] );
-		} else {
-			$block_classes[] = $block_settings['class'];
-		}
-	endif;
+	// These are top level classes and should always be auto mounted to the main block container/tag.
+	if (isset($block)) {
+		// Adds class(es) entered via block's setting tab: 'Advanced' -> 'ADDITIONAL CSS CLASS(ES)'.
+		if (! empty($block['className'])) :
+			$block_classes[] = $block['className'];
+		endif;
+	}
 
-	if ( ! empty( $settings['background_type'] ) ) {
-		switch ( $settings['background_type'] ) {
+	if (! empty($settings['background']['type'])) {
+		switch ($settings['background']['type']) {
 			case 'color':
 				$block_classes[] = 'has-background';
 				$block_classes[] = 'color-as-background';
 
-				if ( $settings['background_color']['color_picker'] ) {
-					$background_color = $settings['background_color']['color_picker'];
-					$block_classes[]  = 'has-' . esc_attr( $background_color ) . '-background-color';
+				if ($settings['background']['color']['color_picker']) {
+					$background_color = $settings['background']['color']['color_picker'];
+					$block_classes[]  = "has-$background_color-background-color";
+					$block_classes[]  = "bg-$background_color";
+				}
+				break;
+			case 'gradient':
+				$block_classes[] = 'has-background';
+				$block_classes[] = 'gradient-as-background';
+
+				if ($settings['background']['gradient']['gradient_picker']) {
+					$background_gradient = $settings['background']['gradient']['gradient_picker'];
+					$block_classes[]  	 = "has-$background_gradient-background-gradient";
+					$block_classes[]  	 = $background_gradient;
 				}
 				break;
 			case 'image':
 			case 'video':
 				$block_classes[] = 'has-background';
-				$block_classes[] = $settings['background_type'] . '-as-background';
+				$block_classes[] = $settings['type'] . '-as-background';
 
-				if ( ! empty( $settings['fixed_background'] ) && $settings['fixed_background'] ) {
+				if (! empty($settings['background']['fixed']) && $settings['background']['fixed']) {
 					$block_classes[] = 'has-fixed-background';
 				}
 				break;
@@ -54,37 +66,5 @@ function get_block_classes( $block_settings ) {
 		}
 	}
 
-	if ( ! empty( $settings['full_height'] ) && $settings['full_height'] ) {
-		$block_attrs['full_height'] = $settings['full_height'];
-	}
-
-	if ( ! empty( $settings['align'] ) ) {
-		$block_attrs['align'] = $settings['align'];
-	} elseif ( empty( $settings['align'] ) || '' === $settings['align'] ) {
-		$block_attrs['align'] = 'none';
-	}
-
-	// Set top/bottom margin for the block.
-	if ( ! empty( $settings['margin_top'] ) ) {
-		$block_attrs['margin_top'] = $settings['margin_top'];
-	}
-
-	if ( ! empty( $settings['margin_bottom'] ) ) {
-		$block_attrs['margin_bottom'] = $settings['margin_bottom'];
-	}
-
-	// Set top/bottom padding for the block.
-	if ( ! empty( $settings['padding_top'] ) ) {
-		$block_attrs['padding_top'] = $settings['padding_top'];
-	}
-
-	if ( ! empty( $settings['padding_bottom'] ) ) {
-		$block_attrs['padding_bottom'] = $settings['padding_bottom'];
-	}
-
-	foreach ( $block_attrs as $attr => $value ) {
-		$block_classes[] = get_class_name_by_attribute( $attr, $value );
-	}
-
-	return $block_classes;
+	return array_unique($block_classes);
 }

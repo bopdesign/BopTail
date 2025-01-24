@@ -13,7 +13,8 @@
   ],
   "acf": {
     "mode": "auto",
-    "renderTemplate": "render.php"
+    "renderTemplate": "render.php",
+    "validate": false
   },
   "attributes": {
     "align": {
@@ -30,9 +31,9 @@
       "wide",
       "full"
     ],
-    "anchor": false,
-    "alignContent": false,
-    "alignText": false,
+    "alignContent": "matrix",
+    "alignText": true,
+    "anchor": true,
     "color": {
       "background": false,
       "link": false,

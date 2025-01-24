@@ -1,4 +1,5 @@
 <?php
+
 /**
  * BLOCK: Hero Banner - Home
  *
@@ -13,33 +14,26 @@
  */
 
 use function BopTail\Helpers\get_acf_fields;
-use function BopTail\Helpers\get_formatted_args;
 use function BopTail\Blocks\setup_block_defaults;
 use function BopTail\Blocks\print_background_options;
 use function BopTail\Helpers\print_element;
 use function BopTail\Helpers\print_module;
 
-$block_args     = isset( $args ) ? $args : '';
+$block_args = isset( $args ) ? $args : '';
 $block_defaults = array(
-	'id'                  => ! empty( $block['anchor'] ) ? $block['anchor'] : 'hero-home-' . $block['id'],
-	'class'               => [ 'acf-block', 'hero-banner', 'hero-banner-home', 'relative', 'overflow-x-hidden' ],
-	'settings'            => [
-		'container_size'      => 'container',
-		'align_content'       => 'align-start justify-start is-position-top-left',
-		'align_text'          => 'text-left',
-		'inner_content_width' => 'w-full',
-		'animation'           => 'none',
-	],
-	'fields'              => [], // Fields passed via the print_block() function.
+	'id' => ! empty( $block['anchor'] ) ? $block['anchor'] : 'hero-home-' . $block['id'],
+	'class' => [ 'acf-block', 'hero-banner', 'hero-banner-home', 'relative', 'overflow-x-hidden' ],
+	'allowed_innerblocks' => [ 'core/heading', 'core/paragraph' ],
+	'fields' => [], // Fields passed via the print_block() function.
 );
 
 // Returns updated $block_defaults array with classes from Gutenberg and Background Options, or from the print_block() function.
-// Returns formatted attributes as $block_atts array, $container_atts array.
-[
+// Returns formatted attributes as $block_atts array.
+[ 
 	$block_defaults,
 	$block_atts,
-	$block_settings,
-	$background_options,
+	$block_classes,
+	$settings,
 ] = setup_block_defaults( $block_defaults, $block_args, $block );
 
 // Pull in the fields from ACF, if we've not pulled them in using print_block().
@@ -50,63 +44,59 @@ $block_content = ! empty( $block_defaults['fields'] ) ? $block_defaults['fields'
 	'buttons',
 ), $block['id'] );
 
-$block_settings = get_formatted_args( $block_settings, $block_defaults );
-
 // Extract animation class in case we want to apply to a single element.
-$animation_class = $block_settings['settings']['animation'];
+$animation_class = $block_classes['animation'];
+
 $container_class = join( ' ', array(
-	$block_settings['settings']['container_size'],
-	$block_settings['settings']['align_text'],
+	'grid',
+	'grid-cols-12',
+	'gap-8',
+	$block_classes['align_content'],
+	$block_classes['container_size'],
 ) );
-$row_class       = join( ' ', array(
-	'flex',
-	'flex-wrap',
-	'h-full',
-	$block_settings['settings']['align_content'],
-) );
-$column_class    = join( ' ', array(
+$column_class = join( ' ', array(
 	'hero-content',
-	'flex-auto',
-	$block_settings['settings']['inner_content_width'],
+	$block_classes['align_text'],
+	$block_classes['inner_width'],
 	$animation_class,
 ) );
 
-if ( $block_content['eyebrow'] || $block_content['heading'] || $block_content['content'] ) :
+if ( ! empty( $block['data']['_is_preview'] ) ) :
 	?>
-	<?php if ( ! $is_preview ) { ?>
-	<div <?php echo get_block_wrapper_attributes( array( 'id' => esc_attr( $block['id'] ), 'class' => join( ' ', $block_defaults['class'] ) ) ); ?>>
-	<?php } ?>
-		<?php print_background_options( $background_options ); ?>
+	<figure>
+		<img src="<?php echo esc_url( BOPTAIL_ROOT_URL . 'assets/images/block-previews/hero-banner-home.jpg' ); ?>"
+			alt="<?php esc_html_e( 'Block Preview - Hero Banner Home', BOPTAIL_TEXT_DOMAIN ); ?>">
+	</figure>
+<?php elseif ( $block_content['eyebrow'] || $block_content['heading'] || $block_content['content'] ) : ?>
+	<section <?php echo $block_atts; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
+		<?php print_background_options( $settings ); ?>
 		<div class="<?php echo esc_attr( $container_class ); ?>">
-			<div class="<?php echo esc_attr( $row_class ); ?>">
-				<div class="<?php echo esc_attr( $column_class ); ?>">
-					<?php
-					// Eyebrow.
-					if ( $block_content['eyebrow'] ) :
-						print_element( 'eyebrow', [
-							'text' => $block_content['eyebrow'],
-						] );
-					endif;
+			<div class="<?php echo esc_attr( $column_class ); ?>">
 
-					// Heading.
-					if ( $block_content['heading'] ) :
-						print_element( 'heading', [
-							'text'  => $block_content['heading'],
-							'level' => 1,
-						] );
-					endif;
+				<?php
+				// Eyebrow.
+				if ( $block_content['eyebrow'] ) :
+					print_element( 'eyebrow', [ 
+						'text' => $block_content['eyebrow'],
+					] );
+				endif;
 
-					// Button.
-					if ( $block_content['buttons'] ) :
-						$block_content['buttons']['class'] = 'mt-4';
+				// Heading.
+				if ( $block_content['heading'] ) :
+					print_element( 'heading', [ 
+						'text' => $block_content['heading'],
+						'level' => 1,
+					] );
+				endif;
 
-						print_module( 'buttons', $block_content['buttons'] );
-					endif;
-					?>
-				</div>
+				// Button.
+				if ( $block_content['buttons'] ) :
+					$block_content['buttons']['class'] = 'mt-4';
+
+					print_module( 'buttons', $block_content['buttons'] );
+				endif;
+				?>
 			</div>
 		</div>
-	<?php if ( ! $is_preview ) { ?>
-	</div>
-	<?php } ?>
+	</section>
 <?php endif; ?>

@@ -29,8 +29,8 @@
         },
         {
             "key": "field_6509173eca487",
-            "label": "Image Styles",
-            "name": "image_styles",
+            "label": "Image Style",
+            "name": "image_style",
             "aria-label": "",
             "type": "button_group",
             "instructions": "",
@@ -48,6 +48,7 @@
             "default_value": "default",
             "return_format": "value",
             "allow_null": 0,
+            "allow_in_bindings": 1,
             "layout": "horizontal"
         },
         {
@@ -96,5 +97,5 @@
     "active": false,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1736837968
+    "modified": 1737232914
 }

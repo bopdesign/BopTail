@@ -3,6 +3,27 @@
     "title": "Element: Background Image (to clone)",
     "fields": [
         {
+            "key": "field_678f018e61bb0",
+            "label": "Use Featured Image",
+            "name": "use_featured_image",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "message": "Set featured image as background",
+            "default_value": 0,
+            "allow_in_bindings": 0,
+            "ui_on_text": "Featured",
+            "ui_off_text": "Custom",
+            "ui": 1
+        },
+        {
             "key": "field_63d8578b0c17e",
             "label": "Image",
             "name": "image",
@@ -10,7 +31,15 @@
             "type": "image",
             "instructions": "",
             "required": 0,
-            "conditional_logic": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_678f018e61bb0",
+                        "operator": "!=",
+                        "value": "1"
+                    }
+                ]
+            ],
             "wrapper": {
                 "width": "50",
                 "class": "",
@@ -25,27 +54,8 @@
             "max_height": "",
             "max_size": "",
             "mime_types": "",
+            "allow_in_bindings": 1,
             "preview_size": "large"
-        },
-        {
-            "key": "field_65091a10b3840",
-            "label": "Fixed Background",
-            "name": "fixed_background",
-            "aria-label": "",
-            "type": "true_false",
-            "instructions": "Enable Parallax effect?",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "50",
-                "class": "",
-                "id": ""
-            },
-            "message": "",
-            "default_value": 0,
-            "ui_on_text": "",
-            "ui_off_text": "",
-            "ui": 1
         },
         {
             "key": "field_65091a83b3841",
@@ -99,5 +109,5 @@
     "active": false,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1736837902
+    "modified": 1737425388
 }

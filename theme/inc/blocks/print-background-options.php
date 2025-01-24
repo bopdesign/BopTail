@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Render block background options.
  *
@@ -13,39 +14,35 @@ namespace BopTail\Blocks;
  * @param array $background_options Array of Background Options.
  *
  * @return string|void
- * @author BopDesign
- *
  */
-function print_background_options( $background_options ) {
-	if ( empty( $background_options ) ) {
+function print_background_options( $settings ) {
+	if ( empty( $settings ) && empty( $settings['background'] ) ) {
 		return '';
 	}
+
+	$background_options = $settings['background'];
 
 	/**
 	 * Setup background defaults.
 	 */
-	$background_defaults = [
-		'class' => 'acf-block relative overflow-hidden',
-	];
-
-	$background_video_markup = $background_image_markup = $background_overlay_markup = '';
+	$background_image_markup = $background_video_markup = $background_overlay_markup = '';
 
 	// Only try to get the rest of the settings if the background type is set to anything.
-	if ( $background_options['background_type'] ) {
-		if ( 'image' === $background_options['background_type'] ) {
-			$background_image      = $background_options['background_image'];
-			$background_image_id   = false;
+	if ( $background_options['type'] ) {
+		if ( 'image' === $background_options['type'] ) {
+			$background_image = $background_options['image'];
+			$background_image_id = false;
 			$background_image_size = 'full';
 
-			if ( ! empty( $background_image['background_use_featured_image'] ) && $background_image['background_use_featured_image'] && has_post_thumbnail() ) {
+			if ( ! empty( $background_image['use_featured_image'] ) && $background_image['use_featured_image'] && has_post_thumbnail() ) {
 				$background_image_id = get_post_thumbnail_id();
 			} elseif ( ! empty( $background_image['image'] ) ) {
 				$background_image_id = $background_image['image']['ID'];
 			}
 
-			$background_classes = [
+			$background_classes = [ 
+				'background-image',
 				'block',
-				'm-0',
 				'absolute',
 				'top-0',
 				'bottom-0',
@@ -58,7 +55,7 @@ function print_background_options( $background_options ) {
 
 			ob_start();
 
-			if ( ! empty( $background_image['fixed_background'] ) && $background_image['fixed_background'] ):
+			if ( ! empty( $background_image['fixed_background'] ) && $background_image['fixed_background'] ) :
 				array_push( $background_classes, 'bg-fixed', 'bg-cover' );
 				$background_image_url = wp_get_attachment_image_url( $background_image_id, $background_image_size );
 
@@ -96,9 +93,11 @@ function print_background_options( $background_options ) {
 				}
 				$background_class = implode( ' ', $background_classes );
 				?>
-				<div class="<?php echo esc_attr( $background_class ); ?>" style="background-image:url(<?php echo $background_image_url; ?>);" aria-hidden="true"></div>
-			<?php else:
-				$image_classes = [
+				<div class="<?php echo esc_attr( $background_class ); ?>"
+					style="background-image:url(<?php echo $background_image_url; ?>);" aria-hidden="true"></div>
+				<?php
+			else :
+				$image_classes = [ 
 					'object-cover',
 					'w-full',
 					'h-full',
@@ -138,7 +137,7 @@ function print_background_options( $background_options ) {
 				}
 
 				$background_class = implode( ' ', $background_classes );
-				$image_class      = implode( ' ', $image_classes );
+				$image_class = implode( ' ', $image_classes );
 				?>
 				<picture class="<?php echo esc_attr( $background_class ); ?>" aria-hidden="true">
 					<?php echo wp_get_attachment_image( $background_image_id, $background_image_size, false, array( 'class' => esc_attr( $image_class ) ) ); ?>
@@ -148,27 +147,76 @@ function print_background_options( $background_options ) {
 			$background_image_markup = ob_get_clean();
 		}
 
-		if ( 'video' === $background_options['background_type'] && ! empty( $background_options['background_video_mp4'] ) ) {
-			$background_video = $background_options['background_video_mp4'];
-			// Make sure videos stay in their containers - relative + overflow hidden.
-			$background_defaults['class'] .= ' has-background video-as-background relative overflow-hidden';
+		if ( 'video' === $background_options['type'] ) {
+			$background_video = $background_options['background_video'];
+			$background_classes = [ 
+				'background-video',
+				'block',
+				'overflow-hidden',
+				'object-top',
+				'absolute',
+				'top-0',
+				'bottom-0',
+				'start-0',
+				'end-0',
+				'w-full',
+				'h-auto',
+				'z-0',
+			];
+
+			if ( ! empty( $background_options['background_fixed'] ) ) {
+				$background_classes[] = 'bg-fixed';
+			}
+
+			$background_class = implode( ' ', $background_classes );
 
 			ob_start();
 			?>
-			<div class="background-video block h-auto w-full m-0 absolute top-0 bottom-0 start-0 end-0 object-top z-0" aria-hidden="true">
-				<video id="<?php echo esc_attr( $background_options['id'] ); ?>-video" autoplay muted playsinline loop preload="none">
-					<?php if ( ! empty( $background_video['url'] ) ) : ?>
-						<source src="<?php echo esc_url( $background_video['url'] ); ?>" type="video/mp4">
-					<?php endif; ?>
-				</video>
+			<div class="<?php echo esc_attr( $background_class ); ?>" aria-hidden="true">
+				<?php
+				switch ( $background_video['video_type'] ) {
+					case 'file':
+						?>
+						<video id="<?php echo esc_attr( $background_options['id'] ); ?>-video" autoplay muted playsinline loop
+							preload="none" <?php if ( ! empty( $background_video['video_placeholder'] ) ) : ?>
+								poster="<?php echo esc_url( wp_get_attachment_image_url( $background_video['video_placeholder'], 'full' ) ); ?>"
+							<?php endif; ?>>
+							<?php if ( ! empty( $background_video['video_mp4'] ) ) : ?>
+								<source src="<?php echo esc_url( $background_video['video_mp4'] ); ?>" type="video/mp4">
+							<?php endif; ?>
+							<?php if ( ! empty( $background_video['video_webm'] ) ) : ?>
+								<source src="<?php echo esc_url( $background_video['video_webm'] ); ?>" type="video/webm">
+							<?php endif; ?>
+						</video>
+						<?php
+						break;
+
+					case 'embed':
+						if ( ! empty( $background_video['video_embed'] ) ) {
+							echo wp_oembed_get( $background_video['video_embed'], array(
+								'autoplay' => 1,
+								'controls' => 0,
+								'mute' => 1,
+								'loop' => 1,
+							) );
+						}
+						break;
+
+					case 'script':
+						if ( ! empty( $background_video['video_script'] ) ) {
+							echo wp_kses_post( $background_video['video_script'] );
+						}
+						break;
+				}
+				?>
 			</div>
 			<?php
 			$background_video_markup = ob_get_clean();
 		}
 
-		if ( ( 'image' === $background_options['background_type'] || 'video' === $background_options['background_type'] ) && $background_options['background_add_overlay'] ) {
+		if ( ( 'image' === $background_options['type'] || 'video' === $background_options['type'] ) && $background_options['background_add_overlay'] ) {
 			$overlay_settings = $background_options['background_overlay'];
-			$overlay_classes  = [
+			$overlay_classes = [ 
 				'absolute',
 				' z-1',
 			];
@@ -177,7 +225,8 @@ function print_background_options( $background_options ) {
 				$overlay_color = $overlay_settings['overlay_color']['color_picker'];
 
 				if ( '' !== $overlay_color ) {
-					$overlay_classes[] = ' has-' . esc_attr( $overlay_color ) . '-background-color bg-' . esc_attr( $overlay_color );
+					$overlay_classes[] = "has-$overlay_color-background-color";
+					$overlay_classes[] = "bg-$overlay_color";
 				}
 			}
 
@@ -185,7 +234,7 @@ function print_background_options( $background_options ) {
 				$overlay_gradient = $overlay_settings['overlay_gradient']['gradient_picker'];
 
 				if ( '' !== $overlay_gradient ) {
-					$overlay_classes[] = ' has-' . esc_attr( $overlay_gradient ) . '-background-gradient';
+					$overlay_classes[] = "has-$overlay_gradient-background-gradient";
 				}
 			}
 

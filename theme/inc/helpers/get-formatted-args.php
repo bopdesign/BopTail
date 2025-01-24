@@ -26,7 +26,7 @@ function get_formatted_args( $args, $defaults ) {
 
 	// Construct button args.
 	if ( array_key_exists( 'button_link', $args ) ) {
-		// Map the ACF link 'title' attribute to an 'button_link' -> 'title' attribute.
+		// Map the ACF link 'title' attribute to a 'button_link' -> 'title' attribute.
 		if ( ! empty( $args['button_link']['title'] ) ) {
 			$args['title'] = $args['button_link']['title'];
 		}
@@ -42,18 +42,32 @@ function get_formatted_args( $args, $defaults ) {
 
 		if ( ! empty( $args['button_style'] ) ) {
 			$args['style'] = $args['button_style'];
+			$color         = $args['button_color']['color_picker'];
 
-			if ( 'outline' === $args['button_style'] && ! empty( $args['button_color']['color_picker'] ) ) {
-				$args['class'] = array_merge( $args['class'], [ 'border-' . esc_attr( $args['button_color']['color_picker'] ) ] );
+			if ( 'outline' === $args['button_style'] && ! empty( $color ) ) {
+				$btn_classes   = [
+					'bg-transparent',
+					'border-' . esc_attr( $color ),
+				];
+				$args['class'] = array_merge( $args['class'], $btn_classes );
 			}
 
-			if ( 'fill' === $args['button_style'] && ! empty( $args['button_color']['color_picker'] ) ) {
-				$args['class'] = array_merge( $args['class'], [ 'btn-' . esc_attr( $args['button_color']['color_picker'] ) ] );
+			if ( 'fill' === $args['button_style'] && ! empty( $color ) ) {
+				$btn_classes   = [
+					'bg-' . esc_attr( $color ),
+					'border-' . esc_attr( $color ),
+				];
+				$args['class'] = array_merge( $args['class'], $btn_classes );
 			}
 		}
 
 		if ( ! empty( $args['button_text_color']['color_picker'] ) ) {
-			$args['class'] = array_merge( $args['class'], [ 'has-text-color', 'has-' . esc_attr( $args['button_text_color']['color_picker'] ) . '-color' ] );
+			$color              = $args['button_text_color']['color_picker'];
+			$text_color_classes = [
+				'text-' . esc_attr( $color ),
+				'has-' . esc_attr( $color ) . '-color',
+			];
+			$args['class']      = array_merge( $args['class'], $text_color_classes );
 		}
 	}
 

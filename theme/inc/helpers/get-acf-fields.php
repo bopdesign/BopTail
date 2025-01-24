@@ -10,7 +10,7 @@ namespace BopTail\Helpers;
 /**
  * Returns an array of ACF fields.
  *
- * @param array $fields Array of field names ie: [ 'layout', 'tagline, 'heading', 'content' ].
+ * @param array $fields Array of field names i.e.: [ 'layout', 'eyebrow, 'heading', 'content' ].
  * @param int   $block_id (optional) ID of the post or of the block ($block[id]).
  */
 function get_acf_fields( $fields = [], $block_id = false ) {
