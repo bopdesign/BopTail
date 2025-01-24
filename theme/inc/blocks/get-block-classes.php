@@ -16,39 +16,38 @@ namespace BopTail\Blocks;
  *
  * @return array The updated array of classes.
  */
-function get_block_classes($settings, $block = null)
-{
+function get_block_classes( $settings, $block = null ) {
 	// Setup variables.
 	$block_classes = [];
 
 	// These are top level classes and should always be auto mounted to the main block container/tag.
-	if (isset($block)) {
+	if ( isset( $block ) ) {
 		// Adds class(es) entered via block's setting tab: 'Advanced' -> 'ADDITIONAL CSS CLASS(ES)'.
-		if (! empty($block['className'])) :
+		if ( ! empty( $block['className'] ) ) :
 			$block_classes[] = $block['className'];
 		endif;
 	}
 
-	if (! empty($settings['background']['type'])) {
-		switch ($settings['background']['type']) {
+	if ( ! empty( $settings['background']['type'] ) ) {
+		switch ( $settings['background']['type'] ) {
 			case 'color':
 				$block_classes[] = 'has-background';
 				$block_classes[] = 'color-as-background';
 
-				if ($settings['background']['color']['color_picker']) {
+				if ( $settings['background']['color']['color_picker'] ) {
 					$background_color = $settings['background']['color']['color_picker'];
-					$block_classes[]  = "has-$background_color-background-color";
-					$block_classes[]  = "bg-$background_color";
+					$block_classes[] = "has-$background_color-background-color";
+					$block_classes[] = "bg-$background_color";
 				}
 				break;
 			case 'gradient':
 				$block_classes[] = 'has-background';
 				$block_classes[] = 'gradient-as-background';
 
-				if ($settings['background']['gradient']['gradient_picker']) {
+				if ( $settings['background']['gradient']['gradient_picker'] ) {
 					$background_gradient = $settings['background']['gradient']['gradient_picker'];
-					$block_classes[]  	 = "has-$background_gradient-background-gradient";
-					$block_classes[]  	 = $background_gradient;
+					$block_classes[] = "has-$background_gradient-background-gradient";
+					$block_classes[] = $background_gradient;
 				}
 				break;
 			case 'image':
@@ -56,7 +55,7 @@ function get_block_classes($settings, $block = null)
 				$block_classes[] = 'has-background';
 				$block_classes[] = $settings['type'] . '-as-background';
 
-				if (! empty($settings['background']['fixed']) && $settings['background']['fixed']) {
+				if ( ! empty( $settings['background']['fixed'] ) && $settings['background']['fixed'] ) {
 					$block_classes[] = 'has-fixed-background';
 				}
 				break;
@@ -66,5 +65,5 @@ function get_block_classes($settings, $block = null)
 		}
 	}
 
-	return array_unique($block_classes);
+	return array_unique( $block_classes );
 }

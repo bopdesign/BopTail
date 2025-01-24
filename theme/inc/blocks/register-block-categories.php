@@ -24,7 +24,7 @@ if ( ! class_exists( 'ACF' ) ) {
 function register_block_category( $block_categories ) {
 	// Adding a new category.
 	$block_categories[] = array(
-		'slug'  => 'boptail',
+		'slug' => 'boptail',
 		'title' => esc_html__( 'BopTail Blocks', BOPTAIL_TEXT_DOMAIN ),
 	);
 

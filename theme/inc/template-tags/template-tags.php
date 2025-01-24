@@ -42,7 +42,7 @@ if ( ! function_exists( 'boptail_posted_by' ) ) :
 	 */
 	function boptail_posted_by() {
 		printf(
-		/* translators: 1: posted by label, only visible to screen readers. 2: author link. 3: post author. */
+			/* translators: 1: posted by label, only visible to screen readers. 2: author link. 3: post author. */
 			'<span class="sr-only">%1$s</span><span class="author vcard"><a class="url fn n" href="%2$s">%3$s</a></span>',
 			esc_html__( 'Posted by', BOPTAIL_TEXT_DOMAIN ),
 			esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
@@ -83,7 +83,7 @@ if ( ! function_exists( 'boptail_entry_meta' ) ) :
 			$categories_list = get_the_category_list( __( ', ', BOPTAIL_TEXT_DOMAIN ) );
 			if ( $categories_list ) {
 				printf(
-				/* translators: 1: posted in label, only visible to screen readers. 2: list of categories. */
+					/* translators: 1: posted in label, only visible to screen readers. 2: list of categories. */
 					'<span class="sr-only">%1$s</span>%2$s',
 					esc_html__( 'Posted in', BOPTAIL_TEXT_DOMAIN ),
 					$categories_list // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
@@ -94,7 +94,7 @@ if ( ! function_exists( 'boptail_entry_meta' ) ) :
 			$tags_list = get_the_tag_list( '', __( ', ', BOPTAIL_TEXT_DOMAIN ) );
 			if ( $tags_list ) {
 				printf(
-				/* translators: 1: tags label, only visible to screen readers. 2: list of tags. */
+					/* translators: 1: tags label, only visible to screen readers. 2: list of tags. */
 					'<span class="sr-only">%1$s</span>%2$s',
 					esc_html__( 'Tags:', BOPTAIL_TEXT_DOMAIN ),
 					$tags_list // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
@@ -111,7 +111,7 @@ if ( ! function_exists( 'boptail_entry_meta' ) ) :
 		edit_post_link(
 			sprintf(
 				wp_kses(
-				/* translators: %s: Name of current post. Only visible to screen readers. */
+					/* translators: %s: Name of current post. Only visible to screen readers. */
 					__( 'Edit <span class="sr-only">%s</span>', BOPTAIL_TEXT_DOMAIN ),
 					array(
 						'span' => array(
@@ -144,7 +144,7 @@ if ( ! function_exists( 'boptail_entry_footer' ) ) :
 			$categories_list = get_the_category_list( __( ', ', BOPTAIL_TEXT_DOMAIN ) );
 			if ( $categories_list ) {
 				printf(
-				/* translators: 1: posted in label, only visible to screen readers. 2: list of categories. */
+					/* translators: 1: posted in label, only visible to screen readers. 2: list of categories. */
 					'<span class="sr-only">%1$s</span>%2$s',
 					esc_html__( 'Posted in', BOPTAIL_TEXT_DOMAIN ),
 					$categories_list // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
@@ -155,7 +155,7 @@ if ( ! function_exists( 'boptail_entry_footer' ) ) :
 			$tags_list = get_the_tag_list( '', __( ', ', BOPTAIL_TEXT_DOMAIN ) );
 			if ( $tags_list ) {
 				printf(
-				/* translators: 1: tags label, only visible to screen readers. 2: list of tags. */
+					/* translators: 1: tags label, only visible to screen readers. 2: list of tags. */
 					'<span class="sr-only">%1$s</span>%2$s',
 					esc_html__( 'Tags:', BOPTAIL_TEXT_DOMAIN ),
 					$tags_list // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
@@ -172,7 +172,7 @@ if ( ! function_exists( 'boptail_entry_footer' ) ) :
 		edit_post_link(
 			sprintf(
 				wp_kses(
-				/* translators: %s: Name of current post. Only visible to screen readers. */
+					/* translators: %s: Name of current post. Only visible to screen readers. */
 					__( 'Edit <span class="sr-only">%s</span>', BOPTAIL_TEXT_DOMAIN ),
 					array(
 						'span' => array(
@@ -263,7 +263,7 @@ if ( ! function_exists( 'boptail_the_posts_navigation' ) ) :
 	function boptail_the_posts_navigation() {
 		the_posts_pagination(
 			array(
-				'mid_size'  => 2,
+				'mid_size' => 2,
 				'prev_text' => __( 'Newer posts', BOPTAIL_TEXT_DOMAIN ),
 				'next_text' => __( 'Older posts', BOPTAIL_TEXT_DOMAIN ),
 			)

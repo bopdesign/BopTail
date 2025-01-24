@@ -18,11 +18,11 @@ function get_acf_fields( $fields = [], $block_id = false ) {
 		return '';
 	endif;
 
-	$block_id      = $block_id ? $block_id : get_the_ID();
+	$block_id = $block_id ? $block_id : get_the_ID();
 	$return_fields = [];
 
 	foreach ( $fields as $field ) :
-		$value                   = get_field( $field, $block_id );
+		$value = get_field( $field, $block_id );
 		$return_fields[ $field ] = $value;
 	endforeach;
 
