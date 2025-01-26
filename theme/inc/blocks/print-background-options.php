@@ -40,7 +40,7 @@ function print_background_options( $settings ) {
 				$background_image_id = $background_image['image']['ID'];
 			}
 
-			$background_classes = [ 
+			$background_classes = [
 				'background-image',
 				'block',
 				'absolute',
@@ -55,7 +55,7 @@ function print_background_options( $settings ) {
 
 			ob_start();
 
-			if ( ! empty( $background_image['fixed_background'] ) && $background_image['fixed_background'] ) :
+			if ( ! empty( $background_options['fixed'] ) && $background_options['fixed'] ) :
 				array_push( $background_classes, 'bg-fixed', 'bg-cover' );
 				$background_image_url = wp_get_attachment_image_url( $background_image_id, $background_image_size );
 
@@ -97,7 +97,7 @@ function print_background_options( $settings ) {
 					style="background-image:url(<?php echo $background_image_url; ?>);" aria-hidden="true"></div>
 				<?php
 			else :
-				$image_classes = [ 
+				$image_classes = [
 					'object-cover',
 					'w-full',
 					'h-full',
@@ -148,8 +148,8 @@ function print_background_options( $settings ) {
 		}
 
 		if ( 'video' === $background_options['type'] ) {
-			$background_video = $background_options['background_video'];
-			$background_classes = [ 
+			$background_video = $background_options['video'];
+			$background_classes = [
 				'background-video',
 				'block',
 				'overflow-hidden',
@@ -164,7 +164,7 @@ function print_background_options( $settings ) {
 				'z-0',
 			];
 
-			if ( ! empty( $background_options['background_fixed'] ) ) {
+			if ( ! empty( $background_options['fixed'] ) ) {
 				$background_classes[] = 'bg-fixed';
 			}
 
@@ -176,8 +176,9 @@ function print_background_options( $settings ) {
 				<?php
 				switch ( $background_video['video_type'] ) {
 					case 'file':
+						$video_id = uniqid( 'bop-tail-video-' );
 						?>
-						<video id="<?php echo esc_attr( $background_options['id'] ); ?>-video" autoplay muted playsinline loop
+						<video id="<?php echo esc_attr( $video_id ); ?>" autoplay muted playsinline loop
 							preload="none" <?php if ( ! empty( $background_video['video_placeholder'] ) ) : ?>
 								poster="<?php echo esc_url( wp_get_attachment_image_url( $background_video['video_placeholder'], 'full' ) ); ?>"
 							<?php endif; ?>>
@@ -214,11 +215,17 @@ function print_background_options( $settings ) {
 			$background_video_markup = ob_get_clean();
 		}
 
-		if ( ( 'image' === $background_options['type'] || 'video' === $background_options['type'] ) && $background_options['background_add_overlay'] ) {
-			$overlay_settings = $background_options['background_overlay'];
-			$overlay_classes = [ 
+		if ( ( 'image' === $background_options['type'] || 'video' === $background_options['type'] ) && ! empty( $background_options['overlay'] ) ) {
+			$overlay_settings = $background_options['overlay'];
+			$overlay_classes = [
 				'absolute',
-				' z-1',
+				'top-0',
+				'bottom-0',
+				'start-0',
+				'end-0',
+				'w-full',
+				'h-auto',
+				'z-1',
 			];
 
 			if ( 'color' === $overlay_settings['overlay_type'] ) {
@@ -235,13 +242,14 @@ function print_background_options( $settings ) {
 
 				if ( '' !== $overlay_gradient ) {
 					$overlay_classes[] = "has-$overlay_gradient-background-gradient";
+					$overlay_classes[] = "bg-$overlay_gradient";
 				}
 			}
 
-			if ( ! empty( $background_options['overlay_opacity'] ) && is_numeric( $background_options['overlay_opacity'] ) ) {
+			if ( ! empty( $overlay_settings['overlay_opacity'] ) && is_numeric( $overlay_settings['overlay_opacity'] ) ) {
 				// We don't use 0 and 100 values. as these mean that overlay is either black or there is none,
 				// which should be utilized via overlay settings.
-				switch ( $background_options['overlay_opacity'] ) {
+				switch ( $overlay_settings['overlay_opacity'] ) {
 					case 10:
 						$overlay_classes[] = 'opacity-10';
 						break;

@@ -11,38 +11,38 @@
 namespace BopTail\Blocks;
 
 function get_default_block_settings() {
-	return [ 
-		'align' => 'full',
+	return [
+		'align'         => 'full',
 		'align_content' => 'top left',
-		'align_text' => 'left',
-		'full_height' => false,
-		'background' => [ 
-			'type' => 'none',
-			'color' => '',
+		'align_text'    => 'left',
+		'full_height'   => false,
+		'background'    => [
+			'type'     => 'none',
+			'color'    => '',
 			'gradient' => [],
-			'image' => [],
-			'video' => [],
-			'fixed' => false,
-			'overlay' => [],
-			'pattern' => [],
+			'image'    => [],
+			'video'    => [],
+			'fixed'    => false,
+			'overlay'  => [],
+			'pattern'  => [],
 		],
-		'typography' => [ 
+		'typography'    => [
 			'eyebrow_color' => '',
 			'heading_color' => '',
 			'content_color' => '',
 		],
-		'container' => [ 
-			'size' => 'container',
+		'container'     => [
+			'size'        => 'container',
 			'inner_width' => 'full',
 		],
-		'animation' => 'none',
-		'spacing' => [ 
-			'margin' => [ 
-				'top' => 'none',
+		'animation'     => 'none',
+		'spacing'       => [
+			'margin'  => [
+				'top'    => 'none',
 				'bottom' => 'none',
 			],
-			'padding' => [ 
-				'top' => 'medium',
+			'padding' => [
+				'top'    => 'medium',
 				'bottom' => 'medium',
 			],
 		],

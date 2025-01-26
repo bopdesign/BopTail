@@ -10,7 +10,7 @@ jQuery(document).ready(function ($) {
 		acf.add_filter('select2_escape_markup', function (escaped_value, original_value, $select, settings, field, instance) {
 			// Do something to the original_value to override the default escaping, then return it.
 			// This value should still have some kind of escaping for security, but you may wish to allow specific HTML.
-			if ('color_picker' === field.data('name') || 'gradient' === field.data('name')) {
+			if ('color_picker' === field.data('name') || 'gradient_picker' === field.data('name')) {
 				return original_value;
 			}
 
@@ -19,7 +19,7 @@ jQuery(document).ready(function ($) {
 				var fieldName = field.closest('.acf-field-clone').find('.acf-field-name').val();
 
 				// Check if the field name matches your specific field
-				if ('color_picker' === fieldName || 'gradient' === fieldName) {
+				if ('color_picker' === fieldName || 'gradient_picker' === fieldName) {
 					// Return the original value without escaping
 					return original_value;
 				}

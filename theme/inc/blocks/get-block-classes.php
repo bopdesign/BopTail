@@ -28,14 +28,16 @@ function get_block_classes( $settings, $block = null ) {
 		endif;
 	}
 
-	if ( ! empty( $settings['background']['type'] ) ) {
-		switch ( $settings['background']['type'] ) {
+	// Add classes based on background settings.
+	$background_settings = $settings['background'];
+	if ( ! empty( $background_settings['type'] ) ) {
+		switch ( $background_settings['type'] ) {
 			case 'color':
 				$block_classes[] = 'has-background';
 				$block_classes[] = 'color-as-background';
 
-				if ( $settings['background']['color']['color_picker'] ) {
-					$background_color = $settings['background']['color']['color_picker'];
+				if ( $background_settings['color']['color_picker'] ) {
+					$background_color = $background_settings['color']['color_picker'];
 					$block_classes[] = "has-$background_color-background-color";
 					$block_classes[] = "bg-$background_color";
 				}
@@ -44,8 +46,8 @@ function get_block_classes( $settings, $block = null ) {
 				$block_classes[] = 'has-background';
 				$block_classes[] = 'gradient-as-background';
 
-				if ( $settings['background']['gradient']['gradient_picker'] ) {
-					$background_gradient = $settings['background']['gradient']['gradient_picker'];
+				if ( $background_settings['gradient']['gradient_picker'] ) {
+					$background_gradient = $background_settings['gradient']['gradient_picker'];
 					$block_classes[] = "has-$background_gradient-background-gradient";
 					$block_classes[] = $background_gradient;
 				}
@@ -53,9 +55,9 @@ function get_block_classes( $settings, $block = null ) {
 			case 'image':
 			case 'video':
 				$block_classes[] = 'has-background';
-				$block_classes[] = $settings['type'] . '-as-background';
+				$block_classes[] = $background_settings['type'] . '-as-background';
 
-				if ( ! empty( $settings['background']['fixed'] ) && $settings['background']['fixed'] ) {
+				if ( ! empty( $background_settings['fixed'] ) && $background_settings['fixed'] ) {
 					$block_classes[] = 'has-fixed-background';
 				}
 				break;

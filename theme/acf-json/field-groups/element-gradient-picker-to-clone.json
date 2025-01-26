@@ -16,10 +16,7 @@
                 "class": "",
                 "id": ""
             },
-            "choices": {
-                "horizontal-blue": "<div style=\"display: flex; align-items: center;\"><span style=\"background:linear-gradient(90deg, var(--wp--preset--color--primary), var(--wp--preset--color--light-blue)); border: 1px solid #ccc;display:inline-block; height: 15px; margin-right: 10px; width: 25px;\"><\/span>Horizontal Blue<\/div>",
-                "vertical-blue": "<div style=\"display: flex; align-items: center;\"><span style=\"background:linear-gradient(0deg, var(--wp--preset--color--primary), var(--wp--preset--color--light-blue)); border: 1px solid #ccc;display:inline-block; height: 15px; margin-right: 10px; width: 25px;\"><\/span>Vertical Blue<\/div>"
-            },
+            "choices": {},
             "default_value": false,
             "return_format": "value",
             "multiple": 0,
@@ -47,5 +44,5 @@
     "active": false,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1736837947
+    "modified": 1736837948
 }

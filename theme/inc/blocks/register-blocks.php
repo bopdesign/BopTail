@@ -29,4 +29,4 @@ function register_acf_blocks() {
 	}
 }
 
-add_action( 'acf/init', __NAMESPACE__ . '\register_acf_blocks', 5 );
+add_action( 'init', __NAMESPACE__ . '\register_acf_blocks', 5 );

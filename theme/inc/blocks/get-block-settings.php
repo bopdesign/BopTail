@@ -43,7 +43,7 @@ function get_block_settings( $block ) {
 	}
 
 	// Background settings
-	$settings['background'] = [ 
+	$settings['background'] = [
 		'type' => get_field( 'background_type' ),
 		'fixed' => get_field( 'background_fixed' ),
 	];
@@ -75,14 +75,14 @@ function get_block_settings( $block ) {
 	}
 
 	// Typography settings
-	$settings['typography'] = [ 
+	$settings['typography'] = [
 		'eyebrow_color' => get_field( 'eyebrow_color' ),
 		'heading_color' => get_field( 'heading_color' ),
 		'content_color' => get_field( 'content_color' ),
 	];
 
 	// Container settings
-	$settings['container'] = [ 
+	$settings['container'] = [
 		'size' => get_field( 'container_size' ),
 		'inner_width' => get_field( 'inner_width' ),
 	];
@@ -91,12 +91,12 @@ function get_block_settings( $block ) {
 	$settings['animation'] = get_field( 'animation' );
 
 	// Spacing settings
-	$settings['spacing'] = [ 
-		'margin' => [ 
+	$settings['spacing'] = [
+		'margin' => [
 			'top' => get_field( 'margin_top' ),
 			'bottom' => get_field( 'margin_bottom' ),
 		],
-		'padding' => [ 
+		'padding' => [
 			'top' => get_field( 'padding_top' ),
 			'bottom' => get_field( 'padding_bottom' ),
 		],
