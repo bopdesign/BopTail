@@ -19,17 +19,17 @@ use function BopTail\Blocks\print_background_options;
 use function BopTail\Helpers\print_element;
 use function BopTail\Helpers\print_module;
 
-$block_args = isset( $args ) ? $args : '';
+$block_args     = isset( $args ) ? $args : '';
 $block_defaults = array(
-	'id' => ! empty( $block['anchor'] ) ? $block['anchor'] : 'hero-home-' . $block['id'],
-	'class' => [ 'acf-block', 'hero-banner', 'hero-banner-home', 'relative', 'overflow-x-hidden' ],
+	'id'                  => ! empty( $block['anchor'] ) ? $block['anchor'] : 'hero-home-' . $block['id'],
+	'class'               => [ 'acf-block', 'hero-banner', 'hero-banner-home', 'relative' ],
 	'allowed_innerblocks' => [ 'core/heading', 'core/paragraph' ],
-	'fields' => [], // Fields passed via the print_block() function.
+	'fields'              => [], // Fields passed via the print_block() function.
 );
 
 // Returns updated $block_defaults array with classes from Gutenberg and Background Options, or from the print_block() function.
 // Returns formatted attributes as $block_atts array.
-[ 
+[
 	$block_defaults,
 	$block_atts,
 	$block_classes,
@@ -48,13 +48,15 @@ $block_content = ! empty( $block_defaults['fields'] ) ? $block_defaults['fields'
 $animation_class = $block_classes['animation'];
 
 $container_class = join( ' ', array(
-	'grid',
-	'grid-cols-12',
-	'gap-8',
+	'flex',
+	'flex-row',
+	'h-full',
+	'relative',
+	'z-20',
 	$block_classes['align_content'],
 	$block_classes['container_size'],
 ) );
-$column_class = join( ' ', array(
+$column_class    = join( ' ', array(
 	'hero-content',
 	$block_classes['align_text'],
 	$block_classes['inner_width'],
@@ -65,27 +67,30 @@ if ( ! empty( $block['data']['_is_preview'] ) ) :
 	?>
 	<figure>
 		<img src="<?php echo esc_url( BOPTAIL_ROOT_URL . 'assets/images/block-previews/hero-banner-home.jpg' ); ?>"
-			alt="<?php esc_html_e( 'Block Preview - Hero Banner Home', BOPTAIL_TEXT_DOMAIN ); ?>">
+		     alt="<?php esc_html_e( 'Block Preview - Hero Banner Home', BOPTAIL_TEXT_DOMAIN ); ?>">
 	</figure>
+	<h1><?php echo esc_html( $block['data']['heading'] ); ?></h1>
+	<p><?php echo esc_html( $block['data']['content'] ); ?></p>
 <?php elseif ( $block_content['eyebrow'] || $block_content['heading'] || $block_content['content'] ) : ?>
 	<section <?php echo $block_atts; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
 		<?php print_background_options( $settings ); ?>
 		<div class="<?php echo esc_attr( $container_class ); ?>">
 			<div class="<?php echo esc_attr( $column_class ); ?>">
-
 				<?php
 				// Eyebrow.
 				if ( $block_content['eyebrow'] ) :
-					print_element( 'eyebrow', [ 
-						'text' => $block_content['eyebrow'],
+					print_element( 'eyebrow', [
+						'class' => $block_classes['eyebrow_color'],
+						'text'  => $block_content['eyebrow'],
 					] );
 				endif;
 
 				// Heading.
 				if ( $block_content['heading'] ) :
-					print_element( 'heading', [ 
-						'text' => $block_content['heading'],
+					print_element( 'heading', [
 						'level' => 1,
+						'class' => $block_classes['heading_color'],
+						'text'  => $block_content['heading'],
 					] );
 				endif;
 

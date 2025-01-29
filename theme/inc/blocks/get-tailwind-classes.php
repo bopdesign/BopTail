@@ -12,9 +12,9 @@
 
 namespace BopTail\Blocks;
 
-function get_tailwind_classes( $settings ) {
-	$classes = [];
+use function BopTail\Functions\echo_data;
 
+function get_tailwind_classes( $settings ) {
 	// Gutenberg classes.
 	if ( empty( $settings['align'] ) || 'none' === $settings['align'] ) {
 		$classes['align'] = 'alignnone';
@@ -37,34 +37,34 @@ function get_tailwind_classes( $settings ) {
 				$classes['align_content'] = 'self-end is-position-' . sanitize_title( $align_content );
 				break;
 			case 'top left':
-				$classes['align_content'] = 'align-start justify-start is-position-' . sanitize_title( $align_content );
+				$classes['align_content'] = 'items-start justify-start is-position-' . sanitize_title( $align_content );
 				break;
 			case 'top center':
-				$classes['align_content'] = 'align-start justify-center is-position-' . sanitize_title( $align_content );
+				$classes['align_content'] = 'items-start justify-center is-position-' . sanitize_title( $align_content );
 				break;
 			case 'top right':
-				$classes['align_content'] = 'align-start justify-end is-position-' . sanitize_title( $align_content );
+				$classes['align_content'] = 'items-start justify-end is-position-' . sanitize_title( $align_content );
 				break;
 			case 'center left':
-				$classes['align_content'] = 'align-center justify-start is-position-' . sanitize_title( $align_content );
+				$classes['align_content'] = 'items-center justify-start is-position-' . sanitize_title( $align_content );
 				break;
 			case 'center center':
-				$classes['align_content'] = 'align-center justify-center is-position-' . sanitize_title( $align_content );
+				$classes['align_content'] = 'items-center justify-center is-position-' . sanitize_title( $align_content );
 				break;
 			case 'center right':
-				$classes['align_content'] = 'align-center justify-end is-position-' . sanitize_title( $align_content );
+				$classes['align_content'] = 'items-center justify-end is-position-' . sanitize_title( $align_content );
 				break;
 			case 'bottom left':
-				$classes['align_content'] = 'align-end justify-start is-position-' . sanitize_title( $align_content );
+				$classes['align_content'] = 'items-end justify-start is-position-' . sanitize_title( $align_content );
 				break;
 			case 'bottom center':
-				$classes['align_content'] = 'align-end justify-center is-position-' . sanitize_title( $align_content );
+				$classes['align_content'] = 'items-end justify-center is-position-' . sanitize_title( $align_content );
 				break;
 			case 'bottom right':
-				$classes['align_content'] = 'align-end justify-end is-position-' . sanitize_title( $align_content );
+				$classes['align_content'] = 'items-end justify-end is-position-' . sanitize_title( $align_content );
 				break;
 			default:
-				$classes['align_content'] = 'align-start justify-start is-position-top-left';
+				$classes['align_content'] = 'items-start justify-start is-position-top-left';
 				break;
 		}
 	}
@@ -92,55 +92,55 @@ function get_tailwind_classes( $settings ) {
 	}
 
 	// Background classes.
-	if ( ! empty( $settings['background'] ) ) {
-		$bg = $settings['background'];
+	if ( ! empty( $settings['background'] ) && ! empty( $settings['background']['type'] && $settings['background']['type'] !== 'none' ) ) {
+		$bg           = $settings['background'];
+		$bg_classes[] = 'has-background';
 
 		switch ( $bg['type'] ) {
 			case 'color':
+				// Background Colors: bg-background | bg-foreground | bg-primary | bg-secondary | bg-tertiary
 				if ( ! empty( $bg['color_picker'] ) ) {
-					$bg_color = $bg['color_picker'];
-					$classes[] = 'has-' . $bg_color . '-background-color';
-					$classes[] = 'bg-' . $bg_color;
+					$bg_classes[] = 'color-as-background';
+					$bg_classes[] = 'has-' . $bg['color_picker'] . '-background-color';
+					$bg_classes[] = 'bg-' . $bg['color_picker'];
 				}
 				break;
 			case 'gradient':
 				if ( ! empty( $bg['gradient'] ) ) {
-					// Example: bg-gradient-to-r from-blue-500 to-purple-500
+					$bg_classes[] = 'gradient-as-background';
+
+					// Example: bg-gradient-to-r from-color-300 to-color-800
 					$gradient_direction = $bg['gradient']['direction'] ?? 'to-r';
-					$classes[] = 'bg-gradient-' . $gradient_direction;
+					$bg_classes[]       = 'bg-gradient-' . $gradient_direction;
 
 					if ( ! empty( $bg['gradient']['start_color'] ) ) {
-						$classes[] = 'from-' . $bg['gradient']['start_color'];
+						$bg_classes[] = 'from-' . $bg['gradient']['start_color']['color_picker'];
 					}
 					if ( ! empty( $bg['gradient']['end_color'] ) ) {
-						$classes[] = 'to-' . $bg['gradient']['end_color'];
+						$bg_classes[] = 'to-' . $bg['gradient']['end_color']['color_picker'];
 					}
 				}
 				break;
 			case 'image':
-				$classes[] = 'has-background image-as-background relative overflow-hidden';
+				$bg_classes[] = 'image-as-background overflow-hidden';
 
 				if ( ! empty( $bg['fixed'] ) && $bg['fixed'] ) {
-					$classes[] = 'has-fixed-background';
+					$bg_classes[] = 'has-fixed-background';
 				}
 				break;
 			case 'video':
-				$classes[] = 'has-background video-as-background relative overflow-hidden';
+				$bg_classes[] = 'video-as-background overflow-hidden';
 
 				if ( ! empty( $bg['fixed'] ) && $bg['fixed'] ) {
-					$classes[] = 'has-fixed-background';
+					$bg_classes[] = 'has-fixed-background';
 				}
 				break;
 		}
 
 		// Overlay
-		if ( ! empty( $bg['overlay'] ) && ( $bg['type'] === 'image' || $bg['type'] === 'video' ) ) {
-			if ( ! empty( $bg['overlay']['color'] ) ) {
-				$classes[] = 'overlay-' . $bg['overlay']['color'];
-			}
-			if ( ! empty( $bg['overlay']['opacity'] ) ) {
-				$classes[] = 'overlay-opacity-' . $bg['overlay']['opacity'];
-			}
+		if ( ( 'image' === $bg['type'] || 'video' === $bg['type'] ) && ! empty( $bg['overlay'] ) ) {
+			$bg_classes[] = 'has-overlay';
+			$bg_classes[] = 'has-overlay-' . $bg['overlay']['overlay_type'];
 		}
 
 		// Pattern
@@ -155,18 +155,25 @@ function get_tailwind_classes( $settings ) {
 				$classes[] = 'pattern-opacity-' . $bg['pattern']['opacity'];
 			}
 		}
+
+		$classes['background'] = join( ' ', $bg_classes );
 	}
 
 	// Typography classes
+	// Text Colors: text-background | text-foreground | text-primary | text-secondary | text-tertiary
+	$classes['eyebrow_color'] = '';
+	$classes['heading_color'] = '';
+	$classes['content_color'] = '';
+
 	if ( ! empty( $settings['typography'] ) ) {
 		if ( ! empty( $settings['typography']['eyebrow_color'] ) ) {
-			$classes[] = 'eyebrow-' . $settings['typography']['eyebrow_color']['color_picker'];
+			$classes['eyebrow_color'] = 'text-' . $settings['typography']['eyebrow_color']['color_picker'];
 		}
 		if ( ! empty( $settings['typography']['heading_color'] ) ) {
-			$classes[] = 'heading-' . $settings['typography']['heading_color']['color_picker'];
+			$classes['heading_color'] = 'text-' . $settings['typography']['heading_color']['color_picker'];
 		}
 		if ( ! empty( $settings['typography']['content_color'] ) ) {
-			$classes[] = 'text-' . $settings['typography']['content_color']['color_picker'];
+			$classes['content_color'] = 'text-' . $settings['typography']['content_color']['color_picker'];
 		}
 	}
 
@@ -179,47 +186,49 @@ function get_tailwind_classes( $settings ) {
 
 		// Inner content width
 		if ( ! empty( $settings['container']['inner_width'] ) ) {
-			$width_map = [ 
-				'auto' => 'col-auto',                      // auto
-				'3' => 'col-span-12 md:col-span-3',     // 25%
-				'4' => 'col-span-12 md:col-span-4',     // 33%
-				'5' => 'col-span-12 md:col-span-5',     // 42%
-				'6' => 'col-span-12 md:col-span-6',     // 50%
-				'7' => 'col-span-12 md:col-span-7',     // 58%
-				'8' => 'col-span-12 md:col-span-8',     // 66%
-				'9' => 'col-span-12 md:col-span-9',     // 75%
-				'10' => 'col-span-12 md:col-span-10',    // 83%
-				'11' => 'col-span-12 md:col-span-11',    // 92%
+			$width_map = [
+				'auto' => 'flex-initial w-auto',            // auto
+				'3'    => 'flex-initial w-full md:w-3/12',  // 25%
+				'4'    => 'flex-initial w-full md:w-4/12',  // 33%
+				'5'    => 'flex-initial w-full md:w-5/12',  // 42%
+				'6'    => 'flex-initial w-full md:w-6/12',  // 50%
+				'7'    => 'flex-initial w-full md:w-7/12',  // 58%
+				'8'    => 'flex-initial w-full md:w-8/12',  // 66%
+				'9'    => 'flex-initial w-full md:w-9/12',  // 75%
+				'10'   => 'flex-initial w-full md:w-10/12', // 83%
+				'11'   => 'flex-initial w-full md:w-11/12', // 92%
 			];
-			$classes['inner_width'] = $width_map[ $settings['container']['inner_width'] ] ?? 'col-span-full';
+			$classes['inner_width'] = $width_map[ $settings['container']['inner_width'] ] ?? 'flex-initial w-full';
 		}
 	}
 
 	// Animation classes
 	$classes['animation'] = '';
+
 	if ( ! empty( $settings['animation'] ) && $settings['animation'] !== 'none' ) {
 		$classes['animation'] = 'wow animate__' . $settings['animation'];
 	}
 
 	// Spacing classes
-	$spacing_map = [ 
-		'none' => '0',    // mb-0, mt-0, pt-0, pb-0
-		'tiny' => '2',    // mb-2, mt-2, pt-2, pb-2
-		'small' => '4',    // mb-4, mt-4, pt-4, pb-4
-		'medium' => '8',    // mb-8, mt-8, pt-8, pb-8
-		'large' => '12',   // mb-12, mt-12, pt-12, pb-12
-		'x-large' => '16',   // mb-16, mt-16, pt-16, pb-16
-	];
+	$spacing_map        = array(
+		'none'    => '0',    // mb-0 | mt-0 | pt-0 | pb-0
+		'tiny'    => '8',    // mb-8 | mt-8 | pt-8 | pb-8
+		'small'   => '16',   // mb-16 | mt-16 | pt-16 | pb-16
+		'medium'  => '32',   // mb-32 | mt-32 | pt-32 | pb-32
+		'large'   => '48',   // mb-48 | mt-48 | pt-48 | pb-48
+		'x-large' => '64',   // mb-64 | mt-64 | pt-16 | pb-64
+	);
+	$classes['spacing'] = array();
 
 	if ( ! empty( $settings['spacing'] ) ) {
 		// Margins
 		if ( ! empty( $settings['spacing']['margin'] ) ) {
 			$margin = $settings['spacing']['margin'];
 			if ( ! empty( $margin['top'] ) && $margin['top'] !== 'none' ) {
-				$classes[] = 'mt-' . $spacing_map[ $margin['top'] ];
+				$classes['spacing'][] = 'mt-' . $spacing_map[ $margin['top'] ];
 			}
 			if ( ! empty( $margin['bottom'] ) && $margin['bottom'] !== 'none' ) {
-				$classes[] = 'mb-' . $spacing_map[ $margin['bottom'] ];
+				$classes['spacing'][] = 'mb-' . $spacing_map[ $margin['bottom'] ];
 			}
 		}
 
@@ -227,13 +236,26 @@ function get_tailwind_classes( $settings ) {
 		if ( ! empty( $settings['spacing']['padding'] ) ) {
 			$padding = $settings['spacing']['padding'];
 			if ( ! empty( $padding['top'] ) && $padding['top'] !== 'none' ) {
-				$classes[] = 'pt-' . $spacing_map[ $padding['top'] ];
+				$classes['spacing'][] = 'pt-' . $spacing_map[ $padding['top'] ];
 			}
 			if ( ! empty( $padding['bottom'] ) && $padding['bottom'] !== 'none' ) {
-				$classes[] = 'pb-' . $spacing_map[ $padding['bottom'] ];
+				$classes['spacing'][] = 'pb-' . $spacing_map[ $padding['bottom'] ];
 			}
 		}
+
+		$classes['spacing'] = join( ' ', $classes['spacing'] );
 	}
 
-	return array_unique( $classes );
+	/*
+	 * These are top level classes applied to the block container, i.e.:
+	 * <section id="block-xyz" class="<block_classes>">.
+	*/
+	$classes['block_classes'] = join( ' ', array(
+		$classes['align'],
+		$classes['full_height'],
+		$classes['background'],
+		$classes['spacing'],
+	), );
+
+	return $classes;
 }

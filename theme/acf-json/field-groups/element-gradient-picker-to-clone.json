@@ -16,7 +16,7 @@
                 "class": "",
                 "id": ""
             },
-            "choices": {},
+            "choices": [],
             "default_value": false,
             "return_format": "value",
             "multiple": 0,
@@ -24,6 +24,77 @@
             "ui": 1,
             "ajax": 0,
             "placeholder": ""
+        },
+        {
+            "key": "field_67970bc43385d",
+            "label": "Gradient Direction",
+            "name": "direction",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "to-r": "To Right",
+                "to-b": "To Bottom"
+            },
+            "default_value": "to-r",
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "allow_in_bindings": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_67970e089e424",
+            "label": "Start Color",
+            "name": "start_color",
+            "aria-label": "",
+            "type": "clone",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "clone": [
+                "group_5d16233395958"
+            ],
+            "display": "group",
+            "layout": "block",
+            "prefix_label": 0,
+            "prefix_name": 1
+        },
+        {
+            "key": "field_67970f8cce4cb",
+            "label": "End Color",
+            "name": "end_color",
+            "aria-label": "",
+            "type": "clone",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "clone": [
+                "group_5d16233395958"
+            ],
+            "display": "group",
+            "layout": "block",
+            "prefix_label": 0,
+            "prefix_name": 1
         }
     ],
     "location": [
@@ -44,5 +115,5 @@
     "active": false,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1736837948
+    "modified": 1737953449
 }

@@ -39,27 +39,6 @@
             "selected": 0
         },
         {
-            "key": "field_636141317f235",
-            "label": "Eyebrow",
-            "name": "eyebrow",
-            "aria-label": "",
-            "type": "text",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "maxlength": "",
-            "allow_in_bindings": 1,
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
-        },
-        {
             "key": "field_636141317f239",
             "label": "Heading",
             "name": "heading",
@@ -79,6 +58,27 @@
             "append": "",
             "maxlength": "",
             "parent_repeater": "field_6328abf214941"
+        },
+        {
+            "key": "field_636141317f235",
+            "label": "Content",
+            "name": "content",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 1,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
         },
         {
             "key": "field_636141317f242",
@@ -121,5 +121,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1736839067
+    "modified": 1737962831
 }

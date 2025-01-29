@@ -1,0 +1,81 @@
+/**
+ * Global Site Menu.
+ */
+@layer components {
+	.navigation-menu {
+		a:not([rel='button']) {
+			@apply text-background block font-bold underline-offset-8 hover:underline hover:decoration-2;
+			text-decoration-color: theme('colors.tertiary');
+		}
+		/*a:not([rel='button']) i {*/
+		/*	@apply no-underline;*/
+		/*}*/
+
+		a[rel='button'] {
+			@apply border border-background rounded-full text-background font-bold inline-block py-2 px-7;
+		}
+
+		/*a[rel='button'] span {*/
+		/*	@apply mr-4;*/
+		/*}*/
+
+		/*a[rel='button'] i {*/
+		/*	@apply bg-primary rounded-full text-background inline-block m-0 p-2 transition-transform -rotate-45;*/
+		/*}*/
+
+		/*a[rel='button']:hover i {*/
+		/*	@apply rotate-0;*/
+		/*}*/
+
+		> .menu-item {
+			@apply inline-flex h-full;
+		}
+		> .menu-item > a {
+			align-self: center;
+		}
+		> .menu-item > .sub-menu {
+			@apply py-12 absolute top-full whitespace-nowrap;
+			left: -9999rem;
+			z-index: 9999;
+		}
+		> .menu-item > .sub-menu::before {
+			@apply absolute top-0 left-1/2 -translate-x-1/2 border-t-8 border-t-background border-x-8 border-solid border-x-transparent w-0 h-0;
+			content: '';
+		}
+
+		.menu-item.current-menu-item,
+		.menu-item.current-menu-ancestor {
+			> a:not([rel='button']) {
+				@apply underline-offset-8 underline decoration-2;
+				text-decoration-color: theme('colors.tertiary');
+			}
+		}
+
+		.sub-menu {
+			@apply bg-foreground;
+		}
+		.sub-menu a {
+			@apply text-background px-14;
+		}
+		.sub-menu .menu-item:not(:last-child) {
+			@apply pb-7;
+		}
+		.sub-menu .sub-menu {
+			@apply pt-6 pl-7;
+		}
+		.sub-menu .sub-menu .menu-item:not(:last-child) {
+			@apply pb-6;
+		}
+		.sub-menu .sub-menu a {
+			@apply font-normal;
+		}
+
+		> .menu-item-has-children {
+			@apply relative;
+		}
+		> .menu-item-has-children a:hover + .sub-menu,
+		> .menu-item-has-children a:focus +  .sub-menu {
+			@apply left-1/2 -translate-x-1/2;
+		}
+	}
+}

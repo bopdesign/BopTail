@@ -1,3 +1,8 @@
+/**
+ * Tailwind Typography can only be configured via JavaScript, using a legacy
+ * configuration file like this one.
+ */
+
 // Copied from Tailwind Typography.
 const hexToRgb = (hex) => {
 	if (typeof hex !== 'string' || hex.length === 0) {
@@ -98,11 +103,11 @@ module.exports = {
 				},
 
 				/**
-				 * By default, _tw uses Tailwind Typography’s Neutral gray
+				 * By default, `boptail` uses Tailwind Typography’s Neutral gray
 				 * scale. If you are adapting an existing design, and you need
 				 * to set specific colors throughout, you can do so here. In
 				 * your `./theme/functions.php file, you will need to replace
-				 * `prose-neutral` with `prose-boptail`.
+				 * `-neutral` with `-boptail`.
 				 */
 				boptail: {
 					css: {

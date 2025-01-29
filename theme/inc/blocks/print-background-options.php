@@ -30,8 +30,8 @@ function print_background_options( $settings ) {
 	// Only try to get the rest of the settings if the background type is set to anything.
 	if ( $background_options['type'] ) {
 		if ( 'image' === $background_options['type'] ) {
-			$background_image = $background_options['image'];
-			$background_image_id = false;
+			$background_image      = $background_options['image'];
+			$background_image_id   = false;
 			$background_image_size = 'full';
 
 			if ( ! empty( $background_image['use_featured_image'] ) && $background_image['use_featured_image'] && has_post_thumbnail() ) {
@@ -43,13 +43,11 @@ function print_background_options( $settings ) {
 			$background_classes = [
 				'background-image',
 				'block',
+				'm-0',
 				'absolute',
-				'top-0',
-				'bottom-0',
-				'start-0',
-				'end-0',
+				'inset-0',
 				'w-full',
-				'h-auto',
+				'h-full',
 				'z-0',
 			];
 
@@ -94,8 +92,8 @@ function print_background_options( $settings ) {
 				$background_class = implode( ' ', $background_classes );
 				?>
 				<div class="<?php echo esc_attr( $background_class ); ?>"
-					style="background-image:url(<?php echo $background_image_url; ?>);" aria-hidden="true"></div>
-				<?php
+				     style="background-image:url(<?php echo $background_image_url; ?>);" aria-hidden="true"></div>
+			<?php
 			else :
 				$image_classes = [
 					'object-cover',
@@ -137,7 +135,7 @@ function print_background_options( $settings ) {
 				}
 
 				$background_class = implode( ' ', $background_classes );
-				$image_class = implode( ' ', $image_classes );
+				$image_class      = implode( ' ', $image_classes );
 				?>
 				<picture class="<?php echo esc_attr( $background_class ); ?>" aria-hidden="true">
 					<?php echo wp_get_attachment_image( $background_image_id, $background_image_size, false, array( 'class' => esc_attr( $image_class ) ) ); ?>
@@ -148,19 +146,16 @@ function print_background_options( $settings ) {
 		}
 
 		if ( 'video' === $background_options['type'] ) {
-			$background_video = $background_options['video'];
+			$background_video   = $background_options['video'];
 			$background_classes = [
 				'background-video',
 				'block',
 				'overflow-hidden',
 				'object-top',
 				'absolute',
-				'top-0',
-				'bottom-0',
-				'start-0',
-				'end-0',
+				'inset-0',
 				'w-full',
-				'h-auto',
+				'h-full',
 				'z-0',
 			];
 
@@ -179,14 +174,15 @@ function print_background_options( $settings ) {
 						$video_id = uniqid( 'bop-tail-video-' );
 						?>
 						<video id="<?php echo esc_attr( $video_id ); ?>" autoplay muted playsinline loop
-							preload="none" <?php if ( ! empty( $background_video['video_placeholder'] ) ) : ?>
-								poster="<?php echo esc_url( wp_get_attachment_image_url( $background_video['video_placeholder'], 'full' ) ); ?>"
-							<?php endif; ?>>
+						       preload="none" <?php if ( ! empty( $background_video['video_placeholder'] ) ) : ?>
+							poster="<?php echo esc_url( wp_get_attachment_image_url( $background_video['video_placeholder'], 'full' ) ); ?>"
+						<?php endif; ?>>
 							<?php if ( ! empty( $background_video['video_mp4'] ) ) : ?>
 								<source src="<?php echo esc_url( $background_video['video_mp4'] ); ?>" type="video/mp4">
 							<?php endif; ?>
 							<?php if ( ! empty( $background_video['video_webm'] ) ) : ?>
-								<source src="<?php echo esc_url( $background_video['video_webm'] ); ?>" type="video/webm">
+								<source src="<?php echo esc_url( $background_video['video_webm'] ); ?>"
+								        type="video/webm">
 							<?php endif; ?>
 						</video>
 						<?php
@@ -197,8 +193,8 @@ function print_background_options( $settings ) {
 							echo wp_oembed_get( $background_video['video_embed'], array(
 								'autoplay' => 1,
 								'controls' => 0,
-								'mute' => 1,
-								'loop' => 1,
+								'mute'     => 1,
+								'loop'     => 1,
 							) );
 						}
 						break;
@@ -217,32 +213,44 @@ function print_background_options( $settings ) {
 
 		if ( ( 'image' === $background_options['type'] || 'video' === $background_options['type'] ) && ! empty( $background_options['overlay'] ) ) {
 			$overlay_settings = $background_options['overlay'];
-			$overlay_classes = [
+			$overlay_classes  = array(
 				'absolute',
-				'top-0',
-				'bottom-0',
-				'start-0',
-				'end-0',
+				'inset-0',
 				'w-full',
 				'h-auto',
-				'z-1',
-			];
+				'z-10',
+			);
 
 			if ( 'color' === $overlay_settings['overlay_type'] ) {
 				$overlay_color = $overlay_settings['overlay_color']['color_picker'];
 
 				if ( '' !== $overlay_color ) {
-					$overlay_classes[] = "has-$overlay_color-background-color";
-					$overlay_classes[] = "bg-$overlay_color";
+					$overlay_classes[] = 'has-' . $overlay_color . '-background-color';
+					$overlay_classes[] = 'bg-' . $overlay_color;;
 				}
 			}
 
 			if ( 'gradient' === $overlay_settings['overlay_type'] ) {
-				$overlay_gradient = $overlay_settings['overlay_gradient']['gradient_picker'];
+//				$overlay_gradient = $overlay_settings['overlay_gradient']['gradient_picker'];
+//
+//				if ( '' !== $overlay_gradient ) {
+//					$overlay_classes[] = 'has-' . $overlay_gradient . '-background-gradient';
+//					$overlay_classes[] = "bg-$overlay_gradient";
+//				}
 
-				if ( '' !== $overlay_gradient ) {
-					$overlay_classes[] = "has-$overlay_gradient-background-gradient";
-					$overlay_classes[] = "bg-$overlay_gradient";
+				// Example: bg-gradient-to-r from-color-300 to-color-800
+				// Directions: bg-gradient-to-r | bg-gradient-to-b
+				// Colors: bg-background | bg-foreground | bg-primary | bg-secondary | bg-tertiary
+				$gradient_direction = $overlay_settings['overlay_gradient']['direction'] ?? 'to-r';
+				$overlay_classes[]  = 'bg-gradient-' . $gradient_direction;
+
+				// Example: from-background | from-foreground | from-primary | from-secondary | from-tertiary
+				if ( ! empty( $overlay_settings['overlay_gradient']['start_color']['color_picker'] ) ) {
+					$overlay_classes[] = 'from-' . $overlay_settings['overlay_gradient']['start_color']['color_picker'];
+				}
+				// Example: to-background | to-foreground | to-primary | to-secondary | to-tertiary
+				if ( ! empty( $overlay_settings['overlay_gradient']['end_color']['color_picker'] ) ) {
+					$overlay_classes[] = 'to-' . $overlay_settings['overlay_gradient']['end_color']['color_picker'];
 				}
 			}
 

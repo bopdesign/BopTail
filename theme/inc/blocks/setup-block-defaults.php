@@ -8,6 +8,7 @@
 
 namespace BopTail\Blocks;
 
+use function BopTail\Functions\echo_data;
 use function BopTail\Helpers\get_formatted_args;
 use function BopTail\Helpers\get_formatted_atts;
 
@@ -32,12 +33,22 @@ function setup_block_defaults( $block_defaults, $block_args = [], $block = null 
 	// Get Tailwind classes based on settings.
 	$tailwind_classes = get_tailwind_classes( $block_settings );
 
-	// Get custom classes for the block and/or for block settings.
-	$block_classes = isset( $block ) ? get_block_classes( $block_settings, $block ) : get_block_classes( $block_settings );
-	$top_level_classes = array( $tailwind_classes['align'], $tailwind_classes['full_height'] );
+	// Get custom classes for the block.
+	$block_classes = array();
+
+	if ( isset( $block ) ) {
+		// Adds class(es) entered via block's setting tab: 'Advanced' -> 'ADDITIONAL CSS CLASS(ES)'.
+		if ( ! empty( $block['className'] ) ) :
+			$block_classes[] = $block['className'];
+		endif;
+	}
+
+	if (  ! empty( $tailwind_classes['block_classes'] ) ) {
+		$block_classes[] = $tailwind_classes['block_classes'];
+	}
 
 	if ( ! empty( $block_classes ) ) {
-		$block_defaults['class'] = array_merge( $block_defaults['class'], $block_classes, $top_level_classes );
+		$block_defaults['class'] = array_merge( $block_defaults['class'], $block_classes );
 	}
 
 	// Set up block attributes.

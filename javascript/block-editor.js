@@ -1,5 +1,3 @@
-/* global wp */
-
 /**
  * Block editor modifications
  *
@@ -27,7 +25,7 @@ wp.domReady(() => {
 	 */
 	wp.blocks.registerBlockStyle('core/paragraph', {
 		name: 'lead',
-		label: __('Lead', 'boptail'),
+		label: 'Lead',
 	});
 
 	// Add additional block editor modifications here. For example, you could

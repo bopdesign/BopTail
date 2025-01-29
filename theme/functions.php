@@ -44,7 +44,10 @@ if ( ! defined( 'BOPTAIL_TYPOGRAPHY_CLASSES' ) ) {
 	 * Fields), these classes are added to TinyMCE’s body class when it
 	 * initializes.
 	 */
-	define( 'BOPTAIL_TYPOGRAPHY_CLASSES', 'prose prose-lg prose-boptail max-w-none prose-a:text-foreground' );
+	define(
+		'BOPTAIL_TYPOGRAPHY_CLASSES',
+		'prose prose-lg prose-boptail max-w-none prose-a:text-foreground'
+	);
 }
 
 /*

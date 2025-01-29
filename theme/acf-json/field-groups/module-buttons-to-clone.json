@@ -25,6 +25,7 @@
             "default_value": "start",
             "return_format": "value",
             "allow_null": 0,
+            "allow_in_bindings": 1,
             "layout": "horizontal"
         },
         {
@@ -93,5 +94,5 @@
     "active": false,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1736837985
+    "modified": 1738003770
 }

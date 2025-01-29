@@ -8,10 +8,13 @@
 
 namespace BopTail\Blocks;
 
+use function BopTail\Functions\echo_data;
+
 /**
  * Maps ACF field values to block settings structure
  *
  * @param array $block Array of block attributes.
+ *
  * @return array The mapped settings array.
  */
 function get_block_settings( $block ) {
