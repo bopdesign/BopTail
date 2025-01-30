@@ -11,7 +11,7 @@
  */
 
 ?><!doctype html>
-<html <?php language_attributes(); ?> class="h-full antialiased">
+<html <?php language_attributes(); ?> class="bg-background text-foreground font-sans h-full antialiased">
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">

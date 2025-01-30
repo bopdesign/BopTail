@@ -129,10 +129,10 @@ function theme_setup() {
 	// This theme uses wp_nav_menu() in two locations.
 	register_nav_menus( array(
 		'primary'  => __( 'Primary Menu', BOPTAIL_TEXT_DOMAIN ),
-		'footer'   => __( 'Footer Menu', BOPTAIL_TEXT_DOMAIN ),
-//		'footer-1' => __( 'Footer Column One', BOPTAIL_TEXT_DOMAIN ),
-//		'footer-2' => __( 'Footer Column Two', BOPTAIL_TEXT_DOMAIN ),
-//		'footer-3' => __( 'Footer Column Three', BOPTAIL_TEXT_DOMAIN ),
+//		'footer'   => __( 'Footer Menu', BOPTAIL_TEXT_DOMAIN ),
+		'footer-1' => __( 'Footer Column One', BOPTAIL_TEXT_DOMAIN ),
+		'footer-2' => __( 'Footer Column Two', BOPTAIL_TEXT_DOMAIN ),
+		'footer-3' => __( 'Footer Column Three', BOPTAIL_TEXT_DOMAIN ),
 	) );
 }
 

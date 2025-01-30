@@ -16,9 +16,7 @@
  * Add Tailwind’s Preflight styles followed by your custom base styles.
  */
 @import "tailwindcss/preflight";
-@layer base {
-	@import "./custom/base.css";
-}
+@import "./custom/base.css";
 
 /**
  * Because this file shares code with `tailwind-editor.css`, we import the

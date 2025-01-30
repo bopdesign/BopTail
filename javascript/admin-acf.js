@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		acf.add_filter('select2_escape_markup', function (escaped_value, original_value, select, settings, field, instance) {
 			// Do something to the original_value to override the default escaping, then return it.
 			// This value should still have some kind of escaping for security, but you may wish to allow specific HTML.
-			if (field[0].dataset.name === 'color_picker' || field[0].dataset.name === 'gradient_picker') {
+			if (field[0].dataset.name === 'color_picker' || field[0].dataset.name === 'gradient_picker' || field[0].dataset.name === 'social_name') {
 				return original_value;
 			}
 

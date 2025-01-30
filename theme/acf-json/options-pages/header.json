@@ -18,7 +18,7 @@
     "capability": "edit_posts",
     "data_storage": "options",
     "post_id": "",
-    "autoload": 1,
+    "autoload": 0,
     "_parent": 219,
-    "modified": 1736838224
+    "modified": 1738198680
 }

@@ -99,22 +99,26 @@ function get_tailwind_classes( $settings ) {
 		switch ( $bg['type'] ) {
 			case 'color':
 				// Background Colors: bg-background | bg-foreground | bg-primary | bg-secondary | bg-tertiary
-				if ( ! empty( $bg['color_picker'] ) ) {
+				if ( ! empty( $bg['color']['color_picker'] ) ) {
 					$bg_classes[] = 'color-as-background';
-					$bg_classes[] = 'has-' . $bg['color_picker'] . '-background-color';
-					$bg_classes[] = 'bg-' . $bg['color_picker'];
+					$bg_classes[] = 'has-' . $bg['color']['color_picker'] . '-background-color';
+					$bg_classes[] = 'bg-' . $bg['color']['color_picker'];
 				}
 				break;
 			case 'gradient':
 				if ( ! empty( $bg['gradient'] ) ) {
 					$bg_classes[] = 'gradient-as-background';
 
-					// Example: bg-gradient-to-r from-color-300 to-color-800
-					$gradient_direction = $bg['gradient']['direction'] ?? 'to-r';
-					$bg_classes[]       = 'bg-gradient-' . $gradient_direction;
+					// Example: bg-linear-0 from-color-aaa via-color-bbb to-color-ccc
+					// Angles: bg-linear-45 | bg-linear-90 | bg-linear-180
+					$gradient_angle = $bg['gradient']['angle'] ?? '90';
+					$bg_classes[]   = 'bg-linear-' . $gradient_angle;
 
 					if ( ! empty( $bg['gradient']['start_color'] ) ) {
 						$bg_classes[] = 'from-' . $bg['gradient']['start_color']['color_picker'];
+					}
+					if ( ! empty( $bg['gradient']['via_color'] ) ) {
+						$bg_classes[] = 'via-' . $bg['gradient']['via_color']['color_picker'];
 					}
 					if ( ! empty( $bg['gradient']['end_color'] ) ) {
 						$bg_classes[] = 'to-' . $bg['gradient']['end_color']['color_picker'];
@@ -130,10 +134,6 @@ function get_tailwind_classes( $settings ) {
 				break;
 			case 'video':
 				$bg_classes[] = 'video-as-background overflow-hidden';
-
-				if ( ! empty( $bg['fixed'] ) && $bg['fixed'] ) {
-					$bg_classes[] = 'has-fixed-background';
-				}
 				break;
 		}
 
@@ -181,24 +181,31 @@ function get_tailwind_classes( $settings ) {
 	if ( ! empty( $settings['container'] ) ) {
 		// Container size
 		if ( ! empty( $settings['container']['size'] ) ) {
-			$classes['container_size'] = $settings['container']['size'];
+			switch ( $settings['container']['size'] ) {
+				case 'contained':
+					$classes['container_size'] = 'container';
+					break;
+				case 'full':
+					$classes['container_size'] = 'container-full px-4 lg:px-8';
+					break;
+			}
 		}
 
 		// Inner content width
 		if ( ! empty( $settings['container']['inner_width'] ) ) {
-			$width_map = [
-				'auto' => 'flex-initial w-auto',            // auto
-				'3'    => 'flex-initial w-full md:w-3/12',  // 25%
-				'4'    => 'flex-initial w-full md:w-4/12',  // 33%
-				'5'    => 'flex-initial w-full md:w-5/12',  // 42%
-				'6'    => 'flex-initial w-full md:w-6/12',  // 50%
-				'7'    => 'flex-initial w-full md:w-7/12',  // 58%
-				'8'    => 'flex-initial w-full md:w-8/12',  // 66%
-				'9'    => 'flex-initial w-full md:w-9/12',  // 75%
-				'10'   => 'flex-initial w-full md:w-10/12', // 83%
-				'11'   => 'flex-initial w-full md:w-11/12', // 92%
+			$width_map              = [
+				'auto' => 'basis-auto',                // auto
+				'3'    => 'basis-full md:basis-3/12',  // 25%
+				'4'    => 'basis-full md:basis-4/12',  // 33%
+				'5'    => 'basis-full md:basis-5/12',  // 42%
+				'6'    => 'basis-full md:basis-6/12',  // 50%
+				'7'    => 'basis-full md:basis-7/12',  // 58%
+				'8'    => 'basis-full md:basis-8/12',  // 66%
+				'9'    => 'basis-full md:basis-9/12',  // 75%
+				'10'   => 'basis-full md:basis-10/12', // 83%
+				'11'   => 'basis-full md:basis-11/12', // 92%
 			];
-			$classes['inner_width'] = $width_map[ $settings['container']['inner_width'] ] ?? 'flex-initial w-full';
+			$classes['inner_width'] = $width_map[ $settings['container']['inner_width'] ] ?? 'basis-full';
 		}
 	}
 

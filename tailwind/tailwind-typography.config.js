@@ -62,27 +62,32 @@ module.exports = {
 							// blockquote: {
 							// 	fontWeight: '500',
 							// },
-							// h1: {
-							// 	fontWeight: '700',
-							// },
+							h1: {
+								fontSize: 'clamp(2.8125rem, -3.75rem + 13.6719vw, 5rem)',
+								fontWeight: '700',
+								lineHeight: '1.5',
+							},
 							// 'h1 strong': {
 							// 	fontWeight: '900',
 							// },
-							// h2: {
-							// 	fontWeight: '700',
-							// },
+							h2: {
+								fontWeight: '700',
+								lineHeight: '1.5',
+							},
 							// 'h2 strong': {
 							// 	fontWeight: '800',
 							// },
-							// h3: {
-							// 	fontWeight: '600',
-							// },
+							h3: {
+								fontWeight: '700',
+								lineHeight: '1.5',
+							},
 							// 'h3 strong': {
 							// 	fontWeight: '700',
 							// },
-							// h4: {
-							// 	fontWeight: '600',
-							// },
+							h4: {
+								fontWeight: '700',
+								lineHeight: '1.5',
+							},
 							// 'h4 strong': {
 							// 	fontWeight: '700',
 							// },
@@ -123,40 +128,30 @@ module.exports = {
 						'--tw-prose-quote-borders': theme('colors.primary'),
 						'--tw-prose-captions': theme('colors.foreground'),
 						'--tw-prose-kbd': theme('colors.foreground'),
-						'--tw-prose-kbd-shadows': hexToRgb(
-							theme('colors.foreground')
-						),
+						'--tw-prose-kbd-shadows': hexToRgb(theme('colors.foreground')),
 						'--tw-prose-code': theme('colors.foreground'),
-						'--tw-prose-pre-code': theme('colors.background'),
+						'--tw-prose-pre-code': theme('colors.white'),
 						'--tw-prose-pre-bg': theme('colors.foreground'),
 						'--tw-prose-th-borders': theme('colors.foreground'),
 						'--tw-prose-td-borders': theme('colors.foreground'),
-						'--tw-prose-invert-body': theme('colors.background'),
-						'--tw-prose-invert-headings':
-							theme('colors.background'),
-						'--tw-prose-invert-lead': theme('colors.background'),
+						'--tw-prose-invert-body': theme('colors.white'),
+						'--tw-prose-invert-headings': theme('colors.white'),
+						'--tw-prose-invert-lead': theme('colors.white'),
 						'--tw-prose-invert-links': theme('colors.primary'),
-						'--tw-prose-invert-bold': theme('colors.background'),
+						'--tw-prose-invert-bold': theme('colors.white'),
 						'--tw-prose-invert-counters': theme('colors.primary'),
 						'--tw-prose-invert-bullets': theme('colors.primary'),
-						'--tw-prose-invert-hr': theme('colors.background'),
-						'--tw-prose-invert-quotes': theme('colors.background'),
-						'--tw-prose-invert-quote-borders':
-							theme('colors.primary'),
-						'--tw-prose-invert-captions':
-							theme('colors.background'),
-						'--tw-prose-invert-kbd': theme('colors.background'),
-						'--tw-prose-invert-kbd-shadows': hexToRgb(
-							theme('colors.background')
-						),
+						'--tw-prose-invert-hr': theme('colors.white'),
+						'--tw-prose-invert-quotes': theme('colors.white'),
+						'--tw-prose-invert-quote-borders': theme('colors.primary'),
+						'--tw-prose-invert-captions': theme('colors.white'),
+						'--tw-prose-invert-kbd': theme('colors.white'),
+						'--tw-prose-invert-kbd-shadows': hexToRgb(theme('colors.white')),
 						'--tw-prose-invert-code': theme('colors.foreground'),
-						'--tw-prose-invert-pre-code':
-							theme('colors.background'),
+						'--tw-prose-invert-pre-code': theme('colors.white'),
 						'--tw-prose-invert-pre-bg': 'rgb(0 0 0 / 50%)',
-						'--tw-prose-invert-th-borders':
-							theme('colors.background'),
-						'--tw-prose-invert-td-borders':
-							theme('colors.background'),
+						'--tw-prose-invert-th-borders': theme('colors.white'),
+						'--tw-prose-invert-td-borders': theme('colors.white'),
 					},
 				},
 			}),

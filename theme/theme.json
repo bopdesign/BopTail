@@ -12,13 +12,23 @@
       "palette": [
         {
           "slug": "background",
-          "color": "#fff",
+          "color": "#f3f3f3",
           "name": "Background"
         },
         {
           "slug": "foreground",
           "color": "#1d252d",
           "name": "Foreground"
+        },
+        {
+          "slug": "white",
+          "color": "#fff",
+          "name": "White"
+        },
+        {
+          "slug": "Black",
+          "color": "#000",
+          "name": "Black"
         },
         {
           "slug": "primary",

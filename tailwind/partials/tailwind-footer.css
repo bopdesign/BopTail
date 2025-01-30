@@ -12,16 +12,12 @@
  * manually added below.
  */
 @import "../custom/components/components.css";
-@layer components {
-	@import "../custom/components/menus/menu-header.css";
-	@import "../custom/components/menus/menu-footer.css";
-}
+@import "../custom/components/menus/menu-header.css";
+@import "../custom/components/menus/menu-footer.css";
 
 /**
  * Add Tailwind's utility classes and any utility classes registered by
  * plugins, then add custom utility classes.
  */
 @import "tailwindcss/utilities";
-@layer utilities {
-	@import "../custom/utilities.css";
-}
+@import "../custom/utilities.css";

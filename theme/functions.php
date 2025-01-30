@@ -46,7 +46,7 @@ if ( ! defined( 'BOPTAIL_TYPOGRAPHY_CLASSES' ) ) {
 	 */
 	define(
 		'BOPTAIL_TYPOGRAPHY_CLASSES',
-		'prose prose-lg prose-boptail max-w-none prose-a:text-foreground'
+		'prose prose-boptail max-w-none prose-a:text-foreground'
 	);
 }
 

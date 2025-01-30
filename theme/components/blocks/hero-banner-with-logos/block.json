@@ -1,0 +1,58 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "boptail/hero-banner-with-logos",
+  "title": "Hero Banner - Logos",
+  "description": "A custom hero banner with logos.",
+  "category": "boptail",
+  "icon": "admin-home",
+  "keywords": [
+    "hero",
+    "banner",
+    "logos"
+  ],
+  "acf": {
+    "mode": "auto",
+    "renderTemplate": "render.php",
+    "validate": false
+  },
+  "attributes": {
+    "align": {
+      "type": "string",
+      "default": "full"
+    },
+    "fullHeight": {
+      "type": "boolean",
+      "default": true
+    }
+  },
+  "supports": {
+    "align": [
+      "wide",
+      "full"
+    ],
+    "alignContent": false,
+    "alignText": true,
+    "anchor": true,
+    "color": {
+      "background": false,
+      "link": false,
+      "text": false
+    },
+    "fullHeight": true,
+    "html": false,
+    "jsx": true,
+    "multiple": false,
+    "reusable": false
+  },
+  "example": {
+    "attributes": {
+      "mode": "preview",
+      "data": {
+        "_is_preview": "true",
+        "heading": "Main heading of the block",
+        "content": "A copy of text following the heading"
+      }
+    }
+  }
+}

@@ -9,11 +9,19 @@
  * @package BopTail
  */
 
+$copyright = get_field( 'copyright', 'option' );
 ?>
 
 	</div><!-- #content -->
 
-	<?php get_template_part( 'template-parts/layout/footer', 'content' ); ?>
+	<?php
+	/**
+	 * Available Templates:
+	 * - 3-menu-columns-with-form
+	 * - company-with-3-menu-columns
+	 */
+	get_template_part( 'template-parts/layout/footer', 'company-with-3-menu-columns', $copyright );
+	?>
 
 </div><!-- #page -->
 

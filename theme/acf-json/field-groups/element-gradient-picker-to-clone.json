@@ -27,8 +27,8 @@
         },
         {
             "key": "field_67970bc43385d",
-            "label": "Gradient Direction",
-            "name": "direction",
+            "label": "Gradient Angle",
+            "name": "angle",
             "aria-label": "",
             "type": "select",
             "instructions": "",
@@ -40,10 +40,11 @@
                 "id": ""
             },
             "choices": {
-                "to-r": "To Right",
-                "to-b": "To Bottom"
+                "45": "Bottom Left to Top Right",
+                "90": "To Right",
+                "180": "To Bottom"
             },
-            "default_value": "to-r",
+            "default_value": 90,
             "return_format": "value",
             "multiple": 0,
             "allow_null": 0,
@@ -56,6 +57,28 @@
             "key": "field_67970e089e424",
             "label": "Start Color",
             "name": "start_color",
+            "aria-label": "",
+            "type": "clone",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "clone": [
+                "group_5d16233395958"
+            ],
+            "display": "group",
+            "layout": "block",
+            "prefix_label": 0,
+            "prefix_name": 1
+        },
+        {
+            "key": "field_679b1878d30d9",
+            "label": "Via Color",
+            "name": "via_color",
             "aria-label": "",
             "type": "clone",
             "instructions": "",
@@ -115,5 +138,5 @@
     "active": false,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1737953449
+    "modified": 1738218543
 }

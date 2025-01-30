@@ -21,8 +21,8 @@ use function BopTail\Helpers\print_module;
 
 $block_args     = isset( $args ) ? $args : '';
 $block_defaults = array(
-	'id'                  => ! empty( $block['anchor'] ) ? $block['anchor'] : 'hero-home-' . $block['id'],
-	'class'               => [ 'acf-block', 'hero-banner', 'hero-banner-home', 'relative' ],
+	'id'                  => ! empty( $block['anchor'] ) ? $block['anchor'] : 'hero-logos-' . $block['id'],
+	'class'               => [ 'acf-block', 'hero-banner', 'hero-banner-logos', 'relative' ],
 	'allowed_innerblocks' => [ 'core/heading', 'core/paragraph' ],
 	'fields'              => [], // Fields passed via the print_block() function.
 );
@@ -49,7 +49,8 @@ $animation_class = $block_classes['animation'];
 
 $container_class = join( ' ', array(
 	'flex',
-	'flex-row',
+	'flex-column',
+	'flex-wrap',
 	'h-full',
 	'relative',
 	'z-20',
@@ -87,18 +88,16 @@ if ( ! empty( $block['data']['_is_preview'] ) ) :
 						'text'  => $block_content['eyebrow'],
 					] );
 				endif;
-				?>
-				<?php
+
 				// Heading.
 				if ( $block_content['heading'] ) :
 					print_element( 'heading', [
 						'level' => 1,
-						'class' => [ $block_classes['heading_color'], 'mb-0',],
+						'class' => $block_classes['heading_color'],
 						'text'  => $block_content['heading'],
 					] );
 				endif;
-				?>
-				<?php
+
 				// Button.
 				if ( $block_content['buttons'] ) :
 					$block_content['buttons']['class'] = 'mt-4';
@@ -106,6 +105,18 @@ if ( ! empty( $block['data']['_is_preview'] ) ) :
 					print_module( 'buttons', $block_content['buttons'] );
 				endif;
 				?>
+			</div>
+			<div class="basis-full self-end pt-10 lg:pt-16">
+				<h2 class="text-xl md:text-3xl font-light text-white uppercase flex justify-content-between align-items-end">
+					<span class="inline-block pr-2 md:pr-4">Trusted by</span><span class="inline-block self-end border-b border-white flex-auto h-px"> </span>
+				</h2>
+				<div class="mx-auto mt-10 grid max-w-lg grid-cols-4 items-center gap-x-0 gap-y-10 sm:max-w-xl sm:grid-cols-6 lg:mx-0 lg:max-w-none lg:grid-cols-5">
+					<img class="col-span-2 max-h-12 w-full object-contain object-center lg:col-span-1 px-4 border-l border-white" src="https://tailwindui.com/plus/img/logos/158x48/transistor-logo-white.svg" alt="Transistor" width="158" height="48">
+					<img class="col-span-2 max-h-12 w-full object-contain object-center lg:col-span-1 px-4 border-l border-white" src="https://tailwindui.com/plus/img/logos/158x48/reform-logo-white.svg" alt="Reform" width="158" height="48">
+					<img class="col-span-2 max-h-12 w-full object-contain object-center lg:col-span-1 px-4 border-l border-white" src="https://tailwindui.com/plus/img/logos/158x48/tuple-logo-white.svg" alt="Tuple" width="158" height="48">
+					<img class="col-span-2 max-h-12 w-full object-contain object-center lg:col-span-1 px-4 border-l border-white" src="https://tailwindui.com/plus/img/logos/158x48/savvycal-logo-white.svg" alt="SavvyCal" width="158" height="48">
+					<img class="col-span-2 max-h-12 w-full object-contain object-center lg:col-span-1 px-4 border-l border-r border-white" src="https://tailwindui.com/plus/img/logos/158x48/statamic-logo-white.svg" alt="Statamic" width="158" height="48">
+				</div>
 			</div>
 		</div>
 	</section>

@@ -54,3 +54,7 @@
 .entry-content > .alignright {
 	@apply float-right ml-8;
 }
+
+.container {
+	@apply mx-auto px-4 lg:px-8;
+}

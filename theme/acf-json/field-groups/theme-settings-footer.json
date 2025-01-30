@@ -82,82 +82,6 @@
             ]
         },
         {
-            "key": "field_65025a094462f",
-            "label": "Subscribe Form",
-            "name": "subscribe_form",
-            "aria-label": "",
-            "type": "group",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "layout": "block",
-            "sub_fields": [
-                {
-                    "key": "field_65025a1744630",
-                    "label": "Heading",
-                    "name": "heading",
-                    "aria-label": "",
-                    "type": "text",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "maxlength": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": ""
-                },
-                {
-                    "key": "field_65025a3544631",
-                    "label": "Content",
-                    "name": "content",
-                    "aria-label": "",
-                    "type": "text",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "maxlength": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": ""
-                },
-                {
-                    "key": "field_65025a4244632",
-                    "label": "Form",
-                    "name": "form",
-                    "aria-label": "",
-                    "type": "forms",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "return_format": "id",
-                    "allow_null": 0,
-                    "multiple": 0
-                }
-            ]
-        },
-        {
             "key": "field_618c6651a35a1",
             "label": "Copyright",
             "name": "copyright",
@@ -308,11 +232,11 @@
                                 "id": ""
                             },
                             "choices": {
-                                "linkedin": "LinkedIn",
-                                "twitter": "X (Twitter)",
-                                "facebook": "Facebook",
-                                "instagram": "instagram",
-                                "youtube": "YouTube"
+                                "linkedin": "<div style=\"display: flex; align-items: center;\"><i style=\"background-color:#f3f3f3; border: 1px solid #ddd; display:inline-block; margin-right: 10px; width: 20px; height: 20px;\" class=\"dashicons dashicons-linkedin\"><\/i> LinkedIn<\/div>",
+                                "twitter": "<div style=\"display: flex; align-items: center;\"><i style=\"background-color:#f3f3f3; border: 1px solid #ddd; display:inline-block; margin-right: 10px; width: 20px; height: 20px;\" class=\"dashicons dashicons-twitter\"><\/i> X (Twitter)<\/div>",
+                                "facebook": "<div style=\"display: flex; align-items: center;\"><i style=\"background-color:#f3f3f3; border: 1px solid #ddd; display:inline-block; margin-right: 10px; width: 20px; height: 20px;\" class=\"dashicons dashicons-facebook\"><\/i> Facebook<\/div>",
+                                "instagram": "<div style=\"display: flex; align-items: center;\"><i style=\"background-color:#f3f3f3; border: 1px solid #ddd; display:inline-block; margin-right: 10px; width: 20px; height: 20px;\" class=\"dashicons dashicons-instagram\"><\/i> Instagram<\/div>",
+                                "youtube": "<div style=\"display: flex; align-items: center;\"><i style=\"background-color:#f3f3f3; border: 1px solid #ddd; display:inline-block; margin-right: 10px; width: 20px; height: 20px;\" class=\"dashicons dashicons-youtube\"><\/i> YouTube<\/div>"
                             },
                             "default_value": false,
                             "return_format": "value",
@@ -366,5 +290,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1736838011
+    "modified": 1738199713
 }

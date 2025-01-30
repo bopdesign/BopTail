@@ -6,3 +6,19 @@
  *
  * https://tailwindcss.com/docs/adding-custom-styles#adding-custom-utilities
  */
+
+@utility bg-gradient-horizontal {
+	background: transparent linear-gradient(to right, #e5554f 0%, #fed141 51%, #00b5e2 100%) 0 0 no-repeat padding-box;
+}
+
+@utility bg-gradient-vertical {
+	background: transparent linear-gradient(#e5554f 0%, #fed141 51%, #00b5e2 100%) 0 0 no-repeat padding-box;
+}
+
+@utility separator-vertical-gradient {
+	@apply absolute left-0 top-0 w-1 md:w-1.5 h-full bg-gradient-vertical;
+}
+
+@utility separator-horizontal-gradient {
+	@apply absolute left-0 bottom-0 h-1 md:h-1.5 w-full bg-gradient-horizontal;
+}

@@ -1,20 +1,18 @@
 /**
  * Global Footer Menus.
  */
-@layer components {
-	.footer-menu {
-		@apply space-y-14;
-	}
-	.footer-menu > .menu-item {
-		@apply border-b md:border-b-0 md:border-l border-white mb-4 md:mb-0 pb-4 md:pb-0 md:pl-6;
-	}
-	.footer-menu > .menu-item > a {
-		@apply block font-bold uppercase pb-6;
-	}
-	.footer-menu .sub-menu {
-		@apply space-y-5;
-	}
-	.footer-menu .sub-menu .menu-item {
-		@apply block;
-	}
+.footer-menu > .menu-item {
+	@apply border-b md:border-b-0 md:border-l border-white pb-4 md:pb-0 md:pl-6;
+}
+.footer-menu > .menu-item:not(:last-child) {
+	@apply mb-14;
+}
+.footer-menu > .menu-item > a {
+	@apply block font-bold uppercase pb-6;
+}
+.footer-menu .sub-menu .menu-item {
+	@apply block;
+}
+.footer-menu .sub-menu .menu-item:not(:last-child) {
+	@apply mb-5;
 }

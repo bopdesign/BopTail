@@ -11,15 +11,15 @@
 
 <header id="masthead" role="banner" class="fixed bg-foreground text-lg text-background w-full z-50">
 
-	<nav id="site-navigation" class="relative flex items-center justify-between" aria-label="<?php esc_attr_e( 'Main Navigation', 'boptail' ); ?>">
-		<div class="container">
+	<nav id="site-navigation" class="relative flex items-center justify-between" aria-label="<?php esc_attr_e( 'Main Navigation', BOPTAIL_TEXT_DOMAIN ); ?>">
+		<div class="container mx-auto px-4 lg:px-8">
 			<div class="relative h-20 lg:h-24 flex flex-1 items-center lg:justify-between">
 				<div class="absolute inset-y-0 right-0 flex items-center lg:hidden">
 					<button type="button"
-					        class="relative bg-tertiary inline-flex items-center justify-center rounded-full p-2 text-foreground hover:bg-secondary focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+					        class="relative bg-tertiary inline-flex items-center justify-center rounded-sm p-2 text-foreground hover:bg-secondary focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
 					        aria-controls="primary-menu" aria-expanded="false">
 						<span class="absolute -inset-0.5"></span>
-						<span class="sr-only"><?php esc_html_e( 'Primary Menu', 'boptail' ); ?></span>
+						<span class="sr-only"><?php esc_html_e( 'Primary Menu', BOPTAIL_TEXT_DOMAIN ); ?></span>
 						<!--
 						  Icon when menu is closed.
 						  Menu open: "hidden", Menu closed: "block"

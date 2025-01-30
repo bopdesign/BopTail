@@ -149,9 +149,9 @@ function print_background_options( $settings ) {
 			$background_video   = $background_options['video'];
 			$background_classes = [
 				'background-video',
+				'not-prose',
 				'block',
 				'overflow-hidden',
-				'object-top',
 				'absolute',
 				'inset-0',
 				'w-full',
@@ -173,10 +173,11 @@ function print_background_options( $settings ) {
 					case 'file':
 						$video_id = uniqid( 'bop-tail-video-' );
 						?>
-						<video id="<?php echo esc_attr( $video_id ); ?>" autoplay muted playsinline loop
-						       preload="none" <?php if ( ! empty( $background_video['video_placeholder'] ) ) : ?>
-							poster="<?php echo esc_url( wp_get_attachment_image_url( $background_video['video_placeholder'], 'full' ) ); ?>"
-						<?php endif; ?>>
+						<video id="<?php echo esc_attr( $video_id ); ?>" class="object-cover object-center m-0 w-full h-full"
+						       autoplay muted playsinline loop preload="none"
+							<?php if ( ! empty( $background_video['video_placeholder'] ) ) : ?>
+								poster="<?php echo esc_url( wp_get_attachment_image_url( $background_video['video_placeholder'], 'full' ) ); ?>"
+							<?php endif; ?>>
 							<?php if ( ! empty( $background_video['video_mp4'] ) ) : ?>
 								<source src="<?php echo esc_url( $background_video['video_mp4'] ); ?>" type="video/mp4">
 							<?php endif; ?>
@@ -238,17 +239,20 @@ function print_background_options( $settings ) {
 //					$overlay_classes[] = "bg-$overlay_gradient";
 //				}
 
-				// Example: bg-gradient-to-r from-color-300 to-color-800
-				// Directions: bg-gradient-to-r | bg-gradient-to-b
-				// Colors: bg-background | bg-foreground | bg-primary | bg-secondary | bg-tertiary
-				$gradient_direction = $overlay_settings['overlay_gradient']['direction'] ?? 'to-r';
-				$overlay_classes[]  = 'bg-gradient-' . $gradient_direction;
+				// Generated class example: bg-linear-0 from-color-aaa via-color-bbb to-color-ccc
+				// Angles: bg-linear-45 | bg-linear-90 | bg-linear-180
+				$gradient_angle = $overlay_settings['overlay_gradient']['angle'] ?? '90';
+				$overlay_classes[]  = 'bg-linear-' . $gradient_angle;
 
-				// Example: from-background | from-foreground | from-primary | from-secondary | from-tertiary
+				// Example: from-background | from-foreground | from-primary | from-secondary | from-tertiary | from-white | from-black
 				if ( ! empty( $overlay_settings['overlay_gradient']['start_color']['color_picker'] ) ) {
 					$overlay_classes[] = 'from-' . $overlay_settings['overlay_gradient']['start_color']['color_picker'];
 				}
-				// Example: to-background | to-foreground | to-primary | to-secondary | to-tertiary
+				// Example: via-background | via-foreground | via-primary | via-secondary | via-tertiary | via-white | via-black
+				if ( ! empty( $overlay_settings['overlay_gradient']['via_color']['color_picker'] ) ) {
+					$overlay_classes[] = 'via-' . $overlay_settings['overlay_gradient']['via_color']['color_picker'];
+				}
+				// Example: to-background | to-foreground | to-primary | to-secondary | to-tertiary | to-white | to-black
 				if ( ! empty( $overlay_settings['overlay_gradient']['end_color']['color_picker'] ) ) {
 					$overlay_classes[] = 'to-' . $overlay_settings['overlay_gradient']['end_color']['color_picker'];
 				}

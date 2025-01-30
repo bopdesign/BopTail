@@ -208,13 +208,6 @@
                         "operator": "==",
                         "value": "image"
                     }
-                ],
-                [
-                    {
-                        "field": "field_6508826cb6947",
-                        "operator": "==",
-                        "value": "video"
-                    }
                 ]
             ],
             "wrapper": {
@@ -478,8 +471,8 @@
                 "id": ""
             },
             "choices": {
-                "container": "Container",
-                "container-fluid": "Full"
+                "contained": "Contained",
+                "full": "Full"
             },
             "default_value": "container",
             "return_format": "value",
@@ -722,5 +715,5 @@
     "active": true,
     "description": "Block Settings - background, typography, spacing, etc.",
     "show_in_rest": 0,
-    "modified": 1738003319
+    "modified": 1738217169
 }
