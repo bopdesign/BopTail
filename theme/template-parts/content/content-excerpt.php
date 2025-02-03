@@ -14,7 +14,7 @@
 	<header class="entry-header">
 		<?php
 		if ( is_sticky() && is_home() && ! is_paged() ) {
-			printf( '%s', esc_html_x( 'Featured', 'post', 'boptail' ) );
+			printf( '%s', esc_html_x( 'Featured', 'post', BOPTAIL_TEXT_DOMAIN ) );
 		}
 		the_title( sprintf( '<h2 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' );
 		?>

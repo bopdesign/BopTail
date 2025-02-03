@@ -31,7 +31,7 @@ if ( post_password_required() ) {
 				// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
 				printf(
 					/* translators: 1: title. */
-					esc_html__( 'One comment on &ldquo;%1$s&rdquo;', 'boptail' ),
+					esc_html__( 'One comment on &ldquo;%1$s&rdquo;', BOPTAIL_TEXT_DOMAIN ),
 					get_the_title()
 				);
 				// phpcs:enable WordPress.Security.EscapeOutput.OutputNotEscaped
@@ -39,7 +39,7 @@ if ( post_password_required() ) {
 				// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
 				printf(
 					/* translators: 1: comment count number, 2: title. */
-					esc_html( _nx( '%1$s comment on &ldquo;%2$s&rdquo;', '%1$s comments on &ldquo;%2$s&rdquo;', $boptail_comment_count, 'comments title', 'boptail' ) ),
+					esc_html( _nx( '%1$s comment on &ldquo;%2$s&rdquo;', '%1$s comments on &ldquo;%2$s&rdquo;', $boptail_comment_count, 'comments title', BOPTAIL_TEXT_DOMAIN ) ),
 					number_format_i18n( $boptail_comment_count ),
 					get_the_title()
 				);
@@ -69,7 +69,7 @@ if ( post_password_required() ) {
 		// message.
 		if ( ! comments_open() ) :
 			?>
-			<p><?php esc_html_e( 'Comments are closed.', 'boptail' ); ?></p>
+			<p><?php esc_html_e( 'Comments are closed.', BOPTAIL_TEXT_DOMAIN ); ?></p>
 			<?php
 		endif;
 

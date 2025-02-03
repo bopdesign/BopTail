@@ -53,9 +53,9 @@ function boptail_html5_comment( $comment, $args, $depth ) {
 	$show_pending_links = ! empty( $commenter['comment_author'] );
 
 	if ( $commenter['comment_author_email'] ) {
-		$moderation_note = __( 'Your comment is awaiting moderation.', 'boptail' );
+		$moderation_note = __( 'Your comment is awaiting moderation.', BOPTAIL_TEXT_DOMAIN );
 	} else {
-		$moderation_note = __( 'Your comment is awaiting moderation. This is a preview; your comment will be visible after it has been approved.', 'boptail' );
+		$moderation_note = __( 'Your comment is awaiting moderation. This is a preview; your comment will be visible after it has been approved.', BOPTAIL_TEXT_DOMAIN );
 	}
 	?>
 	<<?php echo esc_attr( $tag ); ?> id="comment-<?php comment_ID(); ?>" <?php comment_class( $comment->has_children ? 'parent' : '', $comment ); ?>>
@@ -76,7 +76,7 @@ function boptail_html5_comment( $comment, $args, $depth ) {
 
 				printf(
 				/* translators: %s: Comment author link. */
-					wp_kses_post( __( '%s <span class="says">says:</span>', 'boptail' ) ),
+					wp_kses_post( __( '%s <span class="says">says:</span>', BOPTAIL_TEXT_DOMAIN ) ),
 					sprintf( '<b class="fn">%s</b>', wp_kses_post( $comment_author ) )
 				);
 				?>
@@ -91,14 +91,14 @@ function boptail_html5_comment( $comment, $args, $depth ) {
 					esc_html(
 						sprintf(
 						/* translators: 1: Comment date, 2: Comment time. */
-							__( '%1$s at %2$s', 'boptail' ),
+							__( '%1$s at %2$s', BOPTAIL_TEXT_DOMAIN ),
 							get_comment_date( '', $comment ),
 							get_comment_time()
 						)
 					)
 				);
 
-				edit_comment_link( __( 'Edit', 'boptail' ), ' <span class="edit-link">', '</span>' );
+				edit_comment_link( __( 'Edit', BOPTAIL_TEXT_DOMAIN ), ' <span class="edit-link">', '</span>' );
 				?>
 			</div><!-- .comment-metadata -->
 

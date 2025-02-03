@@ -14,7 +14,7 @@
 	<header class="entry-header">
 		<?php
 		if ( is_sticky() && is_home() && ! is_paged() ) {
-			printf( '<span">%s</span>', esc_html_x( 'Featured', 'post', 'boptail' ) );
+			printf( '<span">%s</span>', esc_html_x( 'Featured', 'post', BOPTAIL_TEXT_DOMAIN ) );
 		}
 		if ( is_singular() ) :
 			the_title( '<h1 class="entry-title">', '</h1>' );
@@ -32,7 +32,7 @@
 
 		wp_link_pages(
 			array(
-				'before' => '<div>' . __( 'Pages:', 'boptail' ),
+				'before' => '<div>' . __( 'Pages:', BOPTAIL_TEXT_DOMAIN ),
 				'after'  => '</div>',
 			)
 		);

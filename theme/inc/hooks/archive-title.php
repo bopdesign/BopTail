@@ -34,33 +34,33 @@ add_filter( 'get_the_archive_title', __NAMESPACE__ . '\remove_archive_title_pref
  */
 function boptail_get_the_archive_title() {
 	if ( is_category() ) {
-		$title = __( 'Category Archives: ', 'boptail' ) . '<span>' . single_term_title( '', false ) . '</span>';
+		$title = __( 'Category Archives: ', BOPTAIL_TEXT_DOMAIN ) . '<span>' . single_term_title( '', false ) . '</span>';
 	} elseif ( is_tag() ) {
-		$title = __( 'Tag Archives: ', 'boptail' ) . '<span>' . single_term_title( '', false ) . '</span>';
+		$title = __( 'Tag Archives: ', BOPTAIL_TEXT_DOMAIN ) . '<span>' . single_term_title( '', false ) . '</span>';
 	} elseif ( is_author() ) {
-		$title = __( 'Author Archives: ', 'boptail' ) . '<span>' . get_the_author_meta( 'display_name' ) . '</span>';
+		$title = __( 'Author Archives: ', BOPTAIL_TEXT_DOMAIN ) . '<span>' . get_the_author_meta( 'display_name' ) . '</span>';
 	} elseif ( is_year() ) {
-		$title = __( 'Yearly Archives: ', 'boptail' ) . '<span>' . get_the_date( _x( 'Y', 'yearly archives date format', 'boptail' ) ) . '</span>';
+		$title = __( 'Yearly Archives: ', BOPTAIL_TEXT_DOMAIN ) . '<span>' . get_the_date( _x( 'Y', 'yearly archives date format', BOPTAIL_TEXT_DOMAIN ) ) . '</span>';
 	} elseif ( is_month() ) {
-		$title = __( 'Monthly Archives: ', 'boptail' ) . '<span>' . get_the_date( _x( 'F Y', 'monthly archives date format', 'boptail' ) ) . '</span>';
+		$title = __( 'Monthly Archives: ', BOPTAIL_TEXT_DOMAIN ) . '<span>' . get_the_date( _x( 'F Y', 'monthly archives date format', BOPTAIL_TEXT_DOMAIN ) ) . '</span>';
 	} elseif ( is_day() ) {
-		$title = __( 'Daily Archives: ', 'boptail' ) . '<span>' . get_the_date() . '</span>';
+		$title = __( 'Daily Archives: ', BOPTAIL_TEXT_DOMAIN ) . '<span>' . get_the_date() . '</span>';
 	} elseif ( is_post_type_archive() ) {
 		$cpt   = get_post_type_object( get_queried_object()->name );
 		$title = sprintf(
 		/* translators: %s: Post type singular name */
-			esc_html__( '%s Archives', 'boptail' ),
+			esc_html__( '%s Archives', BOPTAIL_TEXT_DOMAIN ),
 			$cpt->labels->singular_name
 		);
 	} elseif ( is_tax() ) {
 		$tax   = get_taxonomy( get_queried_object()->taxonomy );
 		$title = sprintf(
 		/* translators: %s: Taxonomy singular name */
-			esc_html__( '%s Archives', 'boptail' ),
+			esc_html__( '%s Archives', BOPTAIL_TEXT_DOMAIN ),
 			$tax->labels->singular_name
 		);
 	} else {
-		$title = __( 'Archives:', 'boptail' );
+		$title = __( 'Archives:', BOPTAIL_TEXT_DOMAIN );
 	}
 
 	return $title;

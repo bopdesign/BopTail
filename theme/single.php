@@ -22,11 +22,11 @@ get_header();
 				// Previous/next post navigation.
 				the_post_navigation(
 					array(
-						'next_text' => '<span aria-hidden="true">' . __( 'Next Post', 'boptail' ) . '</span> ' .
-							'<span class="sr-only">' . __( 'Next post:', 'boptail' ) . '</span> <br/>' .
+						'next_text' => '<span aria-hidden="true">' . __( 'Next Post', BOPTAIL_TEXT_DOMAIN ) . '</span> ' .
+							'<span class="sr-only">' . __( 'Next post:', BOPTAIL_TEXT_DOMAIN ) . '</span> <br/>' .
 							'<span>%title</span>',
-						'prev_text' => '<span aria-hidden="true">' . __( 'Previous Post', 'boptail' ) . '</span> ' .
-							'<span class="sr-only">' . __( 'Previous post:', 'boptail' ) . '</span> <br/>' .
+						'prev_text' => '<span aria-hidden="true">' . __( 'Previous Post', BOPTAIL_TEXT_DOMAIN ) . '</span> ' .
+							'<span class="sr-only">' . __( 'Previous post:', BOPTAIL_TEXT_DOMAIN ) . '</span> <br/>' .
 							'<span>%title</span>',
 					)
 				);

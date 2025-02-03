@@ -19,7 +19,7 @@
 				printf(
 					/* translators: 1: search result title. 2: search term. */
 					'<h1 class="page-title">%1$s <span>%2$s</span></h1>',
-					esc_html__( 'Search results for:', 'boptail' ),
+					esc_html__( 'Search results for:', BOPTAIL_TEXT_DOMAIN ),
 					get_search_query()
 				);
 				?>
@@ -27,7 +27,7 @@
 
 		<?php else : ?>
 
-			<h1 class="page-title"><?php esc_html_e( 'Nothing Found', 'boptail' ); ?></h1>
+			<h1 class="page-title"><?php esc_html_e( 'Nothing Found', BOPTAIL_TEXT_DOMAIN ); ?></h1>
 
 		<?php endif; ?>
 	</header><!-- .page-header -->
@@ -38,14 +38,14 @@
 			?>
 
 			<p>
-				<?php esc_html_e( 'Your site is set to show the most recent posts on your homepage, but you haven&rsquo;t published any posts.', 'boptail' ); ?>
+				<?php esc_html_e( 'Your site is set to show the most recent posts on your homepage, but you haven&rsquo;t published any posts.', BOPTAIL_TEXT_DOMAIN ); ?>
 			</p>
 
 			<p>
 				<a href="<?php echo esc_url( admin_url( 'edit.php' ) ); ?>">
 					<?php
 					/* translators: 1: link to WP admin new post page. */
-					esc_html_e( 'Add or publish posts', 'boptail' );
+					esc_html_e( 'Add or publish posts', BOPTAIL_TEXT_DOMAIN );
 					?>
 				</a>
 			</p>
@@ -55,7 +55,7 @@
 			?>
 
 			<p>
-				<?php esc_html_e( 'Your search generated no results. Please try a different search.', 'boptail' ); ?>
+				<?php esc_html_e( 'Your search generated no results. Please try a different search.', BOPTAIL_TEXT_DOMAIN ); ?>
 			</p>
 
 			<?php
@@ -64,7 +64,7 @@
 			?>
 
 			<p>
-				<?php esc_html_e( 'No content matched your request.', 'boptail' ); ?>
+				<?php esc_html_e( 'No content matched your request.', BOPTAIL_TEXT_DOMAIN ); ?>
 			</p>
 
 			<?php

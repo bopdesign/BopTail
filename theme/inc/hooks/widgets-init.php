@@ -15,7 +15,7 @@ namespace BopTail\Hooks\Widgets;
 function widgets_init() {
 	// Define sidebars.
 	$sidebars = [
-		'sidebar-1' => esc_html__( 'Footer', 'boptail' ),
+		'sidebar-1' => esc_html__( 'Footer', BOPTAIL_TEXT_DOMAIN ),
 	];
 
 	// Loop through each sidebar and register.
@@ -23,7 +23,7 @@ function widgets_init() {
 		register_sidebar( array(
 			'name'          => $sidebar_name,
 			'id'            => $sidebar_id,
-			'description'   => /* translators: the sidebar name */ sprintf( esc_html__( 'Widget area for %s', 'boptail' ), $sidebar_name ),
+			'description'   => /* translators: the sidebar name */ sprintf( esc_html__( 'Widget area for %s', BOPTAIL_TEXT_DOMAIN ), $sidebar_name ),
 			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</aside>',
 			'before_title'  => '<h2 class="widget-title">',
