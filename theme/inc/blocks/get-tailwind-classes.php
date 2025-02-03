@@ -223,7 +223,7 @@ function get_tailwind_classes( $settings ) {
 		'small'   => '16',   // mb-16 | mt-16 | pt-16 | pb-16
 		'medium'  => '32',   // mb-32 | mt-32 | pt-32 | pb-32
 		'large'   => '48',   // mb-48 | mt-48 | pt-48 | pb-48
-		'x-large' => '64',   // mb-64 | mt-64 | pt-16 | pb-64
+		'x-large' => '64',   // mb-64 | mt-64 | pt-64 | pb-64
 	);
 	$classes['spacing'] = array();
 

@@ -50,6 +50,17 @@
     "layout": {
       "contentSize": "80rem",
       "wideSize": "96rem"
+    },
+    "spacing": {
+      "margin": false,
+      "padding": false,
+      "units": []
+    },
+    "typography": {
+      "customFontSize": false,
+      "lineHeight": false,
+      "dropCap": false,
+      "fontSizes": []
     }
   }
 }

@@ -39,4 +39,7 @@
 	/**
 	 * Add your theme below:
 	 */
+	--font-sans: Futura, ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
+	'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+	--breakpoint-2xl: 90rem;
 }

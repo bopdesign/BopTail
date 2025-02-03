@@ -30,8 +30,8 @@ Underscores and Varia are distributed under the terms of the GNU GPL v2 or later
 Actual CSS can be found in ./theme/assets/css/ folder.
 */
 :root {
-  --font-sans: Futura, ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-	'Segoe UI Symbol', 'Noto Color Emoji';
+  --font-sans: Futura, ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
+	'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   --font-serif: ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono',
     'Courier New', monospace;
@@ -40,7 +40,7 @@ Actual CSS can be found in ./theme/assets/css/ folder.
   --breakpoint-md: 48rem;
   --breakpoint-lg: 64rem;
   --breakpoint-xl: 80rem;
-  --breakpoint-2xl: 96rem;
+  --breakpoint-2xl: 90rem;
   --container-3xs: 16rem;
   --container-2xs: 18rem;
   --container-xs: 20rem;
@@ -330,13 +330,6 @@ button, input:where([type='button'], [type='reset'], [type='submit']), ::file-se
   float: right;
   margin-left: calc(var(--spacing) * 8);
 }
-.container {
-  margin-inline: auto;
-  padding-inline: calc(var(--spacing) * 4);
-  @media (width >= 64rem) {
-    padding-inline: calc(var(--spacing) * 8);
-  }
-}
 .navigation-menu {
   a:not([rel='button']) {
     display: block;
@@ -556,12 +549,19 @@ button, input:where([type='button'], [type='reset'], [type='submit']), ::file-se
   @media (width >= 80rem) {
     max-width: 80rem;
   }
-  @media (width >= 96rem) {
-    max-width: 96rem;
+  @media (width >= 90rem) {
+    max-width: 90rem;
   }
 }
 .m-0 {
   margin: calc(var(--spacing) * 0);
+}
+.container {
+  margin-inline: auto;
+  padding-inline: calc(var(--spacing) * 4);
+  @media (width >= 64rem) {
+    padding-inline: calc(var(--spacing) * 8);
+  }
 }
 .mx-auto {
   margin-inline: auto;
@@ -1219,6 +1219,9 @@ button, input:where([type='button'], [type='reset'], [type='submit']), ::file-se
 .overflow-hidden {
   overflow: hidden;
 }
+.overflow-x-hidden {
+  overflow-x: hidden;
+}
 .rounded {
   border-radius: 0.25rem;
 }
@@ -1468,6 +1471,9 @@ button, input:where([type='button'], [type='reset'], [type='submit']), ::file-se
 }
 .pt-48 {
   padding-top: calc(var(--spacing) * 48);
+}
+.pt-64 {
+  padding-top: calc(var(--spacing) * 64);
 }
 .pr-2 {
   padding-right: calc(var(--spacing) * 2);

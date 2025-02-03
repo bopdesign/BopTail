@@ -6,6 +6,9 @@
  *
  * https://tailwindcss.com/docs/adding-custom-styles#adding-custom-utilities
  */
+@utility container {
+	@apply mx-auto px-4 lg:px-8;
+}
 
 @utility bg-gradient-horizontal {
 	background: transparent linear-gradient(to right, #e5554f 0%, #fed141 51%, #00b5e2 100%) 0 0 no-repeat padding-box;

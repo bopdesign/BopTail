@@ -19,13 +19,13 @@
 	<?php wp_head(); ?>
 </head>
 
-<body <?php body_class('flex min-h-full'); ?>>
+<body <?php body_class('min-h-full'); ?>>
 
 <?php wp_body_open(); ?>
 
-<div id="page" class="w-full">
-	<a href="#content" class="sr-only"><?php esc_html_e( 'Skip to content', 'boptail' ); ?></a>
+<div id="page">
+	<a href="#content" class="sr-only"><?php esc_html_e( 'Skip to content', BOPTAIL_TEXT_DOMAIN ); ?></a>
 
 	<?php get_template_part( 'template-parts/layout/header', 'content' ); ?>
 
-	<div id="content" class="flex flex-col w-full">
+	<div id="content">

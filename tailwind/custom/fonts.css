@@ -3,7 +3,3 @@
  *
  * These will be added immediately before Tailwind’s `base` layer.
  */
-@theme {
-	--font-sans: Futura, ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-	'Segoe UI Symbol', 'Noto Color Emoji';
-}
