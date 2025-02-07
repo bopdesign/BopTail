@@ -3,8 +3,6 @@
  * Custom template tags for this theme
  *
  * Eventually, some functionality here could be replaced by core features.
- *
- * @package BopTail
  */
 
 

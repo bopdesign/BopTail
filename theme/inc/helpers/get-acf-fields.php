@@ -1,8 +1,6 @@
 <?php
 /**
  * Returns an array of ACF fields.
- *
- * @package BopTail
  */
 
 namespace BopTail\Helpers;

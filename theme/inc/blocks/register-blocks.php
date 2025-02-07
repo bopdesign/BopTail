@@ -1,8 +1,6 @@
 <?php
 /**
  * Register custom blocks for the theme.
- *
- * @package BopTail
  */
 
 namespace BopTail\Blocks;

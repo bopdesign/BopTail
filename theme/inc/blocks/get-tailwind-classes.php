@@ -6,8 +6,6 @@
  * @param array $settings Block settings
  *
  * @return array Array of Tailwind classes
- *
- * @package BopTail
  */
 
 namespace BopTail\Blocks;

@@ -1,8 +1,6 @@
 <?php
 /**
  * Echo data in a formatted style.
- *
- * @package BopTail
  */
 
 namespace BopTail\Functions;

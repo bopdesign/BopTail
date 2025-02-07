@@ -1,8 +1,6 @@
 <?php
 /**
  * Merges the element defaults with the passed args.
- *
- * @package BopTail
  */
 
 namespace BopTail\Helpers;

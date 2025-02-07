@@ -1,8 +1,6 @@
 <?php
 /**
  * Optimize theme performance.
- *
- * @package BopTail
  */
 
 namespace BopTail\Optimization;

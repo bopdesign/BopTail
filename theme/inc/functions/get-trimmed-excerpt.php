@@ -1,8 +1,6 @@
 <?php
 /**
  * Limit the excerpt length.
- *
- * @package BopTail
  */
 
 namespace BopTail\Functions;

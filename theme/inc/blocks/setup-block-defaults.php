@@ -2,8 +2,6 @@
 
 /**
  * Returns arrays of defaults for a block.
- *
- * @package BopTail
  */
 
 namespace BopTail\Blocks;

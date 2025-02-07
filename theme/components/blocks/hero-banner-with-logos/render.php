@@ -9,8 +9,6 @@
  * @param array        $content    The block inner HTML (empty).
  * @param bool         $is_preview True during AJAX preview.
  * @param (int|string) $post_id    The post ID this block is saved to.
- *
- * @package BopTail
  */
 
 use function BopTail\Helpers\get_acf_fields;

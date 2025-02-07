@@ -1,8 +1,6 @@
 <?php
 /**
  * Display SVG Markup.
- *
- * @package BopTail
  */
 
 namespace BopTail\TemplateTags;

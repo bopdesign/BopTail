@@ -2,8 +2,6 @@
 /**
  * MODULE: Buttons Group
  * Display one or multiple buttons.
- *
- * @package BopTail
  */
 
 use function BopTail\Helpers\print_element;

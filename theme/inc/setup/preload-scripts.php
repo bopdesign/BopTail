@@ -1,8 +1,6 @@
 <?php
 /**
  * Preload styles and scripts.
- *
- * @package BopTail
  */
 
 namespace BopTail\Setup;

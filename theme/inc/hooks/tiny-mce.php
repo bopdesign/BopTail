@@ -1,8 +1,6 @@
 <?php
 /**
  * Tweak TinyMCE editor.
- *
- * @package BopTail
  */
 
 namespace BopTail\Hooks\TinyMCE;

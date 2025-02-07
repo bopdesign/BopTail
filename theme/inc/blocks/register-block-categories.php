@@ -1,8 +1,6 @@
 <?php
 /**
  * Register block categories.
- *
- * @package BopTail
  */
 
 namespace BopTail\Blocks;

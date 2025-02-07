@@ -1,8 +1,6 @@
 <?php
 /**
  * Returns a string of formatted element attributes.
- *
- * @package BopTail
  */
 
 namespace BopTail\Helpers;

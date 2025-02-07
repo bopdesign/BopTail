@@ -1,8 +1,6 @@
 <?php
 /**
  * Render a module.
- *
- * @package BopTail
  */
 
 namespace BopTail\Helpers;

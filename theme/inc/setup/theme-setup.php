@@ -1,8 +1,6 @@
 <?php
 /**
  * Sets up theme defaults and registers support for various WordPress features.
- *
- * @package BopTail
  */
 
 namespace BopTail\Setup\Theme;

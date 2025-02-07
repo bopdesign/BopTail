@@ -2,8 +2,6 @@
 
 /**
  * Render block background options.
- *
- * @package BopTail
  */
 
 namespace BopTail\Blocks;

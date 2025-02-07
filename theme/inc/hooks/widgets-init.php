@@ -1,8 +1,6 @@
 <?php
 /**
  * Widget area settings.
- *
- * @package BopTail
  */
 
 namespace BopTail\Hooks\Widgets;

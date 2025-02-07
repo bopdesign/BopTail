@@ -2,8 +2,6 @@
 
 /**
  * Returns an array of block settings.
- *
- * @package BopTail
  */
 
 namespace BopTail\Blocks;

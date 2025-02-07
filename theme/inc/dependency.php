@@ -1,8 +1,6 @@
 <?php
 /**
  * Safe check for ACF 6.0.
- *
- * @package BopTail
  */
 
 namespace BopTail\Dependency;

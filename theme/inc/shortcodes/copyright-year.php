@@ -1,8 +1,6 @@
 <?php
 /**
  * Shortcode to display copyright year.
- *
- * @package BopTail
  */
 
 namespace BopTail\Shortcodes;

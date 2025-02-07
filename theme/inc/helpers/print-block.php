@@ -3,8 +3,6 @@
  * Render a block.
  *
  * To be used from a template part to render a block.
- *
- * @package BopTail
  */
 
 namespace BopTail\Helpers;

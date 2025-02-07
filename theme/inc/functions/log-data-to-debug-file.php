@@ -1,8 +1,6 @@
 <?php
 /**
  * Log data to the debug.log file.
- *
- * @package BopTail
  */
 
 namespace BopTail\Functions;

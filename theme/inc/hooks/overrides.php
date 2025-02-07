@@ -1,8 +1,6 @@
 <?php
 /**
  * This file contains hooks and functions that override the behavior of WP Core.
- *
- * @package BopTail
  */
 
 namespace BopTail\Hooks\Overrides;

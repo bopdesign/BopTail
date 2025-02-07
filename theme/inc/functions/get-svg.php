@@ -1,8 +1,6 @@
 <?php
 /**
  * Return SVG markup.
- *
- * @package BopTail
  */
 
 namespace BopTail\Functions;

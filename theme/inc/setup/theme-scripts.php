@@ -1,8 +1,6 @@
 <?php
 /**
  * Setup theme scripts and styles.
- *
- * @package BopTail
  */
 
 namespace BopTail\Setup\Scripts;

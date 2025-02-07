@@ -1,8 +1,6 @@
 <?php
 /**
  * Removes or Adjusts the prefix on category archive page titles.
- *
- * @package BopTail
  */
 
 namespace BopTail\Hooks\ArchiveTitle;

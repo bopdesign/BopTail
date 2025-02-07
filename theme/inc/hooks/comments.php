@@ -1,8 +1,6 @@
 <?php
 /**
  * Functions related to comments functionality.
- *
- * @package BopTail
  */
 
 namespace BopTail\Hooks\Comments;

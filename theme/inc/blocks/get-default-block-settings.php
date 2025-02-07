@@ -4,8 +4,6 @@
  * Default block settings structure
  *
  * @return array
- *
- * @package BopTail
  */
 
 namespace BopTail\Blocks;

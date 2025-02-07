@@ -1,9 +1,6 @@
 <?php
 /**
  * Backwards compatibility.
- *
- * @package BopTail
- * @since 1.0.0
  */
 
 namespace BopTail\Compatibility;
@@ -13,7 +10,6 @@ namespace BopTail\Compatibility;
  *
  * Switches to the default theme.
  *
- * @since 1.0.0
  * @return void
  */
 function switch_theme() {
@@ -24,13 +20,9 @@ function switch_theme() {
 add_action( 'after_switch_theme', __NAMESPACE__ . '\switch_theme' );
 
 /**
- * Adds a message for unsuccessful theme switch.
+ * Displays an upgrade notice if the current WordPress or PHP version does not meet the theme requirements,
+ * after an unsuccessful attempt to switch to the theme.
  *
- * Prints an update nag after an unsuccessful attempt to switch to the theme.
- *
- * @since 1.0.0
- *
- * @global mixed $wp_version WordPress version.
  * @return void
  */
 function upgrade_notice() {
@@ -40,12 +32,13 @@ function upgrade_notice() {
 }
 
 /**
- * Prevents the Customizer from being loaded on WordPress versions prior to 5.5.
+ * Halts execution and displays a message for unsupported WordPress or PHP versions.
  *
- * @since 1.0.0
+ * Outputs an error message and a back link if the current WordPress or PHP version
+ * does not meet the minimum requirements for the theme.
  *
- * @global string $wp_version WordPress version.
  * @return void
+ * @global mixed $wp_version WordPress version.
  */
 function customize() {
 	wp_die(
@@ -64,12 +57,13 @@ function customize() {
 add_action( 'load-customize.php', __NAMESPACE__ . '\customize' );
 
 /**
- * Prevents the Theme Preview from being loaded on WordPress versions prior to 5.5.
+ * Terminates execution if a theme preview is requested and requirements are not met.
  *
- * @since 1.0.0
+ * Displays an error message and stops script execution when the theme preview is accessed,
+ * and the WordPress or PHP version does not meet the required minimum versions.
  *
- * @global string $wp_version WordPress version.
  * @return void
+ * @global mixed $wp_version WordPress version.
  */
 function preview() {
 	if ( isset( $_GET['preview'] ) ) {

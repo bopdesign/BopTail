@@ -1,8 +1,6 @@
 <?php
 /**
  * Functions which enhance the theme by hooking into WordPress.
- *
- * @package BopTail
  */
 
 namespace BopTail\Hooks\Filters;

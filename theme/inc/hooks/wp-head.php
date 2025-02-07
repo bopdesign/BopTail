@@ -1,8 +1,6 @@
 <?php
 /**
  * This file contains hooks for wp_head.
- *
- * @package BopTail
  */
 
 namespace BopTail\Hooks\WP_Head;

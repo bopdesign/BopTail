@@ -6,8 +6,6 @@
  * Elements are analogous to 'Atoms' in Brad Frost's Atomic Design Methodology.
  *
  * @link    https://atomicdesign.bradfrost.com/chapter-2/#atoms
- *
- * @package BopTail
  */
 
 use function BopTail\Helpers\get_formatted_atts;
