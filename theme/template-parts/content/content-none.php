@@ -2,7 +2,7 @@
 /**
  * Template part for displaying a message when posts are not found
  *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
+ * @link    https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
  * @package BopTail
  */
@@ -16,12 +16,7 @@
 
 			<h1 class="page-title">
 				<?php
-				printf(
-					/* translators: 1: search result title. 2: search term. */
-					'<h1 class="page-title">%1$s <span>%2$s</span></h1>',
-					esc_html__( 'Search results for:', BOPTAIL_TEXT_DOMAIN ),
-					get_search_query()
-				);
+				printf( /* translators: 1: search result title. 2: search term. */ '<h1 class="page-title">%1$s <span>%2$s</span></h1>', esc_html__( 'Search results for:', BOPTAIL_TEXT_DOMAIN ), get_search_query() );
 				?>
 			</h1>
 
@@ -33,9 +28,7 @@
 	</header><!-- .page-header -->
 
 	<div <?php boptail_content_class( 'page-content' ); ?>>
-		<?php
-		if ( is_home() && current_user_can( 'publish_posts' ) ) :
-			?>
+		<?php if ( is_home() && current_user_can( 'publish_posts' ) ) : ?>
 
 			<p>
 				<?php esc_html_e( 'Your site is set to show the most recent posts on your homepage, but you haven&rsquo;t published any posts.', BOPTAIL_TEXT_DOMAIN ); ?>
@@ -50,9 +43,7 @@
 				</a>
 			</p>
 
-			<?php
-		elseif ( is_search() ) :
-			?>
+		<?php elseif ( is_search() ) : ?>
 
 			<p>
 				<?php esc_html_e( 'Your search generated no results. Please try a different search.', BOPTAIL_TEXT_DOMAIN ); ?>

@@ -5,7 +5,6 @@
  * Eventually, some functionality here could be replaced by core features.
  */
 
-
 use function BopTail\Hooks\Filters\can_show_post_thumbnail;
 
 if ( ! function_exists( 'boptail_posted_on' ) ) :
@@ -106,20 +105,20 @@ if ( ! function_exists( 'boptail_entry_meta' ) ) :
 		}
 
 		// Edit post link.
-		edit_post_link(
-			sprintf(
-				wp_kses(
-					/* translators: %s: Name of current post. Only visible to screen readers. */
-					__( 'Edit <span class="sr-only">%s</span>', BOPTAIL_TEXT_DOMAIN ),
-					array(
-						'span' => array(
-							'class' => array(),
-						),
-					)
-				),
-				get_the_title()
-			)
-		);
+		boptail_edit_entry_link();
+	}
+endif;
+
+if ( ! function_exists( 'boptail_edit_entry_link' ) ) :
+	/**
+	 * Prints edit button for a post/page.
+	 */
+	function boptail_edit_entry_link() {
+		edit_post_link( sprintf( wp_kses( /* translators: %s: Name of current post. Only visible to screen readers. */ __( 'Edit <span class="sr-only">%s</span>', BOPTAIL_TEXT_DOMAIN ), array(
+			'span' => array(
+				'class' => array(),
+			),
+		) ), get_the_title() ), '<div class="inline-block px-4 py-2 bg-[#1d2327] text-[#f0f0f1] text-sm relative hover:bg-[#2c3338]"><span class="dashicons dashicons-edit mr-1"></span>', '</div>', false, 'after:absolute after:inset-0 after:z-1' );
 	}
 endif;
 
@@ -167,20 +166,7 @@ if ( ! function_exists( 'boptail_entry_footer' ) ) :
 		}
 
 		// Edit post link.
-		edit_post_link(
-			sprintf(
-				wp_kses(
-					/* translators: %s: Name of current post. Only visible to screen readers. */
-					__( 'Edit <span class="sr-only">%s</span>', BOPTAIL_TEXT_DOMAIN ),
-					array(
-						'span' => array(
-							'class' => array(),
-						),
-					)
-				),
-				get_the_title()
-			)
-		);
+		boptail_edit_entry_link();
 	}
 endif;
 

@@ -13,7 +13,7 @@
   ],
   "acf": {
     "mode": "auto",
-    "renderTemplate": "render.php",
+    "renderTemplate": "template.php",
     "validate": false
   },
   "attributes": {

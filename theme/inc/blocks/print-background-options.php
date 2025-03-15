@@ -6,6 +6,8 @@
 
 namespace BopTail\Blocks;
 
+use function BopTail\Functions\echo_data;
+
 /**
  * Render a module.
  *
@@ -29,15 +31,20 @@ function print_background_options( $settings ) {
 	if ( $background_options['type'] ) {
 		if ( 'image' === $background_options['type'] ) {
 			$background_image      = $background_options['image'];
-			$background_image_id   = false;
-			$background_image_size = 'full';
 
 			if ( ! empty( $background_image['use_featured_image'] ) && $background_image['use_featured_image'] && has_post_thumbnail() ) {
 				$background_image_id = get_post_thumbnail_id();
 			} elseif ( ! empty( $background_image['image'] ) ) {
 				$background_image_id = $background_image['image']['ID'];
+			} else {
+				return '';
 			}
 
+			if ( empty( $background_image_id ) ) {
+				return '';
+			}
+
+			$background_image_size = 'full';
 			$background_classes = [
 				'background-image',
 				'block',
@@ -170,6 +177,10 @@ function print_background_options( $settings ) {
 				switch ( $background_video['video_type'] ) {
 					case 'file':
 						$video_id = uniqid( 'bop-tail-video-' );
+						if ( empty( $background_video['video_mp4'] ) && empty( $background_video['video_mp4'] ) ) {
+							error_log( 'Background Options: No video selected.' );
+							break;
+						}
 						?>
 						<video id="<?php echo esc_attr( $video_id ); ?>" class="object-cover object-center m-0 w-full h-full"
 						       autoplay muted playsinline loop preload="none"

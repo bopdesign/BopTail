@@ -19,8 +19,8 @@
 	 * These theme variables use CSS variables set by WordPress using values
 	 * from your `theme.json` file.
 	 *
-	 * If you are using the classic editor, you may need to use hardcoded
-	 * color values instead of the `var()` functions below.
+	 * If you are using the classic editor, you should use hardcoded color
+	 * values instead of the `var()` functions below.
 	 *
 	 * Use --color-*: initial to completely disable all of the default colors and
 	 * define your own custom color palette:
@@ -28,20 +28,36 @@
 	--color-*: initial;
 	--color-background: var(--wp--preset--color--background);
 	--color-foreground: var(--wp--preset--color--foreground);
-	--color-white: var(--wp--preset--color--white);
-	--color-black: var(--wp--preset--color--black);
 	--color-primary: var(--wp--preset--color--primary);
 	--color-secondary: var(--wp--preset--color--secondary);
 	--color-tertiary: var(--wp--preset--color--tertiary);
 	--container-content: var(--wp--style--global--content-size);
 	--container-wide: var(--wp--style--global--wide-size);
 
+	--color-black: var(--wp--preset--color--black);
+	--color-white: var(--wp--preset--color--white);
+
+	/**
+	 * These are the default `font-family` theme variables included with
+	 * Tailwind. You can update them below by adding custom fonts at the
+	 * beginning of each value.
+	 *
+	 * Default theme variables can be found in their entirety at the links
+	 * below, on GitHub or in Tailwind’s documentation, respectively:
+	 *
+	 * https://github.com/tailwindlabs/tailwindcss/blob/main/packages/tailwindcss/theme.css
+	 * https://tailwindcss.com/docs/theme#default-theme-variable-reference
+	 */
+	--font-sans: Geist, ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+	'Noto Color Emoji';
+	--font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+	--font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+	--breakpoint-2xl: 90rem;
+
 	/**
 	 * Add your theme below:
 	 */
-	--font-sans: Futura, ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
-	'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-	--breakpoint-2xl: 90rem;
 
 	/**
 	 * Custom easing curves

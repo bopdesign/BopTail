@@ -11,7 +11,7 @@ namespace BopTail\Setup\Scripts;
  * @return void
  */
 function theme_scripts() {
-	wp_enqueue_style( 'boptail-style', get_template_directory_uri() . '/assets/css/app.css', array(), BOPTAIL_VERSION );
+	wp_enqueue_style( 'boptail-style', get_template_directory_uri() . '/style.css', array(), BOPTAIL_VERSION );
 	wp_enqueue_script( 'boptail-script', get_template_directory_uri() . '/assets/js/script.min.js', array(), BOPTAIL_VERSION, true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {

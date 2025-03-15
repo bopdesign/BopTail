@@ -17,22 +17,9 @@
 
 	<?php if ( get_edit_post_link() ) : ?>
 		<footer class="entry-footer">
-			<?php
-			edit_post_link(
-				sprintf(
-					wp_kses(
-						/* translators: %s: Name of current post. Only visible to screen readers. */
-						__( 'Edit <span class="sr-only">%s</span>', BOPTAIL_TEXT_DOMAIN ),
-						array(
-							'span' => array(
-								'class' => array(),
-							),
-						)
-					),
-					get_the_title()
-				)
-			);
-			?>
+			<div class="container my-4">
+				<?php boptail_edit_entry_link(); ?>
+			</div>
 		</footer><!-- .entry-footer -->
 	<?php endif; ?>
 

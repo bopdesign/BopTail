@@ -19,7 +19,7 @@
 	<?php wp_head(); ?>
 </head>
 
-<body <?php body_class('min-h-full no-js'); ?>>
+<body <?php body_class('min-h-full selection:bg-primary selection:text-white no-js'); ?>>
 
 <?php wp_body_open(); ?>
 

@@ -1,7 +1,0 @@
-/*! tailwindcss v4.0.0 | MIT License | https://tailwindcss.com */
-.entry-header, .entry-content {
-  padding-inline: calc(var(--spacing) * 8);
-}
-.wp-block .background-image img {
-  height: 100%;
-}

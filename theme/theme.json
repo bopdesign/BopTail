@@ -26,7 +26,7 @@
           "name": "White"
         },
         {
-          "slug": "Black",
+          "slug": "black",
           "color": "#000",
           "name": "Black"
         },
@@ -58,9 +58,39 @@
     },
     "typography": {
       "customFontSize": false,
-      "lineHeight": false,
       "dropCap": false,
+      "fontStyle": true,
+      "fontWeight": true,
+      "letterSpacing": false,
+      "lineHeight": false,
+      "textColumns": false,
+      "textDecoration": true,
+      "textTransform": true,
+      "writingMode": false,
+      "fontFamilies": [
+        {
+          "name": "Geist",
+          "slug": "geist",
+          "fontFamily": "Geist, sans-serif",
+          "fontFace": [
+            {
+              "fontFamily": "Geist",
+              "fontWeight": "100 900",
+              "fontStyle": "normal",
+              "fontStretch": "normal",
+              "fontDisplay": "swap",
+              "src": [ "file:./assets/fonts/Geist/Geist[wght].woff2" ]
+            }
+          ]
+        }
+      ],
+      "fluid": false,
       "fontSizes": []
+    }
+  },
+  "styles": {
+    "typography": {
+      "fontFamily": "var(--wp--preset--font-family--geist)"
     }
   }
 }

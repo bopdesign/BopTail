@@ -4,7 +4,7 @@ Theme URI: https://github.com/bopdesign/BopTail
 Author: Bop Design
 Author URI: https://www.bopdesign.com/
 Description: A custom theme based on _tw
-Version: 0.4.0
+Version: 0.5.0
 Tested up to: 6.2
 Requires PHP: 7.4
 License: GNU General Public License v3 or later
@@ -25,6 +25,4 @@ _tw is based on Underscores https://underscores.me/ and Varia https://github.com
 Underscores and Varia are distributed under the terms of the GNU GPL v2 or later:
 - Underscores: https://github.com/Automattic/_s/blob/master/LICENSE (GNU GPLv2)
 - Varia: https://github.com/Automattic/themes/blob/trunk/varia/LICENSE (GNU GPLv2)
-
-Actual CSS can be found in ./theme/assets/css/ folder.
 */

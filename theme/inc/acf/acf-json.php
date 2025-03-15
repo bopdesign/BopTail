@@ -1,10 +1,20 @@
 <?php
 /**
- * Place ACF JSON in field-groups directory.
- * Save fields as JSON, allow syncing.
+ * Modifies the filename for saving ACF JSON files.
+ *
+ * This function replaces spaces, underscores, and colons in the title of the ACF field group
+ * with dashes or removes them entirely, then converts the title to lowercase and appends
+ * the `.json` extension.
+ *
+ * @param string $filename  The original file name.
+ * @param array  $post      The post data array, containing the 'title' key.
+ * @param string $load_path The intended file path for saving.
+ *
+ * @return string The modified file name.
  */
 
 namespace BopTail\ACF;
+
 
 function acf_json_filename( $filename, $post, $load_path ) {
 	$filename = str_replace( array(
@@ -21,8 +31,8 @@ function acf_json_filename( $filename, $post, $load_path ) {
 
 	return $filename;
 }
-
-add_filter( 'acf/json/save_file_name', __NAMESPACE__ . '\acf_json_filename', 10, 3 );
+// When renaming, leaves out the file with original name, as well as after duplicating field group and renaming it.
+//add_filter( 'acf/json/save_file_name', __NAMESPACE__ . '\acf_json_filename', 10, 3 );
 
 // Set all ACF field groups to save into a specific folder.
 function acf_field_groups_save_folder( $path ) {

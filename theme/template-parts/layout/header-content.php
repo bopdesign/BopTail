@@ -42,7 +42,7 @@
 
 				<div class="site-branding flex shrink-0 items-center">
 					<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
-						<img class="h-12 w-auto" src="https://tailwindui.com/plus/img/logos/mark.svg?color=blue&shade=500" alt="Data Clarity">
+						<img class="h-12 w-auto" src="https://tailwindui.com/plus-assets/img/logos/mark.svg?color=blue&shade=500" alt="Go back to home page">
 					</a>
 				</div>
 				<?php
