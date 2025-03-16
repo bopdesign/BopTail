@@ -50,7 +50,7 @@ function enqueue_admin_scripts( $hook ) {
 	 *
 	 * This adds ACF script to content editing pages and theme options only.
 	 */
-	if ( 'post.php' === $hook || str_contains( $hook, 'theme-settings' ) || str_contains( $hook, '_page_footer' ) ) {
+	if ( 'post.php' === $hook || str_contains( $hook, 'site-settings' ) || str_contains( $hook, '_page_footer' ) ) {
 		wp_enqueue_script( 'boptail-acf-script', get_theme_file_uri( '/assets/js/admin-acf.min.js' ), [ 'acf-input' ], null );
 	}
 }

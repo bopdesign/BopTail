@@ -7,16 +7,17 @@
  * @package BopTail
  */
 
+$site_logo = get_field( 'site_logo', 'options' );
 ?>
 
-<header id="masthead" role="banner" class="fixed bg-foreground text-lg text-background w-full z-50">
+<header id="masthead" role="banner" class="sticky top-0 left-0 right-0 bg-background text-lg text-foreground w-full z-50">
 
 	<nav id="site-navigation" class="relative flex items-center justify-between" aria-label="<?php esc_attr_e( 'Main Navigation', BOPTAIL_TEXT_DOMAIN ); ?>">
 		<div class="container mx-auto px-4 lg:px-8">
 			<div class="relative h-20 lg:h-24 flex flex-1 items-center lg:justify-between">
 				<div class="absolute inset-y-0 right-0 flex items-center lg:hidden">
 					<button type="button"
-					        class="relative bg-tertiary inline-flex items-center justify-center rounded-sm p-2 text-foreground hover:bg-secondary focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+					        class="relative bg-secondary inline-flex items-center justify-center rounded-sm p-2 text-foreground hover:bg-primary focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
 					        aria-controls="primary-menu" aria-expanded="false">
 						<span class="absolute -inset-0.5"></span>
 						<span class="sr-only"><?php esc_html_e( 'Primary Menu', BOPTAIL_TEXT_DOMAIN ); ?></span>
@@ -42,7 +43,13 @@
 
 				<div class="site-branding flex shrink-0 items-center">
 					<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
-						<img class="h-12 w-auto" src="https://tailwindui.com/plus-assets/img/logos/mark.svg?color=blue&shade=500" alt="Go back to home page">
+						<?php
+						if ( ! empty( $site_logo ) ) :
+							echo wp_get_attachment_image( $site_logo, 'medium', false, array( 'class' => 'h-12 w-auto', 'alt' => 'Go back to home page', 'fetchpriority' => 'high' ) );
+						else :
+							?>
+							<p class="text-2xl font-bold text-foreground"><?php echo esc_html( get_bloginfo( 'name', 'display' ) ); ?></p>
+						<?php endif; ?>
 					</a>
 				</div>
 				<?php

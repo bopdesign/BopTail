@@ -12,12 +12,12 @@
       "palette": [
         {
           "slug": "background",
-          "color": "#f3f3f3",
+          "color": "#fff",
           "name": "Background"
         },
         {
           "slug": "foreground",
-          "color": "#1d252d",
+          "color": "#03282c",
           "name": "Foreground"
         },
         {
@@ -32,18 +32,13 @@
         },
         {
           "slug": "primary",
-          "color": "#004ea8",
+          "color": "#11615c",
           "name": "Primary"
         },
         {
           "slug": "secondary",
-          "color": "#f9e547",
+          "color": "#14e5c5",
           "name": "Secondary"
-        },
-        {
-          "slug": "tertiary",
-          "color": "#418fde",
-          "name": "Tertiary"
         }
       ]
     },
@@ -91,6 +86,42 @@
   "styles": {
     "typography": {
       "fontFamily": "var(--wp--preset--font-family--geist)"
+    },
+    "elements": {
+      "button": {
+        "border": {
+          "color": "var(--wp--preset--color--primary)",
+          "width": "1px",
+          "style": "solid",
+          "radius": "12px"
+        },
+        "color": {
+          "background": "var(--wp--preset--color--primary)",
+          "text": "var(--wp--preset--color--foreground)"
+        },
+        ":hover": {
+          "color": {
+            "background": "transparent",
+            "text": "var(--wp--preset--color--foreground)"
+          }
+        },
+        ":focus": {
+          "color": {
+            "background": "transparent",
+            "text": "var(--wp--preset--color--foreground)"
+          }
+        },
+        ":active": {
+          "color": {
+            "background": "transparent",
+            "text": "var(--wp--preset--color--foreground)"
+          }
+        },
+        "typography": {
+          "fontWeight": "700",
+          "lineHeight": "1.5"
+        }
+      }
     }
   }
 }

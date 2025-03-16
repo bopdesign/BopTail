@@ -1,6 +1,6 @@
 {
     "key": "group_618c67c013317",
-    "title": "Theme Settings: General",
+    "title": "Site Settings: General",
     "fields": [
         {
             "key": "field_65025a094462f",
@@ -315,5 +315,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1741925759
+    "modified": 1742143998
 }

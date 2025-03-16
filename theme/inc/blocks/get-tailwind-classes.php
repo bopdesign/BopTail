@@ -96,7 +96,7 @@ function get_tailwind_classes( $settings ) {
 
 		switch ( $bg['type'] ) {
 			case 'color':
-				// Background Colors: bg-background | bg-foreground | bg-primary | bg-secondary | bg-tertiary
+				// Background Colors: bg-background | bg-foreground | bg-primary | bg-secondary
 				if ( ! empty( $bg['color']['color_picker'] ) ) {
 					$bg_classes[] = 'color-as-background';
 					$bg_classes[] = 'has-' . $bg['color']['color_picker'] . '-background-color';
@@ -158,7 +158,7 @@ function get_tailwind_classes( $settings ) {
 	}
 
 	// Typography classes
-	// Text Colors: text-background | text-foreground | text-primary | text-secondary | text-tertiary
+	// Text Colors: text-background | text-foreground | text-primary | text-secondary
 	$classes['eyebrow_color'] = '';
 	$classes['heading_color'] = '';
 	$classes['content_color'] = '';

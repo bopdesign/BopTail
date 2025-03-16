@@ -1,10 +1,10 @@
 {
     "key": "ui_options_page_65021c361f394",
-    "title": "Theme Settings",
+    "title": "Site Settings",
     "active": true,
     "menu_order": 0,
-    "page_title": "Theme Settings",
-    "menu_slug": "theme-settings",
+    "page_title": "Site Settings",
+    "menu_slug": "site-settings",
     "parent_slug": "none",
     "advanced_configuration": 1,
     "icon_url": "",
@@ -22,5 +22,5 @@
     "data_storage": "options",
     "post_id": "",
     "autoload": 0,
-    "modified": 1741974937
+    "modified": 1742143891
 }

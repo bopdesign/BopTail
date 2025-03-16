@@ -1,6 +1,6 @@
 {
     "key": "group_618c66176b48b",
-    "title": "Theme Settings: Footer",
+    "title": "Site Settings: Footer",
     "fields": [
         {
             "key": "field_65025a7444633",
@@ -290,5 +290,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1741926160
+    "modified": 1742143989
 }

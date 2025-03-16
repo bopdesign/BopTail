@@ -16,12 +16,11 @@ use function BopTail\Blocks\setup_block_defaults;
 use function BopTail\Blocks\print_background_options;
 use function BopTail\Helpers\print_element;
 use function BopTail\Helpers\print_module;
-use function BopTail\Functions\echo_data;
 
 $block_args     = isset( $args ) ? $args : '';
 $block_defaults = array(
 	'id'                  => ! empty( $block['anchor'] ) ? $block['anchor'] : 'hero-home-' . $block['id'],
-	'class'               => [ 'acf-block', 'hero-banner', 'hero-banner-home', 'relative' ],
+	'class'               => [ 'acf-block', 'acf-block-body', 'hero-banner', 'hero-banner-home', 'relative' ],
 	'allowed_innerblocks' => [ 'core/heading', 'core/paragraph' ],
 	'fields'              => [], // Fields passed via the print_block() function.
 );
@@ -97,7 +96,16 @@ if ( ! empty( $block['data']['_is_preview'] ) ) :
 				endif;
 				?>
 				<?php
-				// Button.
+				// Content.
+				if ( $block_content['content'] ) :
+					print_element( 'content', [
+						'class'   => [ $block_classes['content_color'], 'mb-8', ],
+						'content' => $block_content['content'],
+					] );
+				endif;
+				?>
+				<?php
+				// Buttons.
 				if ( $block_content['buttons'] ) :
 					$block_content['buttons']['class'] = 'mt-4';
 

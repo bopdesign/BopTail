@@ -47,6 +47,7 @@ function print_background_options( $settings ) {
 			$background_image_size = 'full';
 			$background_classes = [
 				'background-image',
+				'not-prose',
 				'block',
 				'm-0',
 				'absolute',
@@ -94,6 +95,7 @@ function print_background_options( $settings ) {
 							break;
 					}
 				}
+
 				$background_class = implode( ' ', $background_classes );
 				?>
 				<div class="<?php echo esc_attr( $background_class ); ?>"
@@ -253,15 +255,15 @@ function print_background_options( $settings ) {
 				$gradient_angle = $overlay_settings['overlay_gradient']['angle'] ?? '90';
 				$overlay_classes[]  = 'bg-linear-' . $gradient_angle;
 
-				// Example: from-background | from-foreground | from-primary | from-secondary | from-tertiary | from-white | from-black
+				// Example: from-background | from-foreground | from-primary | from-secondary | from-white | from-black
 				if ( ! empty( $overlay_settings['overlay_gradient']['start_color']['color_picker'] ) ) {
 					$overlay_classes[] = 'from-' . $overlay_settings['overlay_gradient']['start_color']['color_picker'];
 				}
-				// Example: via-background | via-foreground | via-primary | via-secondary | via-tertiary | via-white | via-black
+				// Example: via-background | via-foreground | via-primary | via-secondary | via-white | via-black
 				if ( ! empty( $overlay_settings['overlay_gradient']['via_color']['color_picker'] ) ) {
 					$overlay_classes[] = 'via-' . $overlay_settings['overlay_gradient']['via_color']['color_picker'];
 				}
-				// Example: to-background | to-foreground | to-primary | to-secondary | to-tertiary | to-white | to-black
+				// Example: to-background | to-foreground | to-primary | to-secondary | to-white | to-black
 				if ( ! empty( $overlay_settings['overlay_gradient']['end_color']['color_picker'] ) ) {
 					$overlay_classes[] = 'to-' . $overlay_settings['overlay_gradient']['end_color']['color_picker'];
 				}

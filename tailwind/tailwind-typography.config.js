@@ -102,6 +102,11 @@ module.exports = {
 							// 'thead th': {
 							// 	fontWeight: '600',
 							// },
+							// lineHeight: {
+							// 	'extra-tight': '1.1', // Example: a tighter line height
+							// 	'extra-loose': '1.8', // Example: a looser line height
+							// },
+							lineHeight: 1.5
 						},
 					],
 				},

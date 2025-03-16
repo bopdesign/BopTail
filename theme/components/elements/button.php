@@ -13,7 +13,7 @@ use function BopTail\Helpers\get_formatted_args;
 use function BopTail\TemplateTags\print_svg;
 
 $element_defaults = [
-	'class'         => [ 'acf-element', 'acf-element-button', 'btn', 'px-3', 'py-2', ],
+	'class'         => [ 'acf-element', 'acf-element-button', 'btn', 'not-prose', 'inline-flex', 'items-center', 'justify-center', 'whitespace-nowrap', 'px-6', 'py-2', 'rounded-xl', 'font-bold' ],
 	'id'            => '',
 	'title'         => false,
 	'url'           => false,
