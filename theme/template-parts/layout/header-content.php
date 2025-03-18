@@ -56,7 +56,7 @@ $site_logo = get_field( 'site_logo', 'options' );
 				wp_nav_menu( array(
 					'theme_location' => 'primary',
 					'menu_id'        => 'primary-menu',
-					'menu_class'     => 'navigation-menu hidden h-full lg:flex items-center space-x-12',
+					'menu_class'     => 'navigation-menu hidden h-full lg:flex items-center space-x-6 xl:space-x-10',
 					'items_wrap'     => '<ul id="%1$s" class="%2$s" aria-label="submenu">%3$s</ul>',
 					'container'      => false,
 				) );

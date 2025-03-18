@@ -40,6 +40,7 @@ $block_content = ! empty( $block_defaults['fields'] ) ? $block_defaults['fields'
 	'heading',
 	'content',
 	'buttons',
+	'side_image',
 ), $block['id'] );
 
 // Extract animation class in case we want to apply to a single element.
@@ -56,8 +57,10 @@ $container_class = join( ' ', array(
 ) );
 $column_class    = join( ' ', array(
 	'hero-content',
-	'relative',
-	'pl-6 lg:pl-10',
+	'flex',
+	'flex-col',
+	'justify-center',
+	'space-y-4',
 	$block_classes['align_text'],
 	$block_classes['inner_width'],
 	$animation_class,

@@ -62,9 +62,9 @@ module.exports = {
 							// 	fontWeight: '500',
 							// },
 							h1: {
-								fontSize: 'clamp(2.8125rem, -3.75rem + 13.6719vw, 5rem)',
+								fontSize: 'clamp(2.8125rem, -3.75rem + 13.6719vw, 4rem)',
 								fontWeight: '700',
-								lineHeight: '1.5',
+								lineHeight: '1.2',
 							},
 							// 'h1 strong': {
 							// 	fontWeight: '900',

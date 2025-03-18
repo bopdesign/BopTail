@@ -60,7 +60,7 @@ function output_utilities_bar() {
 
 	<div class="<?php echo esc_attr( $utilities_bar_class ); ?>">
 		<div class="container">
-			<div class="flex flex-1 items-center lg:justify-between">
+			<div class="flex flex-1 items-center sm:justify-between">
 				<div id="utility-bar-links" class="flex items-center">
 					<?php
 					if ( ! empty( $utility_links_output ) ) {

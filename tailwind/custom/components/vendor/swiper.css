@@ -1,0 +1,12 @@
+.swiper-button-prev,
+.swiper-button-next {
+	@apply border border-primary rounded-full;
+	width: var(--swiper-navigation-size) !important;
+}
+
+.swiper-button-prev::after,
+.swiper-button-next::after,
+.swiper-rtl .swiper-button-prev::after {
+	content: '' !important;
+	font-family: var(--font-sans, sans-serif), sans-serif !important;
+}

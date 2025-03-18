@@ -23,8 +23,18 @@ function register_acf_blocks() {
 
 		foreach ( $block_dirs as $block ) {
 			register_block_type( $block );
+
+			/**
+			 * If there’s an init.php file in the block directory, load that too.
+			 * Additional PHP code to run independent of the block’s rendering, i.e.:
+			 * - register fields via PHP
+			 * - register styles and scripts
+			 */
+			if ( file_exists( $block . '/init.php' ) ) {
+				include_once $block . '/init.php';
+			}
 		}
 	}
 }
 
-add_action( 'init', __NAMESPACE__ . '\register_acf_blocks', 5 );
+add_action( 'acf/init', __NAMESPACE__ . '\register_acf_blocks', 5 );

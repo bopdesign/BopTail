@@ -13,7 +13,7 @@ use function BopTail\Helpers\get_formatted_args;
 use function BopTail\TemplateTags\print_svg;
 
 $element_defaults = [
-	'class'         => [ 'acf-element', 'acf-element-button', 'btn', 'not-prose', 'inline-flex', 'items-center', 'justify-center', 'whitespace-nowrap', 'px-6', 'py-2', 'rounded-xl', 'font-bold' ],
+	'class'         => [ 'acf-element', 'acf-element-button', 'wp-element-button', 'btn', 'not-prose', 'inline-flex', 'items-center', 'justify-center', 'whitespace-nowrap', 'pl-6', 'pr-4', 'py-2', 'rounded-xl', 'font-bold' ],
 	'id'            => '',
 	'title'         => false,
 	'url'           => false,
@@ -59,5 +59,6 @@ if ( $element_args['title'] || $element_args['icon'] ) :
 			print_svg( $element_args['icon'] );
 		endif;
 		?>
+		<span class="dashicons dashicons-arrow-right-alt2 ml-1"></span>
 	</<?php echo $element_tag; ?>>
 <?php endif; ?>

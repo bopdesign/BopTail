@@ -15,6 +15,7 @@ define( 'BOPTAIL_ROOT_PATH', trailingslashit( get_template_directory() ) );
 define( 'BOPTAIL_ROOT_URL', trailingslashit( get_template_directory_uri() ) );
 define( 'BOPTAIL_INC', BOPTAIL_ROOT_PATH . 'inc/' );
 define( 'BOPTAIL_COMPONENTS', BOPTAIL_ROOT_PATH . 'components/' );
+define( 'BOPTAIL_BLOCKS_PATH', BOPTAIL_COMPONENTS . 'blocks/' );
 define( 'BOPTAIL_TEXT_DOMAIN', 'boptail' );
 
 if ( ! defined( 'BOPTAIL_VERSION' ) ) {
