@@ -53,23 +53,23 @@ function output_utilities_bar() {
 				$icon_output = $link_data['title'];
 			}
 
-			$utility_links_output .= sprintf( '<a href="%s" class="utilities-bar__link font-bold mr-4">%s</a>', esc_url( $link_data['url'] ), $icon_output );
+			$utility_links_output .= sprintf( '<a href="%s" class="utilities-bar__link font-bold">%s</a>', esc_url( $link_data['url'] ), $icon_output );
 		}
 	}
 	?>
 
 	<div class="<?php echo esc_attr( $utilities_bar_class ); ?>">
 		<div class="container">
-			<div class="flex flex-1 items-center sm:justify-between">
-				<div id="utility-bar-links" class="flex items-center">
+			<div class="flex flex-1 items-center gap-2 md:gap-4 sm:justify-between">
+				<div id="utility-bar-links" class="flex items-center gap-2 md:gap-4">
 					<?php
 					if ( ! empty( $utility_links_output ) ) {
 						echo wp_kses_post( $utility_links_output );
 					}
 					?>
 				</div>
-				<div id="utility-bar-tools" class="flex items-center">
-					<a href="#language" class="utilities-bar__link font-bold mr-4">
+				<div id="utility-bar-tools" class="flex items-center gap-2 md:gap-4">
+					<a href="#language" class="utilities-bar__link font-bold">
 						<span class="dashicons dashicons-location mr-1"></span>English
 					</a>
 				</div>
