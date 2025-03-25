@@ -10,8 +10,6 @@
 
 namespace BopTail\Blocks;
 
-use function BopTail\Functions\echo_data;
-
 function get_tailwind_classes( $settings ) {
 	// Gutenberg classes.
 	if ( empty( $settings['align'] ) || 'none' === $settings['align'] ) {
@@ -90,7 +88,9 @@ function get_tailwind_classes( $settings ) {
 	}
 
 	// Background classes.
-	if ( ! empty( $settings['background'] ) && ! empty( $settings['background']['type'] && $settings['background']['type'] !== 'none' ) ) {
+	$classes['background'] = '';
+
+	if ( ! empty( $settings['background'] ) && ! empty( $settings['background']['type'] && 'none' !== $settings['background']['type'] ) ) {
 		$bg           = $settings['background'];
 		$bg_classes[] = 'has-background';
 
@@ -210,7 +210,7 @@ function get_tailwind_classes( $settings ) {
 	// Animation classes
 	$classes['animation'] = '';
 
-	if ( ! empty( $settings['animation'] ) && $settings['animation'] !== 'none' ) {
+	if ( ! empty( $settings['animation'] ) && 'none' !== $settings['animation'] ) {
 		$classes['animation'] = 'wow animate__' . $settings['animation'];
 	}
 
