@@ -10,7 +10,7 @@
 $site_logo = get_field( 'site_logo', 'options' );
 ?>
 
-<header id="masthead" role="banner" class="sticky top-0 left-0 right-0 bg-background text-lg text-foreground w-full z-50">
+<header id="masthead" role="banner" class="sticky top-0 left-0 right-0 bg-background text-foreground w-full z-50">
 
 	<nav id="site-navigation" class="relative flex items-center justify-between" aria-label="<?php esc_attr_e( 'Main Navigation', BOPTAIL_TEXT_DOMAIN ); ?>">
 		<div class="container mx-auto px-4 lg:px-8">

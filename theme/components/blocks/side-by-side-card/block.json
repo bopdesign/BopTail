@@ -1,0 +1,54 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "boptail/side-by-side-card",
+  "title": "Side by Side (Card)",
+  "description": "Displays side by side - Media + Card (Content Rows).",
+  "category": "boptail",
+  "icon": "columns",
+  "keywords": [
+    "hero",
+    "banner",
+    "home"
+  ],
+  "acf": {
+    "mode": "auto",
+    "renderTemplate": "template.php",
+    "validate": false
+  },
+  "attributes": {
+    "align": {
+      "type": "string",
+      "default": "full"
+    }
+  },
+  "supports": {
+    "align": [
+      "wide",
+      "full"
+    ],
+    "alignContent": false,
+    "alignText": false,
+    "anchor": true,
+    "color": {
+      "background": false,
+      "link": false,
+      "text": false
+    },
+    "fullHeight": false,
+    "html": false,
+    "jsx": false,
+    "multiple": true,
+    "reusable": false
+  },
+  "example": {
+    "attributes": {
+      "mode": "preview",
+      "data": {
+        "_is_preview": "true",
+        "heading": "Main heading of the block",
+        "content": "A copy of text following the heading"
+      }
+    }
+  }
+}

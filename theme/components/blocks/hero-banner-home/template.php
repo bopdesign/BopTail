@@ -22,7 +22,9 @@ $block_defaults = array(
 	'id'                  => ! empty( $block['anchor'] ) ? $block['anchor'] : 'hero-home-' . $block['id'],
 	'class'               => [ 'acf-block', 'acf-block-body', 'hero-banner', 'hero-banner-home', 'relative' ],
 	'allowed_innerblocks' => [ 'core/heading', 'core/paragraph' ],
-	'fields'              => [], // Fields passed via the print_block() function.
+	// Which blocks do we want to allow to be nested in InnerBlocks.
+	'fields'              => [],
+	// Fields passed via the print_block() function.
 );
 
 // Returns updated $block_defaults array with classes from Gutenberg and Background Options, or from the print_block() function.

@@ -25,7 +25,7 @@ function print_background_options( $settings ) {
 	/**
 	 * Setup background defaults.
 	 */
-	$background_image_markup = $background_video_markup = $background_overlay_markup = '';
+	$background_image_markup = $background_video_markup = $background_overlay_markup = $background_pattern_markup = '';
 
 	// Only try to get the rest of the settings if the background type is set to anything.
 	if ( $background_options['type'] ) {
@@ -230,7 +230,6 @@ function print_background_options( $settings ) {
 				'inset-0',
 				'w-full',
 				'h-auto',
-				'z-10',
 			);
 
 			if ( 'color' === $overlay_settings['overlay_type'] ) {
@@ -243,12 +242,12 @@ function print_background_options( $settings ) {
 			}
 
 			if ( 'gradient' === $overlay_settings['overlay_type'] ) {
-//				$overlay_gradient = $overlay_settings['overlay_gradient']['gradient_picker'];
-//
-//				if ( '' !== $overlay_gradient ) {
-//					$overlay_classes[] = 'has-' . $overlay_gradient . '-background-gradient';
-//					$overlay_classes[] = "bg-$overlay_gradient";
-//				}
+				$overlay_gradient = $overlay_settings['overlay_gradient']['gradient_picker'];
+
+				if ( '' !== $overlay_gradient ) {
+					$overlay_classes[] = 'has-' . $overlay_gradient . '-background-gradient';
+					$overlay_classes[] = "bg-$overlay_gradient";
+				}
 
 				// Generated class example: bg-linear-0 from-color-aaa via-color-bbb to-color-ccc
 				// Angles: bg-linear-45 | bg-linear-90 | bg-linear-180
@@ -314,18 +313,75 @@ function print_background_options( $settings ) {
 		}
 	}
 
+	if ( ! empty( $background_options['pattern'] ) ) {
+		$pattern_settings = $background_options['pattern'];
+
+		// Bail early if no image is set/found.
+		if ( empty( $pattern_settings['pattern_image'] ) ) {
+			return;
+		}
+
+		$pattern_classes  = array(
+			'absolute',
+			'w-1/2',
+			'max-w-5xl',
+			'h-auto',
+		);
+
+		$pattern_position_horizontal = $pattern_settings['pattern_position_horizontal'];
+		$pattern_position_vertical = $pattern_settings['pattern_position_vertical'];
+
+		switch ( $pattern_position_vertical ) {
+			case 'top':
+				$pattern_classes[] = 'top-0';
+				break;
+			case 'center':
+				$pattern_classes[] = 'top-1/2';
+				break;
+			case 'bottom':
+				$pattern_classes[] = 'bottom-0';
+				break;
+		}
+
+		switch ( $pattern_position_horizontal ) {
+			case 'left':
+				$pattern_classes[] = 'left-0';
+				break;
+			case 'center':
+				$pattern_classes[] = 'left-1/2';
+				break;
+			case 'right':
+				$pattern_classes[] = 'right-0';
+				break;
+		}
+
+		$pattern_class = implode( ' ', $pattern_classes );
+		ob_start();
+		?>
+		<div class="background-pattern not-prose <?php echo esc_attr( $pattern_class ); ?>" aria-hidden="true">
+			<?php echo wp_get_attachment_image( $pattern_settings['pattern_image'], 'large', false, array( 'class' => 'w-full h-full', 'alt' => '', 'aria-hidden' => 'true', 'loading' => 'lazy', 'fetchpriority' => 'low' ) ); ?>
+		</div>
+		<?php
+		$background_pattern_markup = ob_get_clean();
+	}
+
 	// If we have a background image, echo our background image markup inside the block container.
-	if ( $background_image_markup ) {
+	if ( ! empty( $background_image_markup ) ) {
 		echo $background_image_markup; // WPCS XSS OK.
 	}
 
 	// If we have a background video, echo our background video markup inside the block container.
-	if ( $background_video_markup ) {
+	if ( ! empty( $background_video_markup ) ) {
 		echo $background_video_markup; // WPCS XSS OK.
 	}
 
 	// If we have an overlay, echo our overlay markup inside the block container.
-	if ( $background_overlay_markup ) {
+	if ( ! empty( $background_overlay_markup ) ) {
 		echo $background_overlay_markup; // WPCS XSS OK.
+	}
+
+	// If we have a pattern, echo our pattern markup inside the block container.
+	if ( ! empty( $background_pattern_markup) ) {
+		echo $background_pattern_markup; // WPCS XSS OK.
 	}
 }

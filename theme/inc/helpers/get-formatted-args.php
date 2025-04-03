@@ -43,6 +43,15 @@ function get_formatted_args( $args, $defaults ) {
 			$color         = $args['button_color']['color_picker'];
 
 			// Border Colors: border-background | border-foreground | border-primary | border-secondary
+			if ( 'fill' === $args['button_style'] && ! empty( $color ) ) {
+				$btn_classes   = [
+					'bg-' . esc_attr( $color ),
+					'hover:bg-background',
+					'border border-' . esc_attr( $color ),
+				];
+				$args['class'] = array_merge( $args['class'], $btn_classes );
+			}
+
 			if ( 'outline' === $args['button_style'] && ! empty( $color ) ) {
 				$btn_classes   = [
 					'bg-transparent',
@@ -52,22 +61,13 @@ function get_formatted_args( $args, $defaults ) {
 				];
 				$args['class'] = array_merge( $args['class'], $btn_classes );
 			}
-
-			if ( 'fill' === $args['button_style'] && ! empty( $color ) ) {
-				$btn_classes   = [
-					'bg-' . esc_attr( $color ),
-					'hover:bg-background',
-					'border border-' . esc_attr( $color ),
-				];
-				$args['class'] = array_merge( $args['class'], $btn_classes );
-			}
 		}
 
 		if ( ! empty( $args['button_text_color']['color_picker'] ) ) {
 			$color              = $args['button_text_color']['color_picker'];
 			$text_color_classes = [
 				'text-' . esc_attr( $color ),
-//				'has-' . esc_attr( $color ) . '-color',
+				'has-' . esc_attr( $color ) . '-color',
 			];
 			$args['class']      = array_merge( $args['class'], $text_color_classes );
 		}

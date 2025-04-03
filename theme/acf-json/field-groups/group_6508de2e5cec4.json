@@ -37,16 +37,17 @@
                 "id": ""
             },
             "choices": {
-                "h1": "H1",
-                "h2": "H2",
-                "h3": "H3",
-                "h4": "H4",
-                "h5": "H5",
-                "h6": "H6"
+                "1": "H1",
+                "2": "H2",
+                "3": "H3",
+                "4": "H4",
+                "5": "H5",
+                "6": "H6"
             },
-            "default_value": "",
+            "default_value": 2,
             "return_format": "value",
             "allow_null": 0,
+            "allow_in_bindings": 1,
             "layout": "horizontal"
         }
     ],
@@ -68,5 +69,5 @@
     "active": false,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1741926107
+    "modified": 1743571804
 }

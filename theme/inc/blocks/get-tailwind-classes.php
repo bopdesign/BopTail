@@ -120,6 +120,8 @@ function get_tailwind_classes( $settings ) {
 					}
 					if ( ! empty( $bg['gradient']['end_color'] ) ) {
 						$bg_classes[] = 'to-' . $bg['gradient']['end_color']['color_picker'];
+					} else {
+						$bg_classes[] = 'to-transparent';
 					}
 				}
 				break;
