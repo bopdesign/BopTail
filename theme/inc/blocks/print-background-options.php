@@ -54,7 +54,6 @@ function print_background_options( $settings ) {
 				'inset-0',
 				'w-full',
 				'h-full',
-				'z-0',
 			];
 
 			ob_start();
@@ -163,7 +162,6 @@ function print_background_options( $settings ) {
 				'inset-0',
 				'w-full',
 				'h-full',
-				'z-0',
 			];
 
 			if ( ! empty( $background_options['fixed'] ) ) {

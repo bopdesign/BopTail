@@ -7,9 +7,9 @@
   "category": "boptail",
   "icon": "columns",
   "keywords": [
-    "hero",
-    "banner",
-    "home"
+    "side",
+    "by",
+    "card"
   ],
   "acf": {
     "mode": "auto",
@@ -45,9 +45,7 @@
     "attributes": {
       "mode": "preview",
       "data": {
-        "_is_preview": "true",
-        "heading": "Main heading of the block",
-        "content": "A copy of text following the heading"
+        "_is_preview": "true"
       }
     }
   }

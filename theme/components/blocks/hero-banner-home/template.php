@@ -14,7 +14,6 @@
 use function BopTail\Helpers\get_acf_fields;
 use function BopTail\Blocks\setup_block_defaults;
 use function BopTail\Blocks\print_background_options;
-use function BopTail\Helpers\print_element;
 use function BopTail\Helpers\print_module;
 
 $block_args     = isset( $args ) ? $args : '';
@@ -49,12 +48,8 @@ $block_content = ! empty( $block_defaults['fields'] ) ? $block_defaults['fields'
 $animation_class = $block_classes['animation'];
 
 $container_class = join( ' ', array(
-	'flex',
-	'flex-row',
-	'h-full',
 	'relative',
-	'z-20',
-	$block_classes['align_content'],
+//	$block_classes['align_content'],
 	$block_classes['container_size'],
 ) );
 $column_class    = join( ' ', array(
@@ -68,55 +63,64 @@ $column_class    = join( ' ', array(
 	$animation_class,
 ) );
 
+// Our InnerBlocks template to populate when new block is inserted.
+$inner_blocks_template = array(
+	array(
+		'core/heading',
+		array(
+			'level'       => 1,
+			'placeholder' => 'Enter your title here',
+		),
+	),
+	array(
+		'core/paragraph',
+		array(
+			'placeholder' => 'Enter your content here.',
+		),
+	),
+);
+
 if ( ! empty( $block['data']['_is_preview'] ) ) :
 	?>
-	<figure>
-		<img src="<?php echo esc_url( BOPTAIL_ROOT_URL . 'assets/images/block-previews/hero-banner-home.jpg' ); ?>"
-		     alt="<?php esc_html_e( 'Block Preview - Hero Banner Home', BOPTAIL_TEXT_DOMAIN ); ?>">
+	<figure style="width: 100%;">
+		<img src="<?php echo esc_url( get_theme_file_uri( '/components/blocks/hero-banner-home/preview-hero-banner-home.png' ) ); ?>"
+		     style="width: 100%;height: 100%;object-fit: contain;object-position: center;" alt="<?php esc_html_e( 'Block Preview - Hero Banner Home', BOPTAIL_TEXT_DOMAIN ); ?>">
 	</figure>
-	<h1><?php echo esc_html( $block['data']['heading'] ); ?></h1>
-	<p><?php echo esc_html( $block['data']['content'] ); ?></p>
-<?php elseif ( $block_content['eyebrow'] || $block_content['heading'] || $block_content['content'] ) : ?>
+<?php else: ?>
 	<section <?php echo $block_atts; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
 		<?php print_background_options( $settings ); ?>
 		<div class="<?php echo esc_attr( $container_class ); ?>">
-			<div class="<?php echo esc_attr( $column_class ); ?>">
-				<?php
-				// Eyebrow.
-				if ( $block_content['eyebrow'] ) :
-					print_element( 'eyebrow', [
-						'class' => $block_classes['eyebrow_color'],
-						'text'  => $block_content['eyebrow'],
-					] );
-				endif;
-				?>
-				<?php
-				// Heading.
-				if ( $block_content['heading'] ) :
-					print_element( 'heading', [
-						'level' => 1,
-						'class' => [ $block_classes['heading_color'], 'mb-0',],
-						'text'  => $block_content['heading'],
-					] );
-				endif;
-				?>
-				<?php
-				// Content.
-				if ( $block_content['content'] ) :
-					print_element( 'content', [
-						'class'   => [ $block_classes['content_color'], 'mb-8', ],
-						'content' => $block_content['content'],
-					] );
-				endif;
-				?>
-				<?php
-				// Buttons.
-				if ( $block_content['buttons'] ) :
-					$block_content['buttons']['class'] = 'mt-4';
+			<div class="grid items-center gap-6 lg:grid-cols-2 lg:gap-12">
+				<div class="<?php echo esc_attr( $column_class ); ?>">
+					<InnerBlocks
+						class="z-10"
+						orientation="horizontal"
+						allowedBlocks="<?php echo esc_attr( wp_json_encode( $block_defaults['allowed_innerblocks'] ) ); ?>"
+						template="<?php echo esc_attr( wp_json_encode( $inner_blocks_template ) ); ?>"
+					/>
+					<?php
+					// Buttons.
+					if ( $block_content['buttons'] ) :
+						$block_content['buttons']['class'] = 'mt-8';
 
-					print_module( 'buttons', $block_content['buttons'] );
-				endif;
-				?>
+						print_module( 'buttons', $block_content['buttons'] );
+					endif;
+					?>
+				</div>
+
+				<div class="relative mt-8 lg:mt-0">
+					<div class="relative h-[368px] w-full lg:h-[672px] lg:w-[120%]">
+						<?php
+						echo wp_get_attachment_image( $block_content['side_image'], 'large', false, array(
+							'class'         => 'absolute w-full h-full bottom-0 object-contain object-center lg:object-right not-prose',
+							'alt'           => '',
+							'aria-hidden'   => 'true',
+							'loading'       => 'eager',
+							'fetchpriority' => 'high',
+						) );
+						?>
+					</div>
+				</div>
 			</div>
 		</div>
 	</section>

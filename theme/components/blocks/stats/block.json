@@ -1,15 +1,14 @@
 {
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 2,
-  "name": "boptail/hero-banner-home",
-  "title": "Hero Banner - Home",
-  "description": "A custom home page hero banner block.",
+  "name": "boptail/stats",
+  "title": "Stats",
+  "description": "A custom stats block.",
   "category": "boptail",
-  "icon": "admin-home",
+  "icon": "chart-bar",
   "keywords": [
-    "hero",
-    "banner",
-    "home"
+    "stats",
+    "statistics"
   ],
   "acf": {
     "mode": "auto",
@@ -20,10 +19,6 @@
     "align": {
       "type": "string",
       "default": "full"
-    },
-    "fullHeight": {
-      "type": "boolean",
-      "default": true
     }
   },
   "supports": {
@@ -31,7 +26,7 @@
       "wide",
       "full"
     ],
-    "alignContent": "matrix",
+    "alignContent": true,
     "alignText": true,
     "anchor": true,
     "color": {
@@ -39,9 +34,9 @@
       "link": false,
       "text": false
     },
-    "fullHeight": true,
+    "fullHeight": false,
     "html": false,
-    "jsx": true,
+    "jsx": false,
     "multiple": false,
     "reusable": false
   },

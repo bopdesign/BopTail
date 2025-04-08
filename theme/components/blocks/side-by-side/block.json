@@ -1,15 +1,15 @@
 {
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 2,
-  "name": "boptail/hero-banner-home",
-  "title": "Hero Banner - Home",
-  "description": "A custom home page hero banner block.",
+  "name": "boptail/side-by-side",
+  "title": "Side by Side",
+  "description": "Displays side by side - Media + Content",
   "category": "boptail",
-  "icon": "admin-home",
+  "icon": "columns",
   "keywords": [
-    "hero",
-    "banner",
-    "home"
+    "side",
+    "by",
+    "fifty"
   ],
   "acf": {
     "mode": "auto",
@@ -20,10 +20,6 @@
     "align": {
       "type": "string",
       "default": "full"
-    },
-    "fullHeight": {
-      "type": "boolean",
-      "default": true
     }
   },
   "supports": {
@@ -31,18 +27,18 @@
       "wide",
       "full"
     ],
-    "alignContent": "matrix",
-    "alignText": true,
+    "alignContent": false,
+    "alignText": false,
     "anchor": true,
     "color": {
       "background": false,
       "link": false,
       "text": false
     },
-    "fullHeight": true,
+    "fullHeight": false,
     "html": false,
-    "jsx": true,
-    "multiple": false,
+    "jsx": false,
+    "multiple": true,
     "reusable": false
   },
   "example": {

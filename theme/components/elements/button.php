@@ -18,7 +18,7 @@ $element_defaults = [
 		'acf-element',
 		'acf-element-button',
 		'wp-element-button',
-		'btn',
+		'border',
 		'group/item',
 		'inline-flex',
 		'items-center',
@@ -77,6 +77,5 @@ if ( $element_args['title'] || $element_args['icon'] ) :
 
 		print_element( 'arrow-animated' );
 		?>
-<!--		<span class="dashicons dashicons-arrow-right-alt2 ml-1"></span>-->
 	</<?php echo $element_tag; ?>>
 <?php endif; ?>

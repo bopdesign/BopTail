@@ -166,13 +166,15 @@ function get_tailwind_classes( $settings ) {
 	$classes['content_color'] = '';
 
 	if ( ! empty( $settings['typography'] ) ) {
-		if ( ! empty( $settings['typography']['eyebrow_color'] ) ) {
+		if ( ! empty( $settings['typography']['eyebrow_color']['color_picker'] ) ) {
 			$classes['eyebrow_color'] = 'text-' . $settings['typography']['eyebrow_color']['color_picker'];
 		}
-		if ( ! empty( $settings['typography']['heading_color'] ) ) {
+
+		if ( ! empty( $settings['typography']['heading_color']['color_picker'] ) ) {
 			$classes['heading_color'] = 'text-' . $settings['typography']['heading_color']['color_picker'];
 		}
-		if ( ! empty( $settings['typography']['content_color'] ) ) {
+
+		if ( ! empty( $settings['typography']['content_color']['color_picker'] ) ) {
 			$classes['content_color'] = 'text-' . $settings['typography']['content_color']['color_picker'];
 		}
 	}
